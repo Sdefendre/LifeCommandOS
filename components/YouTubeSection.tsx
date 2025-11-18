@@ -13,24 +13,24 @@ export function YouTubeSection() {
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-red-500/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 max-w-6xl relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+      <div className="container mx-auto px-3 sm:px-4 max-w-6xl relative z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12 lg:gap-16">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex-1 space-y-6 lg:max-w-xl"
+            className="flex-1 space-y-4 sm:space-y-6 lg:max-w-xl w-full"
           >
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/10 text-red-600 dark:text-red-500 text-sm font-semibold border border-red-500/20"
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-red-500/10 text-red-600 dark:text-red-500 text-xs sm:text-sm font-semibold border border-red-500/20"
             >
-              <Youtube size={18} className="fill-current" />
+              <Youtube size={16} className="fill-current sm:w-[18px] sm:h-[18px]" />
               <span>YouTube Channel</span>
             </motion.div>
 
@@ -39,7 +39,7 @@ export function YouTubeSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight"
             >
               Watch Me Build &{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-red-500">
@@ -52,7 +52,7 @@ export function YouTubeSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg md:text-xl text-muted-foreground leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed"
             >
               Join me on YouTube where I document my coding journey, share tutorials, and explore
               new technologies.
@@ -63,7 +63,7 @@ export function YouTubeSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4"
             >
               <motion.a
                 href={SITE.youtube}
@@ -71,9 +71,9 @@ export function YouTubeSection() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 shadow-lg shadow-red-600/25 hover:shadow-xl hover:shadow-red-600/40"
+                className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold transition-all duration-200 shadow-lg shadow-red-600/25 hover:shadow-xl hover:shadow-red-600/40 text-sm sm:text-base w-full sm:w-auto"
               >
-                <Youtube size={20} className="fill-white" />
+                <Youtube size={18} className="fill-white sm:w-5 sm:h-5" />
                 Visit Channel
               </motion.a>
               <motion.a
@@ -82,10 +82,13 @@ export function YouTubeSection() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold border-2 border-border bg-background hover:bg-accent hover:border-primary/50 transition-all duration-200 shadow-sm hover:shadow-md"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold border-2 border-border bg-background hover:bg-accent hover:border-primary/50 transition-all duration-200 shadow-sm hover:shadow-md text-sm sm:text-base w-full sm:w-auto"
               >
                 Latest Videos{' '}
-                <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+                <ArrowRight
+                  size={16}
+                  className="transition-transform group-hover:translate-x-1 sm:w-[18px] sm:h-[18px]"
+                />
               </motion.a>
             </motion.div>
           </motion.div>
@@ -102,7 +105,7 @@ export function YouTubeSection() {
               href={SITE.youtube}
               target="_blank"
               rel="noopener noreferrer"
-              className="block group relative aspect-video bg-black rounded-2xl overflow-hidden border-2 border-border shadow-2xl hover:shadow-red-600/20 transition-all duration-300"
+              className="block group relative aspect-video bg-black rounded-xl sm:rounded-2xl overflow-hidden border-2 border-border shadow-2xl hover:shadow-red-600/20 transition-all duration-300"
             >
               {/* Enhanced Background Gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900" />
@@ -120,23 +123,26 @@ export function YouTubeSection() {
                   transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                 >
                   <div className="absolute inset-0 bg-red-600 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
-                  <div className="relative w-20 h-20 md:w-24 md:h-24 bg-red-600 rounded-full flex items-center justify-center shadow-2xl shadow-red-600/50 group-hover:bg-red-500 transition-colors">
-                    <Play size={36} className="text-white fill-white ml-1" />
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-red-600 rounded-full flex items-center justify-center shadow-2xl shadow-red-600/50 group-hover:bg-red-500 transition-colors">
+                    <Play
+                      size={28}
+                      className="text-white fill-white ml-0.5 sm:ml-1 sm:w-9 sm:h-9"
+                    />
                   </div>
                 </motion.div>
               </div>
 
               {/* Bottom Info Section */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 bg-gradient-to-t from-black/95 via-black/80 to-transparent">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center flex-shrink-0">
-                    <Youtube size={20} className="text-white fill-white" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 bg-gradient-to-t from-black/95 via-black/80 to-transparent">
+                <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-red-600 flex items-center justify-center flex-shrink-0">
+                    <Youtube size={16} className="text-white fill-white sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <p className="text-white font-semibold text-lg md:text-xl group-hover:text-red-400 transition-colors">
+                    <p className="text-white font-semibold text-base sm:text-lg md:text-xl group-hover:text-red-400 transition-colors">
                       @Stevedefendre
                     </p>
-                    <p className="text-white/70 text-sm">Subscribe for more content</p>
+                    <p className="text-white/70 text-xs sm:text-sm">Subscribe for more content</p>
                   </div>
                 </div>
               </div>

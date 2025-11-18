@@ -34,7 +34,25 @@ Visit: [SteveOS](https://steve-os.vercel.app)
    npm install
    ```
 
-3. **Install GitHub CLI (Optional but recommended)**
+3. **Set up environment variables**
+
+   Create a `.env.local` file in the project root:
+
+   ```env
+   # Google Calendar Integration (Optional)
+   GOOGLE_CALENDAR_API_KEY=your_api_key_here
+   GOOGLE_CALENDAR_ID=primary
+
+   # Newsletter (if using email functionality)
+   SMTP_HOST=your_smtp_host
+   SMTP_PORT=587
+   SMTP_USER=your_email
+   SMTP_PASS=your_password
+   ```
+
+   See [GOOGLE_CALENDAR_SETUP.md](./GOOGLE_CALENDAR_SETUP.md) for detailed calendar setup instructions.
+
+4. **Install GitHub CLI (Optional but recommended)**
 
    On macOS (using Homebrew):
 
@@ -50,7 +68,7 @@ Visit: [SteveOS](https://steve-os.vercel.app)
    gh auth login
    ```
 
-4. **Start development server**
+5. **Start development server**
    ```bash
    npm run dev
    ```

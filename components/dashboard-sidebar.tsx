@@ -84,7 +84,6 @@ export function DashboardSidebar() {
           ))}
         </nav>
       </div>
-      <div className="mt-auto border-t p-4"></div>
     </aside>
   )
 }

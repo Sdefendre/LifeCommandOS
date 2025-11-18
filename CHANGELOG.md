@@ -9,6 +9,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Dashboard System**: Comprehensive financial dashboard with sidebar navigation
+  - Financial metrics cards (Balance, Spending, Budget, Savings)
+  - Interactive charts using Recharts (spending trends, category breakdowns)
+  - Transaction management with CSV import functionality
+  - Budget tracking across multiple categories
+  - Editable metric values via dialog interface
+  - Loading states with skeleton components
+- **Dashboard Routes**: Multiple dashboard pages
+  - `/dashboard` - Main overview page
+  - `/dashboard/transactions` - Transaction history
+  - `/dashboard/budgets` - Budget management
+  - `/dashboard/reports` - Financial reports
+  - `/dashboard/savings` - Savings goals
+  - `/dashboard/balance` - Balance details
+- **Dashboard Components**:
+  - `DashboardSidebar` - Navigation sidebar with active route highlighting
+  - `DashboardHeader` - Header component for dashboard pages
+  - `DashboardCardSkeleton` - Loading skeleton for dashboard cards
+- **Google Calendar Integration**:
+  - API route (`/api/calendar`) for fetching Google Calendar events
+  - Support for API key authentication
+  - Calendar event formatting and display
+  - Setup documentation in `GOOGLE_CALENDAR_SETUP.md`
+- **UI Component Library**: Added Shadcn UI components
+  - Avatar, Badge, Button, Calendar, Card, Chart
+  - Dialog, Dropdown Menu, Input, Label, Popover
+  - Progress, Select, Separator, Sheet, Skeleton, Table, Tabs
+- **CSV Processing**: PapaParse integration for bank statement imports
+- **Chart Library**: Recharts integration for data visualization
+- **Date Utilities**: date-fns for date formatting and calculations
 - Blog: Added "DreamGuard: The Subconscious Sentinel" post
 - Blog: Added "PulsePod: The Rhythm of Life" post
 - Blog: Added "Sentinel Mirror: Reflection Redefined" post
@@ -37,6 +67,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Dependencies**: Added new packages
+  - `recharts` - Chart library for data visualization
+  - `react-day-picker` - Calendar component
+  - `date-fns` - Date utility library
+  - `papaparse` - CSV parsing library
+  - `googleapis` - Google Calendar API integration
+  - Additional Radix UI components for dashboard UI
+- **Project Structure**: Added dashboard directory structure
+  - `app/dashboard/` - Dashboard routes and layout
+  - `components/ui/` - Shadcn UI component library
+  - `components/dashboard-*.tsx` - Dashboard-specific components
 - Transformed from portfolio to consultancy-focused website
 - Homepage restructured with mission, services preview, work preview
 - Navigation updated with new page links (Services, Work, About)

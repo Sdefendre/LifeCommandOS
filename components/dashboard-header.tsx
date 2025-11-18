@@ -12,8 +12,6 @@ import {
   Menu,
   Bell,
   Search,
-  Settings,
-  LogOut,
   Home,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -68,15 +66,15 @@ export function DashboardHeader() {
   const pathname = usePathname()
 
   return (
-    <header className="flex h-14 items-center gap-4 border-b bg-background px-4 lg:h-[60px] lg:px-6 sticky top-0 z-50">
+    <header className="flex h-14 items-center gap-2 sm:gap-4 border-b bg-background px-2 sm:px-4 lg:h-[60px] lg:px-6 sticky top-0 z-50">
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline" size="icon" className="shrink-0 lg:hidden">
-            <Menu className="h-5 w-5" />
+          <Button variant="outline" size="icon" className="shrink-0 lg:hidden h-9 w-9">
+            <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="left" className="flex flex-col">
+        <SheetContent side="left" className="flex flex-col w-[280px] sm:w-[300px]">
           <nav className="grid gap-2 text-lg font-medium">
             <Link href="/dashboard" className="flex items-center gap-2 text-lg font-semibold mb-4">
               <span className="h-6 w-6 rounded-full bg-primary" />
@@ -106,55 +104,51 @@ export function DashboardHeader() {
               </Link>
             ))}
           </nav>
-          <div className="mt-auto">
-            <div className="flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground">
-              <Settings className="h-5 w-5" />
-              Settings
-            </div>
-            <div className="flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground">
-              <LogOut className="h-5 w-5" />
-              Log out
-            </div>
-          </div>
         </SheetContent>
       </Sheet>
-      <div className="w-full flex-1">
+      <div className="w-full flex-1 min-w-0">
         <form>
           <div className="relative">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
-              placeholder="Search transactions..."
-              className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
+              placeholder="Search..."
+              className="w-full appearance-none bg-background pl-7 pr-2 shadow-none text-sm sm:text-base sm:pl-8 md:w-2/3 lg:w-1/3"
             />
           </div>
         </form>
       </div>
-      <ThemeToggle />
-      <Button variant="ghost" size="icon" className="relative">
-        <Bell className="h-5 w-5" />
-        <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-red-500" />
-        <span className="sr-only">Notifications</span>
-      </Button>
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="secondary" size="icon" className="rounded-full">
-            <Avatar>
-              <AvatarImage src="/placeholder-user.jpg" alt="User" />
-              <AvatarFallback>SD</AvatarFallback>
-            </Avatar>
-            <span className="sr-only">Toggle user menu</span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Settings</DropdownMenuItem>
-          <DropdownMenuItem>Support</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Logout</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+        <ThemeToggle />
+        <Button variant="ghost" size="icon" className="relative h-9 w-9 sm:h-10 sm:w-10">
+          <Bell className="h-4 w-4 sm:h-5 sm:w-5" />
+          <span className="absolute top-1 right-1 h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-red-500" />
+          <span className="sr-only">Notifications</span>
+        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="secondary"
+              size="icon"
+              className="rounded-full h-9 w-9 sm:h-10 sm:w-10"
+            >
+              <Avatar className="h-8 w-8 sm:h-9 sm:w-9">
+                <AvatarImage src="/placeholder-user.jpg" alt="User" />
+                <AvatarFallback className="text-xs sm:text-sm">SD</AvatarFallback>
+              </Avatar>
+              <span className="sr-only">Toggle user menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>Support</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Logout</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
     </header>
   )
 }

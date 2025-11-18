@@ -19,7 +19,18 @@ import {
   Calendar,
   Upload,
 } from 'lucide-react'
-import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts'
+import {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  XAxis,
+  YAxis,
+  Pie,
+  PieChart,
+} from 'recharts'
 import Papa from 'papaparse'
 
 import { Button } from '@/components/ui/button'
@@ -52,16 +63,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Calendar as CalendarComponent } from '@/components/ui/calendar'
 import { cn } from '@/lib/utils'
 
 // Mock Data
 const spendingData = [
-  { month: 'Jan', spending: 1250, budget: 1500 },
-  { month: 'Feb', spending: 1400, budget: 1500 },
-  { month: 'Mar', spending: 1100, budget: 1500 },
-  { month: 'Apr', spending: 1600, budget: 1500 },
-  { month: 'May', spending: 1350, budget: 1500 },
-  { month: 'Jun', spending: 1450, budget: 1500 },
+  { month: 'Jan', spending: 1250, budget: 1500, fill: 'var(--color-jan)' },
+  { month: 'Feb', spending: 1400, budget: 1500, fill: 'var(--color-feb)' },
+  { month: 'Mar', spending: 1100, budget: 1500, fill: 'var(--color-mar)' },
+  { month: 'Apr', spending: 1600, budget: 1500, fill: 'var(--color-apr)' },
+  { month: 'May', spending: 1350, budget: 1500, fill: 'var(--color-may)' },
+  { month: 'Jun', spending: 1450, budget: 1500, fill: 'var(--color-jun)' },
 ]
 
 const categoryData = [
@@ -158,6 +170,30 @@ const chartConfig = {
     label: 'Budget',
     color: 'hsl(var(--chart-2))',
   },
+  jan: {
+    label: 'January',
+    color: 'hsl(var(--chart-1))',
+  },
+  feb: {
+    label: 'February',
+    color: 'hsl(var(--chart-2))',
+  },
+  mar: {
+    label: 'March',
+    color: 'hsl(var(--chart-3))',
+  },
+  apr: {
+    label: 'April',
+    color: 'hsl(var(--chart-4))',
+  },
+  may: {
+    label: 'May',
+    color: 'hsl(var(--chart-5))',
+  },
+  jun: {
+    label: 'June',
+    color: 'hsl(var(--primary))',
+  },
   food: {
     label: 'Food',
     color: 'hsl(var(--chart-3))',
@@ -178,6 +214,7 @@ const chartConfig = {
 
 export default function DashboardPage() {
   const [isLoading, setIsLoading] = useState(true)
+  const [isCalendarDialogOpen, setIsCalendarDialogOpen] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   // Dashboard Metrics State
@@ -196,9 +233,18 @@ export default function DashboardPage() {
   const [editValue, setEditValue] = useState('')
   const [editTitle, setEditTitle] = useState('')
 
-  const today = new Date()
-  const currentMonth = format(today, 'MMMM yyyy')
-  const daysRemaining = differenceInCalendarDays(endOfMonth(today), today)
+  const [dateData, setDateData] = useState<{ month: string; daysRemaining: number | null }>({
+    month: '',
+    daysRemaining: null,
+  })
+
+  useEffect(() => {
+    const today = new Date()
+    setDateData({
+      month: format(today, 'MMMM yyyy'),
+      daysRemaining: differenceInCalendarDays(endOfMonth(today), today),
+    })
+  }, [])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -350,17 +396,41 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-2">
-        <h1 className="text-3xl font-bold tracking-tight">{currentMonth}</h1>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/50 px-4 py-2 rounded-full border">
-          <Calendar className="h-4 w-4" />
-          <span className="font-medium text-foreground">{daysRemaining}</span>
-          <span>days until next month</span>
-        </div>
+    <div className="grid flex-1 items-start gap-4 p-3 sm:p-4 md:gap-6 lg:gap-8">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-2">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight min-h-[2rem] sm:min-h-[2.25rem]">
+          {dateData.month || (
+            <div className="h-8 sm:h-9 w-40 sm:w-48 bg-muted animate-pulse rounded-md" />
+          )}
+        </h1>
+        <Dialog open={isCalendarDialogOpen} onOpenChange={setIsCalendarDialogOpen}>
+          <DialogTrigger asChild>
+            <button className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground bg-muted/50 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border hover:bg-muted transition-colors cursor-pointer w-full sm:w-auto">
+              <Calendar className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
+              <span className="font-medium text-foreground min-w-[1ch] inline-block text-center">
+                {dateData.daysRemaining !== null ? dateData.daysRemaining : '-'}
+              </span>
+              <span className="hidden xs:inline">days until next month</span>
+              <span className="xs:hidden">days left</span>
+            </button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[500px] mx-4">
+            <DialogHeader className="pb-4">
+              <DialogTitle>Calendar View</DialogTitle>
+              <DialogDescription>View your calendar and navigate through dates.</DialogDescription>
+            </DialogHeader>
+            <div className="flex justify-center py-6 px-2">
+              <CalendarComponent
+                mode="single"
+                selected={new Date()}
+                className="rounded-md border w-full"
+              />
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         <Card
           className="cursor-pointer hover:border-primary/50 transition-colors"
           onClick={() => handleCardClick('balance')}
@@ -370,17 +440,18 @@ export default function DashboardPage() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-xl sm:text-2xl font-bold break-words">
               $
               {totalBalance.toLocaleString(undefined, {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
               })}
             </div>
-            <p className="text-xs text-muted-foreground flex items-center mt-1">
-              <TrendingUp className="h-4 w-4 text-emerald-500 mr-1" />
+            <p className="text-xs text-muted-foreground flex items-center flex-wrap mt-1 gap-1">
+              <TrendingUp className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-emerald-500 shrink-0" />
               <span className="text-emerald-500 font-medium">+12.5%</span>
-              <span className="ml-1">from last month</span>
+              <span className="hidden sm:inline">from last month</span>
+              <span className="sm:hidden">vs last month</span>
             </p>
           </CardContent>
         </Card>
@@ -393,17 +464,18 @@ export default function DashboardPage() {
             <CreditCard className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-xl sm:text-2xl font-bold break-words">
               $
               {monthlySpending.toLocaleString(undefined, {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,
               })}
             </div>
-            <p className="text-xs text-muted-foreground flex items-center mt-1">
-              <TrendingDown className="h-4 w-4 text-emerald-500 mr-1" />
+            <p className="text-xs text-muted-foreground flex items-center flex-wrap mt-1 gap-1">
+              <TrendingDown className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-emerald-500 shrink-0" />
               <span className="text-emerald-500 font-medium">-2.1%</span>
-              <span className="ml-1">from last month</span>
+              <span className="hidden sm:inline">from last month</span>
+              <span className="sm:hidden">vs last month</span>
             </p>
           </CardContent>
         </Card>
@@ -416,7 +488,7 @@ export default function DashboardPage() {
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-xl sm:text-2xl font-bold break-words">
               $
               {budgetRemaining.toLocaleString(undefined, {
                 minimumFractionDigits: 2,
@@ -424,7 +496,9 @@ export default function DashboardPage() {
               })}
             </div>
             <Progress value={72} className="mt-2 h-2" />
-            <p className="text-xs text-muted-foreground mt-2">72% of monthly budget used</p>
+            <p className="text-xs text-muted-foreground mt-2 break-words">
+              72% of monthly budget used
+            </p>
           </CardContent>
         </Card>
         <Card
@@ -436,7 +510,7 @@ export default function DashboardPage() {
             <PiggyBank className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-xl sm:text-2xl font-bold break-words">
               $
               {savingsGoal.toLocaleString(undefined, {
                 minimumFractionDigits: 2,
@@ -444,7 +518,7 @@ export default function DashboardPage() {
               })}
             </div>
             <Progress value={(savingsGoal / savingsGoalTarget) * 100} className="mt-2 h-2" />
-            <p className="text-xs text-muted-foreground mt-2">
+            <p className="text-xs text-muted-foreground mt-2 break-words">
               {Math.round((savingsGoal / savingsGoalTarget) * 100)}% of $
               {savingsGoalTarget.toLocaleString()} goal
             </p>
@@ -452,90 +526,85 @@ export default function DashboardPage() {
         </Card>
       </div>
 
-      <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
         <Card className="xl:col-span-2">
           <CardHeader>
-            <CardTitle>Spending Overview</CardTitle>
-            <CardDescription>
-              Compare your spending against your budget over the last 6 months.
+            <CardTitle className="text-lg sm:text-xl">Spending Overview</CardTitle>
+            <CardDescription className="text-xs sm:text-sm">
+              Distribution of spending over the last 6 months.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={chartConfig}>
-              <AreaChart
-                accessibilityLayer
-                data={spendingData}
-                margin={{
-                  left: 12,
-                  right: 12,
-                }}
-              >
-                <CartesianGrid vertical={false} />
-                <XAxis
-                  dataKey="month"
-                  tickLine={false}
-                  axisLine={false}
-                  tickMargin={8}
-                  tickFormatter={(value) => value.slice(0, 3)}
-                />
-                <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="dot" />} />
-                <Area
+            <ChartContainer
+              config={chartConfig}
+              className="mx-auto aspect-square max-h-[200px] sm:max-h-[250px]"
+            >
+              <PieChart>
+                <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+                <Pie
+                  data={spendingData}
                   dataKey="spending"
-                  type="natural"
-                  fill="var(--color-spending)"
-                  fillOpacity={0.4}
-                  stroke="var(--color-spending)"
-                  stackId="a"
+                  nameKey="month"
+                  innerRadius={50}
+                  outerRadius={80}
+                  strokeWidth={5}
                 />
-                <Area
-                  dataKey="budget"
-                  type="natural"
-                  fill="var(--color-budget)"
-                  fillOpacity={0.1}
-                  stroke="var(--color-budget)"
-                  stackId="b"
-                />
-              </AreaChart>
+              </PieChart>
             </ChartContainer>
           </CardContent>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Category Breakdown</CardTitle>
-            <CardDescription>Spending by category for the current month.</CardDescription>
+            <CardTitle className="text-lg sm:text-xl">Category Breakdown</CardTitle>
+            <CardDescription className="text-xs sm:text-sm">
+              Spending by category for the current month.
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <ChartContainer config={chartConfig}>
+            <ChartContainer config={chartConfig} className="h-[200px] sm:h-[250px]">
               <BarChart accessibilityLayer data={categoryData}>
                 <CartesianGrid vertical={false} />
-                <XAxis dataKey="category" tickLine={false} tickMargin={10} axisLine={false} />
+                <XAxis
+                  dataKey="category"
+                  tickLine={false}
+                  tickMargin={8}
+                  axisLine={false}
+                  interval={0}
+                  tick={{ fontSize: 12 }}
+                />
                 <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-                <Bar dataKey="amount" fill="var(--color-food)" radius={8} />
+                <Bar dataKey="amount" radius={8}>
+                  {categoryData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.fill} />
+                  ))}
+                </Bar>
               </BarChart>
             </ChartContainer>
           </CardContent>
         </Card>
       </div>
 
-      <div className="grid gap-4 md:gap-8 lg:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 md:gap-8 lg:grid-cols-3">
         <Card className="lg:col-span-2">
-          <CardHeader className="flex flex-row items-center">
-            <div className="grid gap-2">
-              <CardTitle>Recent Transactions</CardTitle>
-              <CardDescription>Recent transactions from your connected accounts.</CardDescription>
+          <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-0">
+            <div className="grid gap-1 sm:gap-2 flex-1 min-w-0">
+              <CardTitle className="text-lg sm:text-xl">Recent Transactions</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">
+                Recent transactions from your connected accounts.
+              </CardDescription>
             </div>
-            <Button asChild size="sm" className="ml-auto gap-1">
+            <Button asChild size="sm" className="ml-auto gap-1 shrink-0">
               <Link href="/dashboard/transactions">
                 View All
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               </Link>
             </Button>
           </CardHeader>
           <CardContent>
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {transactions.map((transaction) => (
-                <div className="flex items-center" key={transaction.id}>
-                  <Avatar className="h-9 w-9">
+                <div className="flex items-center gap-3 sm:gap-4" key={transaction.id}>
+                  <Avatar className="h-8 w-8 sm:h-9 sm:w-9 shrink-0">
                     <AvatarImage src="/avatars/01.png" alt="Avatar" />
                     <AvatarFallback
                       className={
@@ -544,16 +613,16 @@ export default function DashboardPage() {
                           : 'bg-primary/10 text-primary'
                       }
                     >
-                      <transaction.icon className="h-4 w-4" />
+                      <transaction.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                     </AvatarFallback>
                   </Avatar>
-                  <div className="ml-4 space-y-1">
-                    <p className="text-sm font-medium leading-none">{transaction.name}</p>
+                  <div className="ml-0 sm:ml-4 space-y-1 flex-1 min-w-0">
+                    <p className="text-sm font-medium leading-none truncate">{transaction.name}</p>
                     <p className="text-xs text-muted-foreground">{transaction.category}</p>
                   </div>
                   <div
                     className={cn(
-                      'ml-auto font-medium',
+                      'ml-auto font-medium text-sm sm:text-base shrink-0',
                       transaction.amount > 0 ? 'text-emerald-500' : ''
                     )}
                   >
@@ -566,24 +635,28 @@ export default function DashboardPage() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Budget Status</CardTitle>
-            <CardDescription>Track your monthly budget limits.</CardDescription>
+            <CardTitle className="text-lg sm:text-xl">Budget Status</CardTitle>
+            <CardDescription className="text-xs sm:text-sm">
+              Track your monthly budget limits.
+            </CardDescription>
           </CardHeader>
-          <CardContent className="grid gap-6">
+          <CardContent className="grid gap-4 sm:gap-6">
             {budgetCategories.map((category) => (
-              <div className="flex items-center justify-between space-x-4" key={category.name}>
-                <div className="flex items-center space-x-4">
-                  <div className={cn('p-2 rounded-full', category.bg)}>
-                    <category.icon className={cn('h-4 w-4', category.color)} />
+              <div className="flex items-center justify-between gap-3 sm:gap-4" key={category.name}>
+                <div className="flex items-center gap-2 sm:gap-4 flex-1 min-w-0">
+                  <div className={cn('p-1.5 sm:p-2 rounded-full shrink-0', category.bg)}>
+                    <category.icon className={cn('h-3.5 w-3.5 sm:h-4 sm:w-4', category.color)} />
                   </div>
-                  <div>
-                    <p className="text-sm font-medium leading-none">{category.name}</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs sm:text-sm font-medium leading-none truncate">
+                      {category.name}
+                    </p>
                     <p className="text-xs text-muted-foreground mt-1">
                       ${category.spent} / ${category.budget}
                     </p>
                   </div>
                 </div>
-                <div className="w-1/3">
+                <div className="w-20 sm:w-24 shrink-0">
                   <Progress
                     value={(category.spent / category.budget) * 100}
                     className={cn(
@@ -601,7 +674,7 @@ export default function DashboardPage() {
                 </div>
               </div>
             ))}
-            <Button variant="outline" className="w-full mt-2" asChild>
+            <Button variant="outline" className="w-full mt-2 text-sm" asChild>
               <Link href="/dashboard/budgets">Manage Budgets</Link>
             </Button>
           </CardContent>
@@ -609,7 +682,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Floating Action Button - Now Upload */}
-      <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-40">
         <input
           type="file"
           ref={fileInputRef}
@@ -619,11 +692,11 @@ export default function DashboardPage() {
         />
         <Button
           size="lg"
-          className="rounded-full h-14 w-14 shadow-lg"
+          className="rounded-full h-12 w-12 sm:h-14 sm:w-14 shadow-lg"
           onClick={handleUploadClick}
           title="Upload Bank Statement (CSV)"
         >
-          <Upload className="h-6 w-6" />
+          <Upload className="h-5 w-5 sm:h-6 sm:w-6" />
         </Button>
       </div>
 
