@@ -15,7 +15,11 @@
     "format": "prettier --write .",
     "prepare": "husky install",
     "postinstall": "echo postinstall",
-    "send-newsletter": "node scripts/send-newsletter.js"
+    "send-newsletter": "node scripts/send-newsletter.js",
+    "gh:status": "gh repo status",
+    "gh:issues": "gh issue list",
+    "gh:prs": "gh pr list",
+    "gh:view": "gh repo view"
   },
   "dependencies": {
     "@types/nodemailer": "^7.0.1",
@@ -43,6 +47,7 @@
     "postcss": "^8.5",
     "prettier": "^3",
     "tailwindcss": "^4.1.9",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vercel": "^48.10.3"
   }
 }
