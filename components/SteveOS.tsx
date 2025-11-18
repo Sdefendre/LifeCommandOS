@@ -122,43 +122,40 @@ export default function SteveOS({ repos = [] }: { repos?: GithubRepo[] }) {
         <div className="container mx-auto px-4 max-w-5xl">
           {/* Hero */}
           <section className="py-24 md:py-32">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="max-w-3xl"
-            >
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
-                Welcome{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
-                  Steve.
-                </span>
-              </h1>
-              <p className="text-2xl md:text-3xl font-medium text-muted-foreground mb-6">
-                What would you like to build today?
-              </p>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl">
-                {SITE.mission}
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link
-                    href="/work"
-                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium hover:bg-primary/90 transition-colors shadow-md hover:shadow-xl"
-                  >
-                    View My Work <ArrowRight size={16} />
-                  </Link>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link
-                    href="/about"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-md font-medium border border-border hover:bg-accent transition-colors hover:shadow-md"
-                  >
-                    More About Me
-                  </Link>
-                </motion.div>
-              </div>
-            </motion.div>
+            <div className="max-w-3xl">
+              <motion.div initial={{ y: 20 }} animate={{ y: 0 }} transition={{ duration: 0.5 }}>
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+                  Welcome{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+                    Steve.
+                  </span>
+                </h1>
+                <p className="text-2xl md:text-3xl font-medium text-muted-foreground mb-6">
+                  What would you like to build today?
+                </p>
+                <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl">
+                  {SITE.mission}
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Link
+                      href="/work"
+                      className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium hover:bg-primary/90 transition-colors shadow-md hover:shadow-xl"
+                    >
+                      View My Work <ArrowRight size={16} />
+                    </Link>
+                  </motion.div>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Link
+                      href="/about"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-md font-medium border border-border hover:bg-accent transition-colors hover:shadow-md"
+                    >
+                      More About Me
+                    </Link>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
           </section>
 
           <div className="h-px w-full bg-border" />

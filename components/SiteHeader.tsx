@@ -10,16 +10,6 @@ import { ThemeToggle } from '@/components/theme-toggle'
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const scrollToContact = () => {
-    const contactSection = document.getElementById('contact')
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' })
-    } else {
-      window.location.href = '/#contact'
-    }
-    setMobileMenuOpen(false)
-  }
-
   return (
     <>
       <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-sm">
@@ -34,6 +24,12 @@ export function SiteHeader() {
             <Link href="/work" className="hover:text-primary/80 transition-colors">
               Work
             </Link>
+            <Link
+              href="/dashboard"
+              className="hover:text-primary/80 transition-colors font-semibold text-primary"
+            >
+              Spendwise
+            </Link>
             <Link href="/blog" className="hover:text-primary/80 transition-colors">
               Blog
             </Link>
@@ -41,14 +37,6 @@ export function SiteHeader() {
               About
             </Link>
             <ThemeToggle />
-            <motion.button
-              onClick={scrollToContact}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 transition-colors"
-            >
-              Contact
-            </motion.button>
           </nav>
 
           {/* Mobile Nav Toggle */}
@@ -83,6 +71,13 @@ export function SiteHeader() {
                 Work
               </Link>
               <Link
+                href="/dashboard"
+                className="py-2 border-b border-border/50 text-primary font-medium"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Spendwise
+              </Link>
+              <Link
                 href="/blog"
                 className="py-2 border-b border-border/50"
                 onClick={() => setMobileMenuOpen(false)}
@@ -96,9 +91,6 @@ export function SiteHeader() {
               >
                 About
               </Link>
-              <button onClick={scrollToContact} className="text-left py-2 text-primary">
-                Get in Touch
-              </button>
             </nav>
           </motion.div>
         )}

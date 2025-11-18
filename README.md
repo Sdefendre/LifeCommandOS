@@ -15,6 +15,9 @@ Visit: [SteveOS](https://steve-os.vercel.app)
 - **Styling**: Tailwind CSS v4
 - **UI**: Shadcn UI, Lucide React
 - **Animations**: Framer Motion
+- **Charts**: Recharts
+- **Calendar**: Google Calendar API, React Day Picker
+- **Data Processing**: PapaParse (CSV parsing)
 
 ## 📦 Installation
 
@@ -114,6 +117,31 @@ This project uses GitHub CLI for various operations. You can use GitHub CLI comm
 - **List issues**: `npm run gh:issues`
 - **List pull requests**: `npm run gh:prs`
 - **View repository**: `npm run gh:view`
+
+## 📊 Dashboard Features
+
+SteveOS includes a comprehensive financial dashboard (`/dashboard`) with:
+
+- **Financial Overview**: Track balance, spending, budget, and savings goals
+- **Transaction Management**: View and manage recent transactions
+- **Budget Tracking**: Monitor spending across categories (Food, Transport, Shopping, Bills)
+- **Data Visualization**: Interactive charts showing spending trends and category breakdowns
+- **CSV Import**: Upload bank statements (CSV) to automatically import transactions
+- **Calendar Integration**: View upcoming events from Google Calendar
+- **Responsive Design**: Fully responsive dashboard with sidebar navigation
+
+### Dashboard Routes
+
+- `/dashboard` - Main dashboard overview
+- `/dashboard/transactions` - Transaction history
+- `/dashboard/budgets` - Budget management
+- `/dashboard/reports` - Financial reports
+- `/dashboard/savings` - Savings goals tracking
+- `/dashboard/balance` - Balance details
+
+## 📅 Google Calendar Integration
+
+The dashboard includes Google Calendar integration for viewing upcoming events. See [GOOGLE_CALENDAR_SETUP.md](./GOOGLE_CALENDAR_SETUP.md) for setup instructions.
 
 ## 📄 License
 
