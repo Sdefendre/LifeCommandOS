@@ -1,12 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Mail, Linkedin, Github, ArrowRight } from 'lucide-react'
+import { Mail, Linkedin, Github } from 'lucide-react'
 import { SiteHeader } from '@/components/SiteHeader'
 import { SITE } from '@/constants/site'
-import { createFadeInUp, viewportOnce } from '@/lib/motion'
 
 export default function AboutPage() {
   return (
