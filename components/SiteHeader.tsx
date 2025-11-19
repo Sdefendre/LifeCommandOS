@@ -34,7 +34,7 @@ export function SiteHeader() {
               href="/dashboard"
               className="font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
             >
-              Spendwise
+              SpendWise
             </Link>
             <Link href="/blog" className="hover:text-purple-600 transition-colors">
               Blog
@@ -81,7 +81,7 @@ export function SiteHeader() {
                 className="py-2.5 border-b border-border/50 text-primary font-medium active:bg-accent/50 rounded-sm px-2 -mx-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Spendwise
+                SpendWise
               </Link>
               <Link
                 href="/blog"
