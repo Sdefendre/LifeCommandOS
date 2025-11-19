@@ -13,7 +13,7 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    title: 'Spendwise',
+    title: 'WealthWise',
     tag: 'Finance App',
     desc: 'A comprehensive personal finance dashboard featuring transaction tracking, budget management, interactive reports, and savings goals. Built with React 19, Next.js 16, and Recharts.',
     metrics: 'Dashboard • Data Visualization • React 19',

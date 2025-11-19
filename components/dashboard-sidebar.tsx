@@ -54,7 +54,7 @@ export function DashboardSidebar() {
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px]">
         <Link className="flex items-center gap-2 font-semibold" href="/dashboard">
           <span className="h-6 w-6 rounded-full bg-primary" />
-          <span className="">SpendWise</span>
+          <span className="">WealthWise</span>
         </Link>
       </div>
       <div className="flex-1 overflow-auto py-2">

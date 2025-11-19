@@ -136,6 +136,9 @@ const categoryKeywordMap: {
   { keywords: ['hotel', 'airbnb', 'airlines'], category: 'Travel' },
 ]
 
+const CATEGORY_RULES_STORAGE_KEY = 'wealthwiseCategoryRules'
+const LEGACY_CATEGORY_RULES_STORAGE_KEY = 'spendwiseCategoryRules'
+
 // Mock Data
 const spendingData = [
   { month: 'Jan', spending: 1250, budget: 1500 },
@@ -462,10 +465,24 @@ export default function DashboardPage() {
   })
 
   useEffect(() => {
-    const storedRules = localStorage.getItem('spendwiseCategoryRules')
+    const storedRules = localStorage.getItem(CATEGORY_RULES_STORAGE_KEY)
     if (storedRules) {
       try {
         setCategoryRules(JSON.parse(storedRules))
+        return
+      } catch {
+        setCategoryRules({})
+        return
+      }
+    }
+
+    const legacyRules = localStorage.getItem(LEGACY_CATEGORY_RULES_STORAGE_KEY)
+    if (legacyRules) {
+      try {
+        const parsedLegacyRules = JSON.parse(legacyRules)
+        setCategoryRules(parsedLegacyRules)
+        localStorage.setItem(CATEGORY_RULES_STORAGE_KEY, legacyRules)
+        localStorage.removeItem(LEGACY_CATEGORY_RULES_STORAGE_KEY)
       } catch {
         setCategoryRules({})
       }
@@ -489,7 +506,8 @@ export default function DashboardPage() {
 
   const persistCategoryRules = (updatedRules: Record<string, string>) => {
     setCategoryRules(updatedRules)
-    localStorage.setItem('spendwiseCategoryRules', JSON.stringify(updatedRules))
+    localStorage.setItem(CATEGORY_RULES_STORAGE_KEY, JSON.stringify(updatedRules))
+    localStorage.removeItem(LEGACY_CATEGORY_RULES_STORAGE_KEY)
   }
 
   // Merge remembered rules + heuristics to auto-label imported transactions.
@@ -1422,7 +1440,7 @@ export default function DashboardPage() {
           <DialogHeader>
             <DialogTitle>Review Imported Transactions</DialogTitle>
             <DialogDescription>
-              SpendWise matched categories using your history. Double-check before saving.
+              WealthWise matched categories using your history. Double-check before saving.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
