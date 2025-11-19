@@ -1,15 +1,13 @@
 'use client'
 
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 import {
   Search,
   Plus,
   Filter,
-  ArrowUpDown,
   MoreHorizontal,
   Trash2,
   Edit2,
-  Download,
   ArrowUpCircle,
   ArrowDownCircle,
   Wallet,
@@ -18,6 +16,10 @@ import {
   Car,
   Zap,
   Briefcase,
+  Film,
+  Heart,
+  Plane,
+  HelpCircle,
 } from 'lucide-react'
 import { format } from 'date-fns'
 
@@ -59,96 +61,14 @@ import { Label } from '@/components/ui/label'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 import { DashboardCardSkeleton } from '@/components/dashboard-card-skeleton'
-
-// Types
-type Transaction = {
-  id: string
-  name: string
-  amount: number
-  date: string
-  category: string
-  status: 'completed' | 'pending'
-  merchant: string
-  icon: any
-}
-
-// Mock Data
-const initialTransactions: Transaction[] = [
-  {
-    id: '1',
-    name: 'Grocery Run',
-    amount: -156.42,
-    date: '2024-06-15T14:30:00',
-    category: 'Food',
-    status: 'completed',
-    merchant: 'Whole Foods',
-    icon: Utensils,
-  },
-  {
-    id: '2',
-    name: 'Gas Station',
-    amount: -45.0,
-    date: '2024-06-14T18:15:00',
-    category: 'Transport',
-    status: 'completed',
-    merchant: 'Shell',
-    icon: Car,
-  },
-  {
-    id: '3',
-    name: 'Freelance Payment',
-    amount: 1200.0,
-    date: '2024-06-14T09:00:00',
-    category: 'Income',
-    status: 'completed',
-    merchant: 'Client Inc',
-    icon: Wallet,
-  },
-  {
-    id: '4',
-    name: 'New Headphones',
-    amount: -129.99,
-    date: '2024-06-13T10:45:00',
-    category: 'Shopping',
-    status: 'completed',
-    merchant: 'Amazon',
-    icon: ShoppingBag,
-  },
-  {
-    id: '5',
-    name: 'Electric Bill',
-    amount: -150.0,
-    date: '2024-06-12T11:30:00',
-    category: 'Bills',
-    status: 'pending',
-    merchant: 'Utility Co',
-    icon: Zap,
-  },
-  {
-    id: '6',
-    name: 'Salary',
-    amount: 3500.0,
-    date: '2024-06-01T09:00:00',
-    category: 'Income',
-    status: 'completed',
-    merchant: 'Employer',
-    icon: Briefcase,
-  },
-  {
-    id: '7',
-    name: 'Restaurant Dinner',
-    amount: -85.5,
-    date: '2024-06-10T20:00:00',
-    category: 'Food',
-    status: 'completed',
-    merchant: 'Tasty Bites',
-    icon: Utensils,
-  },
-]
+import { useDashboard } from '@/components/dashboard/dashboard-context'
+import { Transaction, TransactionType } from '@/constants/dashboard'
+import { EditableNumber } from '@/components/ui/editable-number'
 
 export default function TransactionsPage() {
-  const [transactions, setTransactions] = useState<Transaction[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const { transactions, addTransaction, updateTransaction, deleteTransaction, isLoading } =
+    useDashboard()
+
   const [searchQuery, setSearchQuery] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('all')
   const [statusFilter, setStatusFilter] = useState('all')
@@ -162,16 +82,8 @@ export default function TransactionsPage() {
     category: 'Food',
     date: format(new Date(), 'yyyy-MM-dd'),
     merchant: '',
+    type: 'expense' as TransactionType,
   })
-
-  useEffect(() => {
-    // Simulate initial fetch
-    const timer = setTimeout(() => {
-      setTransactions(initialTransactions)
-      setIsLoading(false)
-    }, 1000)
-    return () => clearTimeout(timer)
-  }, [])
 
   const filteredTransactions = useMemo(() => {
     return transactions
@@ -197,23 +109,22 @@ export default function TransactionsPage() {
     return { income, expenses, net: income + expenses }
   }, [transactions])
 
-  const handleDelete = (id: string) => {
-    setTransactions((prev) => prev.filter((t) => t.id !== id))
-  }
-
   const handleAddTransaction = () => {
-    const transaction: Transaction = {
-      id: Math.random().toString(36).substr(2, 9),
+    const amountValue = parseFloat(newTransaction.amount)
+    // Determine sign based on type
+    const finalAmount =
+      newTransaction.type === 'income' ? Math.abs(amountValue) : -Math.abs(amountValue)
+
+    addTransaction({
       name: newTransaction.name || 'New Transaction',
-      amount: parseFloat(newTransaction.amount) * (newTransaction.category === 'Income' ? 1 : -1),
+      amount: finalAmount,
       date: new Date(newTransaction.date).toISOString(),
       category: newTransaction.category,
       status: 'completed',
       merchant: newTransaction.merchant || newTransaction.name || 'Unknown',
-      icon: getCategoryIcon(newTransaction.category),
-    }
+      type: newTransaction.type,
+    })
 
-    setTransactions((prev) => [transaction, ...prev])
     setIsAddDialogOpen(false)
     setNewTransaction({
       name: '',
@@ -221,6 +132,7 @@ export default function TransactionsPage() {
       category: 'Food',
       date: format(new Date(), 'yyyy-MM-dd'),
       merchant: '',
+      type: 'expense',
     })
   }
 
@@ -236,8 +148,16 @@ export default function TransactionsPage() {
         return Zap
       case 'income':
         return Wallet
+      case 'entertainment':
+        return Film
+      case 'health':
+        return Heart
+      case 'travel':
+        return Plane
+      case 'work':
+        return Briefcase
       default:
-        return ShoppingBag
+        return HelpCircle
     }
   }
 
@@ -263,7 +183,15 @@ export default function TransactionsPage() {
             <ArrowUpCircle className="h-4 w-4 text-emerald-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-emerald-500">+${totals.income.toFixed(2)}</div>
+            <div className="text-2xl font-bold text-emerald-500">
+              +$
+              <EditableNumber
+                value={totals.income}
+                onSave={() => {}}
+                formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 2 }}
+                min={0}
+              />
+            </div>
           </CardContent>
         </Card>
         <Card>
@@ -272,7 +200,15 @@ export default function TransactionsPage() {
             <ArrowDownCircle className="h-4 w-4 text-red-500" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-red-500">${totals.expenses.toFixed(2)}</div>
+            <div className="text-2xl font-bold text-red-500">
+              $
+              <EditableNumber
+                value={Math.abs(totals.expenses)}
+                onSave={() => {}}
+                formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 2 }}
+                min={0}
+              />
+            </div>
           </CardContent>
         </Card>
         <Card>
@@ -287,7 +223,12 @@ export default function TransactionsPage() {
                 totals.net >= 0 ? 'text-emerald-500' : 'text-red-500'
               )}
             >
-              {totals.net >= 0 ? '+' : ''}${totals.net.toFixed(2)}
+              {totals.net >= 0 ? '+' : ''}$
+              <EditableNumber
+                value={Math.abs(totals.net)}
+                onSave={() => {}}
+                formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 2 }}
+              />
             </div>
           </CardContent>
         </Card>
@@ -320,18 +261,10 @@ export default function TransactionsPage() {
                     <SelectItem value="shopping">Shopping</SelectItem>
                     <SelectItem value="bills">Bills</SelectItem>
                     <SelectItem value="income">Income</SelectItem>
+                    <SelectItem value="entertainment">Entertainment</SelectItem>
                   </SelectContent>
                 </Select>
-                <Select value={statusFilter} onValueChange={setStatusFilter}>
-                  <SelectTrigger className="w-[130px]">
-                    <SelectValue placeholder="Status" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Status</SelectItem>
-                    <SelectItem value="completed">Completed</SelectItem>
-                    <SelectItem value="pending">Pending</SelectItem>
-                  </SelectContent>
-                </Select>
+
                 <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
                   <DialogTrigger asChild>
                     <Button>
@@ -344,6 +277,26 @@ export default function TransactionsPage() {
                       <DialogTitle>Add Transaction</DialogTitle>
                     </DialogHeader>
                     <div className="grid gap-4 py-4">
+                      <div className="grid grid-cols-4 items-center gap-4">
+                        <Label htmlFor="type" className="text-right">
+                          Type
+                        </Label>
+                        <Select
+                          value={newTransaction.type}
+                          onValueChange={(val: TransactionType) =>
+                            setNewTransaction({ ...newTransaction, type: val })
+                          }
+                        >
+                          <SelectTrigger className="col-span-3">
+                            <SelectValue placeholder="Select type" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="expense">Expense</SelectItem>
+                            <SelectItem value="income">Income</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
                       <div className="grid grid-cols-4 items-center gap-4">
                         <Label htmlFor="name" className="text-right">
                           Description
@@ -377,6 +330,8 @@ export default function TransactionsPage() {
                         <Input
                           id="amount"
                           type="number"
+                          min="0"
+                          step="0.01"
                           className="col-span-3"
                           value={newTransaction.amount}
                           onChange={(e) =>
@@ -402,6 +357,9 @@ export default function TransactionsPage() {
                             <SelectItem value="Transport">Transport</SelectItem>
                             <SelectItem value="Shopping">Shopping</SelectItem>
                             <SelectItem value="Bills">Bills</SelectItem>
+                            <SelectItem value="Entertainment">Entertainment</SelectItem>
+                            <SelectItem value="Health">Health</SelectItem>
+                            <SelectItem value="Travel">Travel</SelectItem>
                             <SelectItem value="Income">Income</SelectItem>
                           </SelectContent>
                         </Select>
@@ -450,77 +408,91 @@ export default function TransactionsPage() {
                   </TableCell>
                 </TableRow>
               ) : (
-                filteredTransactions.map((transaction) => (
-                  <TableRow key={transaction.id}>
-                    <TableCell className="font-medium">
-                      <div className="flex flex-col">
-                        <span>{format(new Date(transaction.date), 'MMM d')}</span>
-                        <span className="text-xs text-muted-foreground md:hidden">
-                          {format(new Date(transaction.date), 'yyyy')}
-                        </span>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-3">
-                        <div
-                          className={cn(
-                            'p-2 rounded-full hidden md:block',
-                            transaction.amount > 0
-                              ? 'bg-emerald-500/10 text-emerald-500'
-                              : 'bg-primary/10 text-primary'
-                          )}
-                        >
-                          <transaction.icon className="h-4 w-4" />
-                        </div>
+                filteredTransactions.map((transaction) => {
+                  const Icon = getCategoryIcon(transaction.category)
+                  return (
+                    <TableRow key={transaction.id}>
+                      <TableCell className="font-medium">
                         <div className="flex flex-col">
-                          <span className="font-medium">{transaction.name}</span>
-                          <span className="text-xs text-muted-foreground">
-                            {transaction.merchant}
+                          <span>{format(new Date(transaction.date), 'MMM d')}</span>
+                          <span className="text-xs text-muted-foreground md:hidden">
+                            {format(new Date(transaction.date), 'yyyy')}
                           </span>
                         </div>
-                      </div>
-                    </TableCell>
-                    <TableCell className="hidden md:table-cell">
-                      <Badge variant="outline">{transaction.category}</Badge>
-                    </TableCell>
-                    <TableCell className="hidden md:table-cell">
-                      <Badge variant={transaction.status === 'completed' ? 'default' : 'secondary'}>
-                        {transaction.status}
-                      </Badge>
-                    </TableCell>
-                    <TableCell
-                      className={cn(
-                        'text-right font-bold',
-                        transaction.amount > 0 ? 'text-emerald-500' : ''
-                      )}
-                    >
-                      {transaction.amount > 0 ? '+' : ''}${Math.abs(transaction.amount).toFixed(2)}
-                    </TableCell>
-                    <TableCell>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" className="h-8 w-8 p-0">
-                            <span className="sr-only">Open menu</span>
-                            <MoreHorizontal className="h-4 w-4" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                          <DropdownMenuItem>
-                            <Edit2 className="mr-2 h-4 w-4" /> Edit
-                          </DropdownMenuItem>
-                          <DropdownMenuSeparator />
-                          <DropdownMenuItem
-                            className="text-red-600"
-                            onClick={() => handleDelete(transaction.id)}
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex items-center gap-3">
+                          <div
+                            className={cn(
+                              'p-2 rounded-full hidden md:block',
+                              transaction.amount > 0
+                                ? 'bg-emerald-500/10 text-emerald-500'
+                                : 'bg-primary/10 text-primary'
+                            )}
                           >
-                            <Trash2 className="mr-2 h-4 w-4" /> Delete
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
-                  </TableRow>
-                ))
+                            <Icon className="h-4 w-4" />
+                          </div>
+                          <div className="flex flex-col">
+                            <span className="font-medium">{transaction.name}</span>
+                            <span className="text-xs text-muted-foreground">
+                              {transaction.merchant}
+                            </span>
+                          </div>
+                        </div>
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        <Badge variant="outline">{transaction.category}</Badge>
+                      </TableCell>
+                      <TableCell className="hidden md:table-cell">
+                        <Badge
+                          variant={transaction.status === 'completed' ? 'default' : 'secondary'}
+                        >
+                          {transaction.status}
+                        </Badge>
+                      </TableCell>
+                      <TableCell
+                        className={cn(
+                          'text-right font-bold',
+                          transaction.amount > 0 ? 'text-emerald-500' : ''
+                        )}
+                      >
+                        {transaction.amount > 0 ? '+' : ''}$
+                        <EditableNumber
+                          value={Math.abs(transaction.amount)}
+                          onSave={(value) => {
+                            const finalAmount = transaction.amount > 0 ? value : -value
+                            updateTransaction(transaction.id, { amount: finalAmount })
+                          }}
+                          formatOptions={{ minimumFractionDigits: 2, maximumFractionDigits: 2 }}
+                          min={0}
+                        />
+                      </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" className="h-8 w-8 p-0">
+                              <span className="sr-only">Open menu</span>
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuItem>
+                              <Edit2 className="mr-2 h-4 w-4" /> Edit
+                            </DropdownMenuItem>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem
+                              className="text-red-600"
+                              onClick={() => deleteTransaction(transaction.id)}
+                            >
+                              <Trash2 className="mr-2 h-4 w-4" /> Delete
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                  )
+                })
               )}
             </TableBody>
           </Table>
