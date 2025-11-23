@@ -4,7 +4,7 @@ import { NextRequest } from 'next/server'
  * API route to create a session token for OpenAI Voice Agent
  * This route securely handles the API key on the server side
  */
-export async function POST(request: NextRequest) {
+export async function POST(_request: NextRequest) {
   try {
     // const body = await request.json()
     // const { userId } = body
