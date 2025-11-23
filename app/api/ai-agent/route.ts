@@ -206,8 +206,8 @@ export async function POST(request: NextRequest) {
       response = streamResult.toDataStreamResponse()
     } else if (typeof streamResult.toAIStreamResponse === 'function') {
       response = streamResult.toAIStreamResponse()
-    } else if (typeof result.toTextStreamResponse === 'function') {
-      response = result.toTextStreamResponse()
+    } else if (typeof streamResult.toTextStreamResponse === 'function') {
+      response = streamResult.toTextStreamResponse()
     } else {
       throw new Error('No compatible streaming response method found.')
     }

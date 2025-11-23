@@ -1,7 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
 import { ArrowLeft, X } from 'lucide-react'
-import { FloatingDots } from '@/components/FloatingDots'
 
 interface BlogPost {
   id: string
@@ -26,7 +25,6 @@ export default function BlogPostModal({ post, onClose }: { post: BlogPost; onClo
       className="fixed inset-0 z-50 overflow-y-auto bg-black"
     >
       <div className="min-h-screen relative">
-        <FloatingDots />
         <div className="relative z-10">
           <header className="sticky top-0 glass-header border-b border-white/10">
             <div className="max-w-4xl mx-auto px-3 sm:px-6 py-3 sm:py-4 flex items-center justify-between">

@@ -58,7 +58,7 @@ export function CommandChat({ userId }: CommandChatProps) {
     }
   }, [conversationId])
 
-  const { messages, input, handleInputChange, handleSubmit, status, setMessages, error } = useChat({
+  const { messages, sendMessage, status, setMessages, error } = useChat({
     transport: new DefaultChatTransport({
       api: '/api/ai-agent',
       body: {
@@ -66,16 +66,10 @@ export function CommandChat({ userId }: CommandChatProps) {
         model: selectedModel,
         conversationId: conversationId || undefined,
       },
-      onResponse: async (response) => {
-        // Rate limit headers are available here if needed
-        const remaining = response.headers.get('X-Rate-Limit-Remaining')
-        const limit = response.headers.get('X-Rate-Limit-Limit')
-        if (remaining && limit) {
-          // Could update rate limit state here if added back
-        }
-      },
     }),
   })
+
+  const [input, setInput] = useState('')
 
   // Load rate limit
   useEffect(() => {
@@ -115,21 +109,37 @@ export function CommandChat({ userId }: CommandChatProps) {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      handleSubmit(e as any)
+      submitMessage()
     }
+  }
+
+  const submitMessage = () => {
+    if (!input || !input.trim() || status === 'submitted' || status === 'streaming') return
+
+    const userMessage = input.trim()
+    setInput('')
+
+    sendMessage({
+      role: 'user',
+      parts: [{ type: 'text', text: userMessage }],
+    })
+  }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    submitMessage()
   }
 
   const toggleVoiceMode = () => setIsVoiceMode(!isVoiceMode)
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const NavItem = ({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     icon: Icon,
     label,
     active = false,
     onClick,
   }: {
-    icon: any
+    icon: any // eslint-disable-line @typescript-eslint/no-explicit-any
     label: string
     active?: boolean
     onClick?: () => void
@@ -187,14 +197,14 @@ export function CommandChat({ userId }: CommandChatProps) {
     </div>
   )
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const SuggestedCard = ({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     icon: Icon,
     title,
     description,
     delay,
   }: {
-    icon: any
+    icon: any // eslint-disable-line @typescript-eslint/no-explicit-any
     title: string
     description: string
     delay: number
@@ -204,8 +214,7 @@ export function CommandChat({ userId }: CommandChatProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.4 }}
       onClick={() => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        handleInputChange({ target: { value: title } } as any)
+        setInput(title)
         // Optional: auto-submit or let user edit
       }}
       className="flex flex-col items-start p-3 md:p-4 rounded-xl bg-background/40 hover:bg-background/60 border border-white/5 hover:border-primary/20 transition-all text-left group w-full h-full backdrop-blur-sm min-h-[100px] md:min-h-[120px]"

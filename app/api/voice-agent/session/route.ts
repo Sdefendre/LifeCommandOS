@@ -62,7 +62,7 @@ export async function POST() {
     // Return the ephemeral client secret as the session token
     return new Response(
       JSON.stringify({
-        sessionToken: data.client_secret.value,
+        sessionToken: data.client_secret,
       }),
       {
         status: 200,

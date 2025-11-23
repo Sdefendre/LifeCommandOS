@@ -57,31 +57,7 @@ export function AIAgentChat({ userId }: AIAgentChatProps) {
         model: selectedModel,
         conversationId: conversationId || undefined,
       },
-      onResponse: async (response) => {
-        // Get rate limit from response headers
-        const remaining = response.headers.get('X-Rate-Limit-Remaining')
-        const limit = response.headers.get('X-Rate-Limit-Limit')
-
-        if (remaining && limit) {
-          setRateLimit({
-            remaining: parseInt(remaining, 10),
-            limit: parseInt(limit, 10),
-          })
-        }
-      },
     }),
-    initialMessages: [
-      {
-        id: '1',
-        role: 'assistant',
-        parts: [
-          {
-            type: 'text',
-            text: "Welcome! I'm Command. I can help you understand VA benefits, disability claims, C&P exams, and your DD-214. What would you like to know?",
-          },
-        ],
-      },
-    ],
   })
 
   // Load conversation history on mount if userId exists
@@ -103,22 +79,20 @@ export function AIAgentChat({ userId }: AIAgentChatProps) {
               role: conv.role,
               parts: [{ type: 'text', text: conv.message }],
             }))
-            // Add welcome message if no history
-            if (historyMessages.length > 0) {
-              setMessages([
-                {
-                  id: '1',
-                  role: 'assistant',
-                  parts: [
-                    {
-                      type: 'text',
-                      text: "Welcome! I'm Command. I can help you understand VA benefits, disability claims, C&P exams, and your DD-214. What would you like to know?",
-                    },
-                  ],
-                },
-                ...historyMessages,
-              ])
-            }
+            // Add welcome message and history
+            setMessages([
+              {
+                id: '1',
+                role: 'assistant',
+                parts: [
+                  {
+                    type: 'text',
+                    text: "Welcome! I'm Command. I can help you understand VA benefits, disability claims, C&P exams, and your DD-214. What would you like to know?",
+                  },
+                ],
+              },
+              ...historyMessages,
+            ])
           }
         }
       } catch (err) {

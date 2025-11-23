@@ -191,7 +191,8 @@ function loadHljsFromCdn(): Promise<void> {
     s.async = true
     s.onload = () => {
       try {
-        window.hljs?.configure({
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ;(window.hljs as any)?.configure?.({
           ignoreUnescapedHTML: true,
           languages: [
             'javascript',

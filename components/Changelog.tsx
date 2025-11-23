@@ -10,9 +10,9 @@ import {
  * Formats a markdown-style list item to HTML
  * Handles bold text (**text**), code (`text`), and links [text](url)
  */
-function formatChangelogItem(item: string): JSX.Element {
+function formatChangelogItem(item: string): React.ReactElement {
   // Split by markdown patterns
-  const parts: (string | JSX.Element)[] = []
+  const parts: (string | React.ReactElement)[] = []
 
   // Process links [text](url)
   const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g

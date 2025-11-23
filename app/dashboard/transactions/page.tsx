@@ -71,8 +71,10 @@ export default function TransactionsPage() {
 
   const [searchQuery, setSearchQuery] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('all')
-  const [statusFilter, setStatusFilter] = useState('all')
-  const [sortOrder, setSortOrder] = useState('desc')
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [statusFilter, _setStatusFilter] = useState('all')
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [sortOrder, _setSortOrder] = useState('desc')
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
 
   // New Transaction Form State
@@ -101,7 +103,7 @@ export default function TransactionsPage() {
         const dateB = new Date(b.date).getTime()
         return sortOrder === 'desc' ? dateB - dateA : dateA - dateB
       })
-  }, [transactions, searchQuery, categoryFilter])
+  }, [transactions, searchQuery, categoryFilter, statusFilter, sortOrder])
 
   const totals = useMemo(() => {
     const income = transactions.reduce((acc, t) => (t.amount > 0 ? acc + t.amount : acc), 0)
