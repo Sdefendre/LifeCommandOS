@@ -1,13 +1,13 @@
 export const SITE = {
-  name: 'SteveOS',
+  name: 'Life Command OS',
   email: 'steve.defendre12@gmail.com',
   linkedin: 'https://www.linkedin.com/in/joseph-m-defendre-a11a47225/',
   github: 'https://github.com/Sdefendre',
   youtube: 'https://www.youtube.com/@Stevedefendre',
-  tagline: 'Personal Operating System',
-  mission: 'A centralized hub for my projects and thoughts. Built with precision and discipline.',
-  title: 'SteveOS - Personal Portfolio',
+  tagline: 'Stop Surviving. Start Commanding.',
+  mission: 'To help people break out of survival mode and take command of their future.',
+  title: 'Life Command OS - Stop Surviving. Start Commanding.',
   description:
-    'The personal digital headquarters of Steve Defendre. Showcasing projects, blog posts, and services.',
+    'Life Command OS is your intelligent command center. An AI agent built for people who’ve spent too long fighting to stay afloat.',
   url: 'https://steve-os.vercel.app',
 }

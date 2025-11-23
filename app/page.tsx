@@ -1,17 +1,5 @@
 import { Suspense } from 'react'
-import SteveOS from '@/components/SteveOS'
-import { getRecentRepos } from '@/lib/github'
-
-async function ReposLoader() {
-  let repos = []
-  try {
-    repos = await getRecentRepos('Sdefendre')
-  } catch (error) {
-    console.error('Failed to fetch GitHub repos:', error)
-    // Continue rendering with empty repos array
-  }
-  return <SteveOS repos={repos} />
-}
+import SaaSLanding from '@/components/SaaSLanding'
 
 export default function HomePage() {
   return (
@@ -25,7 +13,7 @@ export default function HomePage() {
         </div>
       }
     >
-      <ReposLoader />
+      <SaaSLanding />
     </Suspense>
   )
 }

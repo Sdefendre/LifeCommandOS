@@ -22,18 +22,18 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: 'SteveOS - Personal Operating System',
-    template: '%s | SteveOS',
+    default: 'Life Command OS - Stop Surviving. Start Commanding.',
+    template: '%s | Life Command OS',
   },
   description:
-    'The personal digital headquarters of Steve Defendre. Showcasing projects, blog posts, and services.',
+    'Life Command OS is your intelligent command center. An AI agent built for people who’ve spent too long fighting to stay afloat. Stabilize your money, eliminate chaos, and build your future.',
   keywords:
-    'SteveOS, Steve Defendre, full-stack engineer, software development, portfolio, blog, veteran',
+    'Life Command OS, survival mode, financial stability, AI coach, budget command center, productivity, masculine energy',
   authors: [
     { name: 'Steve Defendre', url: 'https://www.linkedin.com/in/joseph-m-defendre-a11a47225/' },
   ],
   creator: 'Steve Defendre',
-  publisher: 'SteveOS',
+  publisher: 'Life Command OS',
   formatDetection: {
     email: false,
     address: false,
@@ -43,21 +43,21 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
     types: {
-      'application/rss+xml': [{ url: '/api/rss', title: 'SteveOS Blog RSS Feed' }],
+      'application/rss+xml': [{ url: '/api/rss', title: 'Life Command OS Blog RSS Feed' }],
     },
   },
   openGraph: {
-    title: 'SteveOS - Personal Operating System',
+    title: 'Life Command OS - Stop Surviving. Start Commanding.',
     description:
-      'The personal digital headquarters of Steve Defendre. Showcasing projects, blog posts, and services.',
+      'Life Command OS is your intelligent command center. An AI agent built for people who’ve spent too long fighting to stay afloat.',
     url: 'https://steve-os.vercel.app',
-    siteName: 'SteveOS',
+    siteName: 'Life Command OS',
     images: [
       {
         url: '/logo.png',
         width: 1200,
         height: 630,
-        alt: 'SteveOS - Personal Operating System',
+        alt: 'Life Command OS - Stop Surviving. Start Commanding.',
       },
     ],
     locale: 'en_US',
@@ -65,8 +65,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SteveOS - Personal Operating System',
-    description: 'The personal digital headquarters of Steve Defendre.',
+    title: 'Life Command OS - Stop Surviving. Start Commanding.',
+    description:
+      'Life Command OS is your intelligent command center. An AI agent built for people who’ve spent too long fighting to stay afloat.',
     images: ['/logo.png'],
   },
   robots: {
@@ -96,6 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body
         className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground`}
+        suppressHydrationWarning
       >
         <SkipLink />
         <ThemeProvider

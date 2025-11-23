@@ -1,12 +1,12 @@
-# SteveOS
+# Life Command OS
 
 **Personal Operating System & Portfolio**
 
-SteveOS is the digital home of Steve Defendre, showcasing projects, thoughts, and services. Built with Next.js 15, Tailwind CSS, and Framer Motion.
+Life Command OS is the digital home of Steve Defendre, showcasing projects, thoughts, and services. Built with Next.js 15, Tailwind CSS, and Framer Motion.
 
 ## 🚀 Live Demo
 
-Visit: [SteveOS](https://steve-os.vercel.app)
+Visit: [Life Command OS](https://steve-os.vercel.app)
 
 ## 🛠 Tech Stack
 
@@ -24,8 +24,8 @@ Visit: [SteveOS](https://steve-os.vercel.app)
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/Sdefendre/SteveOS.git
-   cd SteveOS
+   git clone https://github.com/Sdefendre/LifeCommandOS.git
+   cd LifeCommandOS
    ```
 
 2. **Install dependencies**
@@ -138,7 +138,7 @@ This project uses GitHub CLI for various operations. You can use GitHub CLI comm
 
 ## 📊 Dashboard Features
 
-SteveOS includes a comprehensive financial dashboard (`/dashboard`) with:
+Life Command OS includes a comprehensive financial dashboard (`/dashboard`) with:
 
 - **Financial Overview**: Track balance, spending, budget, and savings goals
 - **Transaction Management**: View and manage recent transactions

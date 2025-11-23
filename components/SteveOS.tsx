@@ -285,7 +285,7 @@ export default function SteveOS({ repos = [] }: { repos?: GithubRepo[] }) {
             </div>
 
             <div className="mt-12 sm:mt-16 md:mt-20 pt-6 sm:pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-xs text-muted-foreground text-center sm:text-left">
-              <p>© {new Date().getFullYear()} SteveOS. All rights reserved.</p>
+              <p>© {new Date().getFullYear()} Life Command OS. All rights reserved.</p>
               <p>Built with Next.js & Tailwind.</p>
             </div>
           </section>

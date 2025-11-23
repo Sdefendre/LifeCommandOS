@@ -19,28 +19,28 @@ export function SiteHeader() {
             href="/"
             className="flex items-center gap-1.5 sm:gap-2 font-semibold text-base sm:text-lg tracking-tight group"
           >
-            <div className="w-4 h-4 sm:w-5 sm:h-5 bg-gradient-to-br from-blue-600 via-purple-600 to-cyan-500 rounded-sm shadow-md group-hover:shadow-lg transition-shadow"></div>
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
-              SteveOS
+            <div className="w-4 h-4 sm:w-5 sm:h-5 bg-gradient-to-br from-red-600 via-orange-600 to-amber-500 rounded-sm shadow-md group-hover:shadow-lg transition-shadow"></div>
+            <span className="bg-gradient-to-r from-red-600 via-orange-600 to-amber-500 bg-clip-text text-transparent">
+              Life Command OS
             </span>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-medium">
-            <Link href="/work" className="hover:text-blue-600 transition-colors">
-              Work
+            <Link href="/#features" className="hover:text-blue-600 transition-colors">
+              Features
+            </Link>
+            <Link href="/#pricing" className="hover:text-blue-600 transition-colors">
+              Pricing
+            </Link>
+            <Link href="/blog" className="hover:text-purple-600 transition-colors">
+              Blog
             </Link>
             <Link
               href="/dashboard"
               className="font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
             >
-              WealthWise
-            </Link>
-            <Link href="/blog" className="hover:text-purple-600 transition-colors">
-              Blog
-            </Link>
-            <Link href="/about" className="hover:text-cyan-500 transition-colors">
-              About
+              Dashboard
             </Link>
             <ThemeToggle />
           </nav>
@@ -70,18 +70,18 @@ export function SiteHeader() {
           >
             <nav className="flex flex-col p-4 space-y-3 text-sm font-medium">
               <Link
-                href="/work"
+                href="/#features"
                 className="py-2.5 border-b border-border/50 active:bg-accent/50 rounded-sm px-2 -mx-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Work
+                Features
               </Link>
               <Link
-                href="/dashboard"
-                className="py-2.5 border-b border-border/50 text-primary font-medium active:bg-accent/50 rounded-sm px-2 -mx-2"
+                href="/#pricing"
+                className="py-2.5 border-b border-border/50 active:bg-accent/50 rounded-sm px-2 -mx-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                WealthWise
+                Pricing
               </Link>
               <Link
                 href="/blog"
@@ -91,11 +91,11 @@ export function SiteHeader() {
                 Blog
               </Link>
               <Link
-                href="/about"
-                className="py-2.5 border-b border-border/50 active:bg-accent/50 rounded-sm px-2 -mx-2"
+                href="/dashboard"
+                className="py-2.5 border-b border-border/50 text-primary font-medium active:bg-accent/50 rounded-sm px-2 -mx-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                About
+                Dashboard
               </Link>
             </nav>
           </motion.div>

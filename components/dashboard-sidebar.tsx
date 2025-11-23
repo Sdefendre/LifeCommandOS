@@ -61,7 +61,7 @@ export function DashboardSidebar() {
             <LayoutDashboard className="h-4 w-4" />
           </div>
           <span>
-            SteveOS<span className="font-normal text-muted-foreground">Finance</span>
+            Life Command OS<span className="font-normal text-muted-foreground">Finance</span>
           </span>
         </Link>
       </div>
