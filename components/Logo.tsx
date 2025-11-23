@@ -58,14 +58,8 @@ export function Logo({ className, showText = true, size = 'md', icon, textSuffix
           className={cn('font-bold tracking-tight leading-none flex flex-col', textClasses[size])}
         >
           <div className="flex items-center gap-1.5">
-            <span className="text-foreground">Life Command</span>
-            {textSuffix ? (
-              textSuffix
-            ) : (
-              <span className="text-[0.65em] font-mono text-primary tracking-widest uppercase opacity-90">
-                OS
-              </span>
-            )}
+            <span className="text-foreground">LifeCommandOS</span>
+            {textSuffix}
           </div>
         </div>
       )}

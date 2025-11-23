@@ -1,4 +1,5 @@
 import { CommandChat } from '@/components/command/CommandChat'
+import { CommandThreeBackground } from '@/components/CommandThreeBackground'
 
 export const metadata = {
   title: 'Command Interface - Life Command OS',
@@ -13,7 +14,8 @@ export const metadata = {
 
 export default function CommandPage() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-black supports-[height:100dvh]:min-h-dvh">
+    <div className="relative min-h-screen w-full overflow-hidden bg-transparent supports-[height:100dvh]:min-h-dvh">
+      <CommandThreeBackground />
       <CommandChat />
     </div>
   )

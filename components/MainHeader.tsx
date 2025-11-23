@@ -31,7 +31,7 @@ function DesktopNav() {
         href="/dashboard"
         className="font-semibold text-primary-gradient hover:opacity-80 transition-opacity no-underline"
       >
-        Dashboard
+        BattleStation
       </Link>
       <ThemeToggle />
     </nav>
@@ -72,7 +72,7 @@ function MobileMenu({ open, setOpen }: { open: boolean; setOpen: (open: boolean)
           className="py-2.5 border-b border-border/50 text-primary font-medium active:bg-accent/50 rounded-sm px-2 -mx-2 no-underline"
           onClick={() => setOpen(false)}
         >
-          Dashboard
+          BattleStation
         </Link>
       </nav>
     </div>

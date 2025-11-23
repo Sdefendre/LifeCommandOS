@@ -96,10 +96,6 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code', // Add your Google Search Console verification code
   },
-  icons: {
-    icon: '/logo.png',
-    apple: '/logo.png',
-  },
 }
 
 export const viewport = {

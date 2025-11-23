@@ -151,20 +151,23 @@ export function CommandChat({ userId }: CommandChatProps) {
     <button
       onClick={onClick}
       className={cn(
-        'flex flex-col items-center justify-center w-full py-4 gap-1 transition-colors relative group',
-        active ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
+        'flex flex-col items-center justify-center w-full py-4 gap-1 transition-all duration-200 relative group',
+        active
+          ? 'text-primary bg-primary/10'
+          : 'text-muted-foreground hover:text-foreground hover:bg-white/5'
       )}
     >
-      <div className="relative">
+      <div className="relative transition-transform duration-200 group-hover:scale-110">
         <Icon className={cn('h-6 w-6', active && 'fill-current')} />
-        {active && (
-          <motion.div
-            layoutId="activeTab"
-            className="absolute -right-4 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-l-full hidden md:block"
-          />
-        )}
       </div>
-      <span className="text-[10px] font-medium hidden md:block">{label}</span>
+      <span className="text-[10px] font-medium hidden md:block transition-colors">{label}</span>
+
+      {active && (
+        <motion.div
+          layoutId="activeTab"
+          className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-l-full hidden md:block"
+        />
+      )}
 
       {/* Tooltip for mobile/collapsed */}
       <div className="absolute left-full ml-4 px-2 py-1 bg-popover text-popover-foreground text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap z-50 md:hidden">
@@ -186,13 +189,11 @@ export function CommandChat({ userId }: CommandChatProps) {
       <div className="flex-1 w-full space-y-2">
         <NavItem icon={Search} label="Search" />
         <NavItem icon={MessageSquare} label="Chat" active onClick={() => {}} />
-        <NavItem icon={ImageIcon} label="Imagine" />
-        <NavItem icon={Grid} label="Projects" />
+        <NavItem icon={Grid} label="Claims" />
         <NavItem icon={History} label="History" />
       </div>
 
       <div className="mt-auto w-full flex flex-col items-center gap-4">
-        <NavItem icon={Globe} label="Spaces" />
         <div className="h-px w-10 bg-border/50" />
         <button className="h-10 w-10 rounded-full bg-secondary overflow-hidden border-2 border-transparent hover:border-primary transition-colors">
           <User className="h-full w-full p-2 text-secondary-foreground" />
@@ -237,7 +238,7 @@ export function CommandChat({ userId }: CommandChatProps) {
   )
 
   return (
-    <div className="flex h-[100vh] overflow-hidden bg-black text-foreground font-sans">
+    <div className="flex h-[100vh] overflow-hidden bg-transparent text-foreground font-sans">
       {/* Sidebar - Hidden on mobile, handled by sheet/bottom nav if needed */}
       <div className="hidden md:flex">
         <Sidebar />
@@ -289,7 +290,7 @@ export function CommandChat({ userId }: CommandChatProps) {
                       <Sparkles className="h-20 w-20 text-white relative z-10 fill-white/10" />
                     </div>
                     <h1 className="text-3xl md:text-5xl font-bold mb-8 tracking-tight text-white">
-                      What do you want to know?
+                      Ready to tackle some veteran questions?
                     </h1>
 
                     {/* Search Input Centered */}

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, Menu, Bell, Search, Home, Settings } from 'lucide-react'
+import { Menu, Bell, Search, Home, Settings } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
@@ -41,15 +41,7 @@ export function DashboardHeader() {
         <SheetContent side="left" className="flex flex-col w-[300px] sm:w-[300px] p-0">
           <div className="flex h-14 items-center border-b px-6">
             <Link className="no-underline" href="/dashboard">
-              <Logo
-                size="md"
-                icon={<LayoutDashboard className="w-full h-full" />}
-                textSuffix={
-                  <span className="font-normal text-muted-foreground text-[0.6em] ml-1 uppercase tracking-wider">
-                    Finance
-                  </span>
-                }
-              />
+              <Logo size="md" />
             </Link>
           </div>
           <div className="flex-1 overflow-auto py-4 px-4">

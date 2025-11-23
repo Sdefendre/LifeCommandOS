@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, Home, Settings } from 'lucide-react'
+import { Home, Settings } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { DASHBOARD_NAV_ITEMS } from '@/constants/navigation'
 import { Logo } from '@/components/Logo'
@@ -14,15 +14,7 @@ export function DashboardSidebar() {
     <aside className="hidden border-r bg-card/50 backdrop-blur-xl md:flex md:flex-col h-full">
       <div className="flex h-14 items-center border-b px-6 lg:h-[60px]">
         <Link className="no-underline" href="/dashboard">
-          <Logo
-            size="md"
-            icon={<LayoutDashboard className="w-full h-full" />}
-            textSuffix={
-              <span className="font-normal text-muted-foreground text-[0.6em] ml-1 uppercase tracking-wider">
-                Finance
-              </span>
-            }
-          />
+          <Logo size="md" />
         </Link>
       </div>
       <div className="flex-1 overflow-auto py-4">
