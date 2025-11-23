@@ -38,7 +38,7 @@ export function LandingHero() {
                 variant="outline"
                 className="mb-6 px-4 py-1.5 text-sm font-mono font-medium rounded-full border-red-500/50 text-red-500 bg-red-500/10 uppercase tracking-wider"
               >
-                Escape Survival Mode
+                Take Control of Your Life
               </Badge>
             </motion.div>
 
@@ -49,9 +49,9 @@ export function LandingHero() {
               }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold tracking-tight mb-6 leading-[1.1] antialiased"
             >
-              Stop Surviving. <br />
+              Your Life, <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-violet-600 to-blue-500 animate-gradient-x">
-                Start Commanding.
+                Under Command.
               </span>
             </motion.h1>
 
@@ -62,8 +62,8 @@ export function LandingHero() {
               }}
               className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed font-sans"
             >
-              Your intelligent operating system for life. Stabilize finances, eliminate chaos, and
-              execute with precision. An AI agent built for those ready to build their future.
+              Transform chaos into clarity. Track finances, manage budgets, and make decisions with
+              confidence. The intelligent system that helps you build the future you deserve.
             </motion.p>
 
             <motion.div

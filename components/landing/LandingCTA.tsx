@@ -12,7 +12,7 @@ export function LandingCTA() {
       <div className="absolute inset-0 bg-primary/5 -z-20" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-background to-background -z-10" />
 
-      <div className="container mx-auto px-4 text-center max-w-4xl relative z-10">
+      <div className="container mx-auto px-3 sm:px-4 text-center max-w-4xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -25,14 +25,14 @@ export function LandingCTA() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8 border border-primary/20"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium mb-6 sm:mb-8 border border-primary/20"
           >
-            <Sparkles className="w-4 h-4 animate-pulse" />
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-pulse" />
             <span>Systemize Success</span>
           </motion.div>
 
           {/* Heading */}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 tracking-tight leading-tight">
             Ready to Take{' '}
             <span className="text-primary relative inline-block">
               Command?
@@ -47,7 +47,7 @@ export function LandingCTA() {
           </h2>
 
           {/* Description */}
-          <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
             Drifting is a liability. Command is an asset. Equip yourself with the tools for
             discipline, precision, and resilience. Join the community of operators today.
           </p>

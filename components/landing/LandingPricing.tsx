@@ -55,21 +55,23 @@ const pricingTiers = [
 
 export function LandingPricing() {
   return (
-    <section id="pricing" className="py-24 relative overflow-hidden">
+    <section id="pricing" className="py-16 sm:py-24 relative overflow-hidden">
       {/* Background gradients for glass effect visibility */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl -z-10" />
 
-      <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Operational Costs</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <div className="container mx-auto px-3 sm:px-4 max-w-7xl relative z-10">
+        <div className="text-center mb-10 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
+            Operational Costs
+          </h2>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
             Choose the level of control that fits your mission. From basic reconnaissance to full
             command authority.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto">
           {pricingTiers.map((tier, index) => (
             <motion.div
               key={index}
@@ -98,18 +100,20 @@ export function LandingPricing() {
                     : 'border-white/20 dark:border-white/10 shadow-lg hover:bg-white/15 dark:hover:bg-black/15'
                 } transition-all duration-300 hover:-translate-y-1`}
               >
-                <CardHeader className="text-center pt-10 pb-8 border-b border-border/50">
-                  <CardTitle className="text-2xl font-bold mb-2">{tier.title}</CardTitle>
+                <CardHeader className="text-center pt-8 sm:pt-10 pb-6 sm:pb-8 border-b border-border/50 px-4 sm:px-6">
+                  <CardTitle className="text-xl sm:text-2xl font-bold mb-2">{tier.title}</CardTitle>
                   <div className="flex items-baseline justify-center gap-1">
-                    <span className="text-4xl sm:text-5xl font-extrabold">{tier.price}</span>
-                    <span className="text-muted-foreground text-xl">/month</span>
+                    <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold">
+                      {tier.price}
+                    </span>
+                    <span className="text-muted-foreground text-lg sm:text-xl">/month</span>
                   </div>
-                  <CardDescription className="mt-4 text-base min-h-[50px]">
+                  <CardDescription className="mt-3 sm:mt-4 text-sm sm:text-base min-h-[50px]">
                     {tier.description}
                   </CardDescription>
                 </CardHeader>
 
-                <CardContent className="pt-8 pb-10 px-6 flex-grow flex flex-col">
+                <CardContent className="pt-6 sm:pt-8 pb-8 sm:pb-10 px-4 sm:px-6 flex-grow flex flex-col">
                   <ul className="space-y-4 mb-8 flex-grow">
                     {tier.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
