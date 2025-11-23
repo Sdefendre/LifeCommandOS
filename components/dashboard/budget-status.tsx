@@ -57,7 +57,7 @@ export function BudgetStatus() {
     <Card>
       <CardHeader>
         <CardTitle className="text-lg">Budget Status</CardTitle>
-        <CardDescription>Top categories by spending.</CardDescription>
+        <CardDescription>Category allocation and utilization metrics.</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
         {sortedBudgets.map((category) => {
@@ -101,7 +101,7 @@ export function BudgetStatus() {
           )
         })}
         <Button variant="outline" className="w-full mt-2" asChild>
-          <Link href="/dashboard/budgets">Manage Budgets</Link>
+          <Link href="/dashboard/budgets">Configure Allocations</Link>
         </Button>
       </CardContent>
     </Card>

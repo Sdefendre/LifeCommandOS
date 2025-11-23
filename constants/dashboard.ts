@@ -193,7 +193,7 @@ export const INITIAL_BUDGETS: BudgetCategory[] = [
     name: 'Transportation',
     spent: 320,
     limit: 400,
-    color: 'bg-blue-500',
+    color: 'bg-blue-600',
     iconName: 'Car',
   },
   {
@@ -201,7 +201,7 @@ export const INITIAL_BUDGETS: BudgetCategory[] = [
     name: 'Shopping',
     spent: 280,
     limit: 300,
-    color: 'bg-purple-500',
+    color: 'bg-violet-600',
     iconName: 'ShoppingBag',
   },
   {
@@ -209,7 +209,7 @@ export const INITIAL_BUDGETS: BudgetCategory[] = [
     name: 'Bills & Utilities',
     spent: 400,
     limit: 500,
-    color: 'bg-yellow-500',
+    color: 'bg-indigo-600',
     iconName: 'Zap',
   },
   {
@@ -313,13 +313,13 @@ export const INITIAL_BILLS: RecurringBill[] = [
 
 export const CATEGORY_COLORS: Record<string, string> = {
   Food: 'bg-orange-500',
-  Transport: 'bg-blue-500',
-  Shopping: 'bg-purple-500',
-  Bills: 'bg-yellow-500',
+  Transport: 'bg-blue-600',
+  Shopping: 'bg-violet-600',
+  Bills: 'bg-indigo-600',
   Housing: 'bg-red-500',
   Entertainment: 'bg-pink-500',
-  Health: 'bg-green-500',
+  Health: 'bg-emerald-500',
   Travel: 'bg-cyan-500',
-  Income: 'bg-emerald-500',
-  Other: 'bg-gray-500',
+  Income: 'bg-emerald-600',
+  Other: 'bg-zinc-500',
 }

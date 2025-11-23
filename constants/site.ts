@@ -5,9 +5,10 @@ export const SITE = {
   github: 'https://github.com/Sdefendre',
   youtube: 'https://www.youtube.com/@Stevedefendre',
   tagline: 'Stop Surviving. Start Commanding.',
-  mission: 'To help people break out of survival mode and take command of their future.',
+  mission:
+    'To help people break out of survival mode and take command of their future through intelligent systems and disciplined execution.',
   title: 'Life Command OS - Stop Surviving. Start Commanding.',
   description:
-    'Life Command OS is your intelligent command center. An AI agent built for people who’ve spent too long fighting to stay afloat.',
+    'Your intelligent operating system for life. Stabilize finances, eliminate chaos, and execute with precision. Built for those ready to build their future.',
   url: 'https://steve-os.vercel.app',
 }

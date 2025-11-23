@@ -7,8 +7,10 @@ import { post13 } from '@/blog_posts/post13'
 import { postTeslaMP4 } from '@/blog_posts/tesla-masterplan-part-4'
 import { postAfterScarcity } from '@/blog_posts/after-scarcity'
 import { youtubeVideos } from '@/blog_posts/youtube-videos'
+import { rebrandingPost } from '@/blog_posts/rebranding'
 
 export const BLOG_POSTS = [
+  rebrandingPost,
   postAfterScarcity,
   ...youtubeVideos,
   {

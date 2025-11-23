@@ -31,7 +31,7 @@ Visit: [Life Command OS](https://steve-os.vercel.app)
 2. **Install dependencies**
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 3. **Set up environment variables**
@@ -70,7 +70,7 @@ Visit: [Life Command OS](https://steve-os.vercel.app)
 
 5. **Start development server**
    ```bash
-   npm run dev
+   pnpm dev
    ```
 
 ## 🤖 MCP (Model Context Protocol) Setup
@@ -118,7 +118,7 @@ The GitHub MCP server is configured in `.cursor/mcp.json` and will automatically
 
 ## 🔧 GitHub CLI Usage
 
-This project uses GitHub CLI for various operations. You can use GitHub CLI commands directly or through npm scripts:
+This project uses GitHub CLI for various operations. You can use GitHub CLI commands directly or through pnpm scripts:
 
 ### Direct GitHub CLI Commands
 
@@ -129,12 +129,12 @@ This project uses GitHub CLI for various operations. You can use GitHub CLI comm
 - **Create a pull request**: `gh pr create`
 - **Check repository status**: `gh repo status`
 
-### NPM Scripts (GitHub CLI shortcuts)
+### PNPM Scripts (GitHub CLI shortcuts)
 
-- **Check repo status**: `npm run gh:status`
-- **List issues**: `npm run gh:issues`
-- **List pull requests**: `npm run gh:prs`
-- **View repository**: `npm run gh:view`
+- **Check repo status**: `pnpm gh:status`
+- **List issues**: `pnpm gh:issues`
+- **List pull requests**: `pnpm gh:prs`
+- **View repository**: `pnpm gh:view`
 
 ## 📊 Dashboard Features
 

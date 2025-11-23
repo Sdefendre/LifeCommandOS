@@ -13,7 +13,7 @@
     "lint": "next lint",
     "start": "next start",
     "format": "prettier --write .",
-    "prepare": "husky install",
+    "prepare": "husky",
     "postinstall": "echo postinstall",
     "send-newsletter": "node scripts/send-newsletter.js",
     "gh:status": "gh repo status",
@@ -32,8 +32,11 @@
     "@radix-ui/react-separator": "^1.1.8",
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tabs": "^1.1.13",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.4.0",
     "@types/nodemailer": "^7.0.1",
     "@types/papaparse": "^5.5.0",
+    "@types/three": "^0.181.0",
     "@vercel/analytics": "^1.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -48,7 +51,8 @@
     "react-day-picker": "^9.11.1",
     "react-dom": "^19",
     "recharts": "^2.15.4",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "three": "^0.181.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.9",

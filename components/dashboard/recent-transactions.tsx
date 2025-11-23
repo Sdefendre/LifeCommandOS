@@ -57,7 +57,7 @@ export function RecentTransactions() {
       <CardHeader className="flex flex-row items-center justify-between">
         <div className="space-y-1">
           <CardTitle className="text-xl">Recent Transactions</CardTitle>
-          <CardDescription>Your latest financial activity.</CardDescription>
+          <CardDescription>Latest financial operations and movements.</CardDescription>
         </div>
         <Button asChild size="sm" variant="outline" className="gap-1">
           <Link href="/dashboard/transactions">

@@ -55,10 +55,10 @@ export function OverviewCards() {
     <>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {/* Total Balance */}
-        <Card className="hover:shadow-md transition-shadow">
+        <Card className="hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Total Balance
+              Total Assets
             </CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
@@ -97,10 +97,10 @@ export function OverviewCards() {
         </Card>
 
         {/* Monthly Spending */}
-        <Card className="hover:shadow-md transition-shadow">
+        <Card className="hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Spending (Month)
+              Monthly Expenditure
             </CardTitle>
             <CreditCard className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
@@ -122,10 +122,10 @@ export function OverviewCards() {
         </Card>
 
         {/* Budget Remaining */}
-        <Card className="hover:shadow-md transition-shadow">
+        <Card className="hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Budget Remaining
+              Available Budget
             </CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
@@ -149,10 +149,10 @@ export function OverviewCards() {
         </Card>
 
         {/* Savings Goal */}
-        <Card className="hover:shadow-md transition-shadow">
+        <Card className="hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Savings Goals
+              Savings Progress
             </CardTitle>
             <PiggyBank className="h-4 w-4 text-muted-foreground" />
           </CardHeader>

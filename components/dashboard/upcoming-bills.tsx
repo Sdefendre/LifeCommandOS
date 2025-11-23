@@ -58,7 +58,7 @@ export function UpcomingBills() {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
-        <CardTitle className="text-lg">Upcoming Bills</CardTitle>
+        <CardTitle className="text-lg">Scheduled Obligations</CardTitle>
         <Button
           variant="ghost"
           size="sm"
@@ -117,7 +117,9 @@ export function UpcomingBills() {
               </div>
             ))
           ) : (
-            <p className="text-sm text-muted-foreground text-center py-4">No upcoming bills.</p>
+            <p className="text-sm text-muted-foreground text-center py-4">
+              No scheduled obligations.
+            </p>
           )}
         </div>
       </CardContent>

@@ -48,23 +48,19 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
 
   // Initialize with mock data (simulating fetch)
   useEffect(() => {
-    const timer = setTimeout(() => {
-      // Try to load from local storage first to persist across refreshes during demo
-      const loadData = <T,>(key: string, initial: T): T => {
-        if (typeof window === 'undefined') return initial
-        const saved = localStorage.getItem(key)
-        return saved ? JSON.parse(saved) : initial
-      }
+    // Try to load from local storage first to persist across refreshes during demo
+    const loadData = <T,>(key: string, initial: T): T => {
+      if (typeof window === 'undefined') return initial
+      const saved = localStorage.getItem(key)
+      return saved ? JSON.parse(saved) : initial
+    }
 
-      setTransactions(loadData('steveos_transactions', INITIAL_TRANSACTIONS))
-      setBudgets(loadData('steveos_budgets', INITIAL_BUDGETS))
-      setSavingsGoals(loadData('steveos_savings', INITIAL_SAVINGS_GOALS))
-      setAccounts(loadData('steveos_accounts', INITIAL_ACCOUNTS))
-      setBills(loadData('steveos_bills', INITIAL_BILLS))
-      setIsLoading(false)
-    }, 800)
-
-    return () => clearTimeout(timer)
+    setTransactions(loadData('steveos_transactions', INITIAL_TRANSACTIONS))
+    setBudgets(loadData('steveos_budgets', INITIAL_BUDGETS))
+    setSavingsGoals(loadData('steveos_savings', INITIAL_SAVINGS_GOALS))
+    setAccounts(loadData('steveos_accounts', INITIAL_ACCOUNTS))
+    setBills(loadData('steveos_bills', INITIAL_BILLS))
+    setIsLoading(false)
   }, [])
 
   // Persist changes

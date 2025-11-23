@@ -48,7 +48,7 @@ export function CalendarWidget() {
         <DialogContent className="sm:max-w-[400px]">
           <DialogHeader>
             <DialogTitle>Calendar</DialogTitle>
-            <DialogDescription>View your schedule and upcoming bills.</DialogDescription>
+            <DialogDescription>View schedule and scheduled obligations.</DialogDescription>
           </DialogHeader>
           <div className="flex justify-center py-4">
             <CalendarComponent

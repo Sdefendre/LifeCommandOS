@@ -17,7 +17,8 @@ export default function WorkPage() {
         <div className="max-w-2xl mb-10 sm:mb-12 md:mb-16">
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 sm:mb-4">Work</h1>
           <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-            A selection of projects ranging from full-stack applications to technical experiments.
+            A curated collection of operational systems, full-stack applications, and technical
+            experiments designed for precision and impact.
           </p>
         </div>
 
@@ -96,13 +97,13 @@ export default function WorkPage() {
 
         <div className="mt-12 sm:mt-16 md:mt-20 pt-6 sm:pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
           <p className="text-sm sm:text-base text-muted-foreground">
-            Interested in working together?
+            Ready to execute a mission-critical project?
           </p>
           <Link
             href="/#contact"
             className="font-medium hover:underline underline-offset-4 flex items-center gap-2 hover:text-primary transition-colors text-sm sm:text-base"
           >
-            Let's talk{' '}
+            Initiate Contact{' '}
             <motion.span whileHover={{ x: 5 }}>
               <ArrowRight size={16} />
             </motion.span>

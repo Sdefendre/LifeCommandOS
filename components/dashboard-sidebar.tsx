@@ -51,7 +51,7 @@ export function DashboardSidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="hidden border-r bg-card/50 backdrop-blur-xl lg:flex lg:flex-col h-full">
+    <aside className="hidden border-r bg-card/50 backdrop-blur-xl md:flex md:flex-col h-full">
       <div className="flex h-14 items-center border-b px-6 lg:h-[60px]">
         <Link
           className="flex items-center gap-2 font-bold text-lg tracking-tight"
@@ -61,14 +61,14 @@ export function DashboardSidebar() {
             <LayoutDashboard className="h-4 w-4" />
           </div>
           <span>
-            Life Command OS<span className="font-normal text-muted-foreground">Finance</span>
+            LifeCommand<span className="font-normal text-muted-foreground"> Finance</span>
           </span>
         </Link>
       </div>
       <div className="flex-1 overflow-auto py-4">
         <nav className="grid items-start px-4 text-sm font-medium gap-1">
           <div className="px-2 mb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-            Platform
+            System
           </div>
           <Link
             href="/"
@@ -78,11 +78,11 @@ export function DashboardSidebar() {
             )}
           >
             <Home className="h-4 w-4" />
-            Back to OS
+            Command Center
           </Link>
 
           <div className="px-2 mb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-            Finance
+            Financial Operations
           </div>
           {sidebarItems.map((item) => (
             <Link

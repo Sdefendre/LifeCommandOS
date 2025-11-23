@@ -154,7 +154,7 @@ export default function SteveOS({ repos = [] }: { repos?: GithubRepo[] }) {
                   </span>
                 </h1>
                 <p className="text-xl sm:text-2xl md:text-3xl font-medium text-muted-foreground mb-4 sm:mb-6">
-                  What would you like to build today?
+                  What mission will you execute today?
                 </p>
                 <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 leading-relaxed max-w-2xl">
                   {heroDateMessage}
@@ -169,7 +169,7 @@ export default function SteveOS({ repos = [] }: { repos?: GithubRepo[] }) {
                       href="/work"
                       className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-5 sm:px-6 py-2.5 sm:py-3 rounded-md font-medium hover:bg-primary/90 transition-colors shadow-md hover:shadow-xl text-sm sm:text-base w-full sm:w-auto"
                     >
-                      View My Work <ArrowRight size={16} />
+                      View Operations <ArrowRight size={16} />
                     </Link>
                   </motion.div>
                   <motion.div
@@ -181,7 +181,7 @@ export default function SteveOS({ repos = [] }: { repos?: GithubRepo[] }) {
                       href="/about"
                       className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-md font-medium border border-border hover:bg-accent transition-colors hover:shadow-md text-sm sm:text-base w-full sm:w-auto"
                     >
-                      More About Me
+                      Access Documentation
                     </Link>
                   </motion.div>
                 </div>
@@ -195,16 +195,16 @@ export default function SteveOS({ repos = [] }: { repos?: GithubRepo[] }) {
           <section className="py-12 sm:py-16 md:py-20">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-8 sm:mb-12 gap-3 sm:gap-4">
               <div>
-                <h2 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">Selected Work</h2>
+                <h2 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">Selected Operations</h2>
                 <p className="text-sm sm:text-base text-muted-foreground">
-                  Recent projects and experiments.
+                  Recent deployments and technical experiments.
                 </p>
               </div>
               <Link
                 href="/work"
                 className="group text-sm font-medium hover:underline underline-offset-4 flex items-center gap-1 self-start sm:self-auto"
               >
-                View all projects{' '}
+                View all operations{' '}
                 <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
@@ -226,9 +226,11 @@ export default function SteveOS({ repos = [] }: { repos?: GithubRepo[] }) {
           <section className="py-12 sm:py-16 md:py-20">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between mb-8 sm:mb-12 gap-3 sm:gap-4">
               <div>
-                <h2 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">Recent Thoughts</h2>
+                <h2 className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2">
+                  Strategic Intelligence
+                </h2>
                 <p className="text-sm sm:text-base text-muted-foreground">
-                  Thoughts on software, strategy, and tech.
+                  Insights on software, strategy, and operational systems.
                 </p>
               </div>
               <Link
@@ -251,10 +253,10 @@ export default function SteveOS({ repos = [] }: { repos?: GithubRepo[] }) {
           <section id="contact" className="py-12 sm:py-16 md:py-20 border-t border-border">
             <div className="grid sm:grid-cols-2 gap-8 sm:gap-12">
               <div>
-                <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Let&apos;s connect</h2>
+                <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Initiate Contact</h2>
                 <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
-                  I&apos;m always open to discussing new projects, opportunities, or just chatting
-                  about tech.
+                  Open to strategic opportunities, mission-critical projects, and technical
+                  discussions with fellow operators.
                 </p>
                 <div className="flex flex-col gap-2 sm:gap-3">
                   <a

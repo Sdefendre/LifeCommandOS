@@ -12,33 +12,41 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-sm relative">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
+      <motion.header
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+        className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-sm relative"
+      >
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
         <div className="container mx-auto px-3 sm:px-4 h-14 sm:h-16 flex items-center justify-between max-w-5xl">
           <Link
             href="/"
             className="flex items-center gap-1.5 sm:gap-2 font-semibold text-base sm:text-lg tracking-tight group"
           >
-            <div className="w-4 h-4 sm:w-5 sm:h-5 bg-gradient-to-br from-red-600 via-orange-600 to-amber-500 rounded-sm shadow-md group-hover:shadow-lg transition-shadow"></div>
-            <span className="bg-gradient-to-r from-red-600 via-orange-600 to-amber-500 bg-clip-text text-transparent">
+            <div className="w-4 h-4 sm:w-5 sm:h-5 bg-gradient-to-br from-indigo-600 via-violet-600 to-blue-500 rounded-sm shadow-md group-hover:shadow-lg transition-shadow"></div>
+            <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-blue-500 bg-clip-text text-transparent">
               Life Command OS
             </span>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-medium">
-            <Link href="/#features" className="hover:text-blue-600 transition-colors">
+            <Link href="/#features" className="hover:text-primary transition-colors">
               Features
             </Link>
-            <Link href="/#pricing" className="hover:text-blue-600 transition-colors">
+            <Link href="/#pricing" className="hover:text-primary transition-colors">
               Pricing
             </Link>
-            <Link href="/blog" className="hover:text-purple-600 transition-colors">
+            <Link href="/blog" className="hover:text-violet-600 transition-colors">
               Blog
+            </Link>
+            <Link href="/roadmap" className="hover:text-indigo-600 transition-colors">
+              Roadmap
             </Link>
             <Link
               href="/dashboard"
-              className="font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+              className="font-semibold bg-gradient-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
             >
               Dashboard
             </Link>
@@ -57,7 +65,7 @@ export function SiteHeader() {
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -89,6 +97,13 @@ export function SiteHeader() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Blog
+              </Link>
+              <Link
+                href="/roadmap"
+                className="py-2.5 border-b border-border/50 active:bg-accent/50 rounded-sm px-2 -mx-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Roadmap
               </Link>
               <Link
                 href="/dashboard"

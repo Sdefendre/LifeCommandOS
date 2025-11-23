@@ -24,7 +24,8 @@ export default function BlogPage() {
             Writing & Videos
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-            Thoughts on software engineering, system design, and building products.
+            Strategic insights on software engineering, system architecture, and operational
+            excellence.
           </p>
         </div>
 
@@ -79,9 +80,9 @@ export default function BlogPage() {
 
         <div className="mt-16 sm:mt-20 md:mt-24 pt-8 sm:pt-10 md:pt-12 border-t border-border">
           <div className="bg-accent/30 rounded-xl p-6 sm:p-8">
-            <h3 className="text-lg sm:text-xl font-semibold mb-2">Stay updated</h3>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2">Stay Operational</h3>
             <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6">
-              Get notified when I publish new articles. No spam, unsubscribe anytime.
+              Receive intelligence updates on new publications. No noise, unsubscribe anytime.
             </p>
             <NewsletterSubscription />
           </div>

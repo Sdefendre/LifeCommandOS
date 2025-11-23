@@ -113,7 +113,7 @@ export function NewsletterSubscription() {
           </div>
 
           <div className="relative group">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-violet-600 rounded-xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
             <button
               type="submit"
               disabled={status === 'loading' || status === 'success'}

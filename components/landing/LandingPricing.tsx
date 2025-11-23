@@ -33,7 +33,7 @@ const pricingTiers = [
       'Priority Email Support',
       'Custom Budget Categories',
     ],
-    buttonText: 'Subscribe Now',
+    buttonText: 'Activate Access',
     highlight: true,
   },
   {
@@ -138,7 +138,7 @@ export function LandingPricing() {
 
                   {tier.highlight && (
                     <p className="text-xs text-center text-muted-foreground mt-4">
-                      30-day money-back guarantee.
+                      30-day operational guarantee.
                     </p>
                   )}
                 </CardContent>

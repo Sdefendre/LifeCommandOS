@@ -20,25 +20,26 @@ export default function AboutPage() {
 
           <div className="prose prose-neutral max-w-none">
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-6 sm:mb-8">
-              I'm Steve Defendre, a Full-Stack Engineer and Veteran based in the US. I specialize in
-              building high-performance web applications and resilient software systems.
+              I'm Steve Defendre, a Full-Stack Engineer and Veteran. I build high-performance
+              systems and intelligent tools that help people take command of their lives and
+              operations.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 my-8 sm:my-12 not-prose">
               <div className="space-y-3 sm:space-y-4">
                 <h3 className="font-semibold text-base sm:text-lg">Background</h3>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  My journey started in the military, where I learned the value of discipline,
-                  precision, and reliability. I've carried those principles into software
-                  engineering, focusing on building systems that don't just work, but endure.
+                  Military service instilled discipline, precision, and operational resilience.
+                  These principles drive my engineering approach: build systems that don't just
+                  function—they execute with reliability and endurance.
                 </p>
               </div>
               <div className="space-y-3 sm:space-y-4">
                 <h3 className="font-semibold text-base sm:text-lg">Technical Focus</h3>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  I work primarily with the React ecosystem (Next.js), TypeScript, and Node.js. I'm
-                  also deeply interested in AI integration and building tools that enhance developer
-                  productivity.
+                  React ecosystem (Next.js), TypeScript, and Node.js form my core stack. I focus on
+                  AI integration and building intelligent tools that amplify human capability and
+                  operational efficiency.
                 </p>
               </div>
             </div>
@@ -54,8 +55,8 @@ export default function AboutPage() {
                 </div>
                 <div className="text-primary mb-2 text-sm sm:text-base">SteveOS</div>
                 <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
-                  Building custom software solutions for businesses, focusing on scalability and
-                  performance.
+                  Architecting custom software solutions with emphasis on scalability, performance,
+                  and operational excellence. Building systems that command results.
                 </p>
               </div>
 
@@ -68,7 +69,8 @@ export default function AboutPage() {
                   United States Armed Forces
                 </div>
                 <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
-                  Developed leadership skills and a disciplined approach to complex problem-solving.
+                  Cultivated leadership capabilities and a systematic approach to mission-critical
+                  problem-solving under pressure.
                 </p>
               </div>
             </div>
@@ -76,8 +78,8 @@ export default function AboutPage() {
             <h2 className="text-xl sm:text-2xl font-bold mt-12 sm:mt-16 mb-4 sm:mb-6">Connect</h2>
             <div className="flex flex-col gap-3 sm:gap-4 not-prose">
               <p className="text-sm sm:text-base text-muted-foreground mb-2 sm:mb-4">
-                I'm always open to discussing new opportunities, technical challenges, or just
-                connecting with fellow developers.
+                Open to strategic opportunities, complex technical challenges, and connecting with
+                operators building the future.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                 <a

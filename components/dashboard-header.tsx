@@ -70,7 +70,7 @@ export function DashboardHeader() {
     <header className="flex h-14 items-center gap-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-6 lg:h-[60px] sticky top-0 z-50">
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="ghost" size="icon" className="shrink-0 lg:hidden -ml-2">
+          <Button variant="ghost" size="icon" className="shrink-0 md:hidden -ml-2">
             <Menu className="h-5 w-5" />
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
@@ -82,25 +82,25 @@ export function DashboardHeader() {
                 <LayoutDashboard className="h-4 w-4" />
               </div>
               <span>
-                Life Command OS<span className="font-normal text-muted-foreground">Finance</span>
+                LifeCommand<span className="font-normal text-muted-foreground"> Finance</span>
               </span>
             </Link>
           </div>
           <div className="flex-1 overflow-auto py-4 px-4">
             <nav className="grid gap-1 text-sm font-medium">
               <div className="px-2 mb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                Platform
+                System
               </div>
               <Link
                 href="/"
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors mb-4"
               >
                 <Home className="h-4 w-4" />
-                Back to OS
+                Command Center
               </Link>
 
               <div className="px-2 mb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                Finance
+                Financial Operations
               </div>
               {sidebarItems.map((item) => (
                 <Link
@@ -136,7 +136,7 @@ export function DashboardHeader() {
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
-              placeholder="Search transactions..."
+              placeholder="Search financial records..."
               className="w-full bg-background pl-9 md:w-[300px] lg:w-[400px] h-9 focus-visible:ring-1"
             />
           </div>
