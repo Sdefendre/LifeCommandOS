@@ -1,15 +1,17 @@
 import { CommandChat } from '@/components/command/CommandChat'
 import { CommandThreeBackground } from '@/components/CommandThreeBackground'
+import type { Viewport } from 'next'
 
 export const metadata = {
   title: 'Command Interface - Life Command OS',
   description: 'Direct interface for Command AI. Ask about VA benefits, claims, and transition.',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 }
 
 export default function CommandPage() {

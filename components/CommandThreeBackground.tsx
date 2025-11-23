@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Stars, Sparkles } from '@react-three/drei'
+import { Stars } from '@react-three/drei'
 import { useReducedMotion } from 'framer-motion'
 import * as THREE from 'three'
 
