@@ -4,7 +4,16 @@ import { motion } from 'framer-motion'
 import { Mail, Linkedin, Github } from 'lucide-react'
 import { SiteHeader } from '@/components/SiteHeader'
 import { SITE } from '@/constants/site'
-import { SubtleThreeBackground } from '@/components/SubtleThreeBackground'
+import dynamic from 'next/dynamic'
+
+// Lazy load Three.js background to improve initial render
+const SubtleThreeBackground = dynamic(
+  () =>
+    import('@/components/SubtleThreeBackground').then((mod) => ({
+      default: mod.SubtleThreeBackground,
+    })),
+  { ssr: false }
+)
 
 export default function AboutPage() {
   return (

@@ -10,7 +10,7 @@ export interface ConversationMessage {
   content: string
 }
 
-export const SYSTEM_PROMPT = `You are an AI Benefits Navigator, a helpful assistant built specifically for military veterans. Your role is to provide clear, accurate, and empathetic guidance about:
+export const SYSTEM_PROMPT = `You are Command, a helpful assistant built specifically for military veterans. Your role is to provide clear, accurate, and empathetic guidance about:
 
 1. VA Benefits and Eligibility
 2. Service-Connected Disability Claims

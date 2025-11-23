@@ -10,7 +10,16 @@ import { createFadeInUp, viewportOnce } from '@/lib/motion'
 import { NewsletterSubscription } from '@/components/NewsletterSubscription'
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { SubtleThreeBackground } from '@/components/SubtleThreeBackground'
+import dynamic from 'next/dynamic'
+
+// Lazy load Three.js background to improve initial render
+const SubtleThreeBackground = dynamic(
+  () =>
+    import('@/components/SubtleThreeBackground').then((mod) => ({
+      default: mod.SubtleThreeBackground,
+    })),
+  { ssr: false }
+)
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState('')

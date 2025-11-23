@@ -1,6 +1,6 @@
 import { SiteHeader } from '@/components/SiteHeader'
 import { LandingFooter } from '@/components/landing/LandingFooter'
-import { SubtleThreeBackground } from '@/components/SubtleThreeBackground'
+import { SubtleThreeBackgroundWrapper } from '@/components/SubtleThreeBackgroundWrapper'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Check, Medal, Target, BookOpen, Clock, Users } from 'lucide-react'
@@ -59,7 +59,7 @@ const courseModules = [
 export default function CoursePage() {
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
-      <SubtleThreeBackground />
+      <SubtleThreeBackgroundWrapper />
       <SiteHeader />
 
       <main className="flex-1 container mx-auto px-3 sm:px-4 py-8 sm:py-12 max-w-6xl">

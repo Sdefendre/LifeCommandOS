@@ -22,7 +22,7 @@ export function LandingFooter() {
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
-          <Link href="/roadmap" className="hover:text-primary transition-colors">
+          <Link href="/features#roadmap" className="hover:text-primary transition-colors">
             Roadmap
           </Link>
           <Link href="#" className="hover:text-primary transition-colors">

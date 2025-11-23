@@ -10,7 +10,7 @@ import { FeedbackDialog } from '@/components/FeedbackDialog'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { SubtleThreeBackground } from '@/components/SubtleThreeBackground'
+import { SubtleThreeBackgroundWrapper } from '@/components/SubtleThreeBackgroundWrapper'
 
 type Params = Promise<{ id: string }>
 
@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
 
   return (
     <div className="min-h-screen bg-background text-foreground relative">
-      <SubtleThreeBackground />
+      <SubtleThreeBackgroundWrapper />
       <ReadingProgress />
       <div className="relative z-10">
         {/* Modern Header */}

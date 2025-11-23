@@ -59,7 +59,7 @@ export default function BuyMeCoffee({ className }: BuyMeCoffeeProps) {
             quality={90}
           />
           {/* Add a subtle glow effect on hover */}
-          <div className="absolute inset-0 rounded-lg bg-yellow-400/20 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300"></div>
+          <div className="absolute inset-0 rounded-lg bg-yellow-400/20 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-150"></div>
         </button>
       </div>
 

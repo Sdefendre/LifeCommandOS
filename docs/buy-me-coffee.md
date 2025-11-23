@@ -1,6 +1,6 @@
 # Buy Me a Coffee Integration
 
-This document explains the "Buy Me a Coffee" integration added to DefendreSolutions.
+This document explains the "Buy Me a Coffee" integration added to Life Command OS.
 
 ## Overview
 

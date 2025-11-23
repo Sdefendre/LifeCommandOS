@@ -2,9 +2,16 @@ import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { getSupabaseClient, checkCourseAccess } from '@/lib/supabase'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2024-12-18.acacia',
-})
+// Lazy initialization to avoid build-time errors
+function getStripeClient(): Stripe {
+  const secretKey = process.env.STRIPE_SECRET_KEY
+  if (!secretKey) {
+    throw new Error('STRIPE_SECRET_KEY is not configured')
+  }
+  return new Stripe(secretKey, {
+    apiVersion: '2024-12-18.acacia',
+  })
+}
 
 const COURSE_PRICE_ID = process.env.STRIPE_COURSE_PRICE_ID || ''
 
@@ -38,6 +45,7 @@ export async function POST(request: NextRequest) {
     const userEmail = userData.user.email
 
     // Create Stripe checkout session
+    const stripe = getStripeClient()
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [

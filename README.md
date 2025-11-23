@@ -242,6 +242,29 @@ Life Command OS includes a comprehensive financial dashboard (`/dashboard`) with
 
 The dashboard includes Google Calendar integration for viewing upcoming events. See [GOOGLE_CALENDAR_SETUP.md](./GOOGLE_CALENDAR_SETUP.md) for setup instructions.
 
+## 🎯 Features Page
+
+The `/features` page provides a comprehensive overview of all Life Command OS features, including:
+
+- **Current Features**: Overview of all available features (Command AI chat, Educational Pathways, Claim Strategy Builder, Transition Roadmap, Community Access, Secure & Private)
+- **Product Roadmap**: Interactive roadmap showing planned features and improvements
+- **Changelog**: Complete project changelog automatically parsed from `CHANGELOG.md`
+- **Responsive Design**: Fully responsive layout with Three.js background effects
+
+Access the features page at `/features` from the main navigation.
+
+## 🔧 Performance Optimizations
+
+### Client-Only Components
+
+The project uses lazy loading for non-critical client-side components to improve initial page load performance:
+
+- **ClientOnlyComponents**: Wraps components that require browser APIs (ScrollToTop, ChatFloatingButton)
+- **Dynamic Imports**: Uses Next.js dynamic imports with `ssr: false` for browser-only components
+- **Suspense Boundaries**: Homepage uses Suspense for progressive loading
+
+Components like `ScrollToTop` and `ChatFloatingButton` are loaded only on the client side to avoid hydration issues and improve performance.
+
 ## 📄 License
 
 Proprietary to Steve Defendre.

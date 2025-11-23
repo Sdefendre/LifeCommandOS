@@ -4,7 +4,7 @@ import { BLOG_POSTS } from '@/constants'
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://defendre-solutions.vercel.app')
 
-  const routes = ['', '/services', '/work', '/about', '/blog', '/roadmap', '/changelog']
+  const routes = ['', '/services', '/work', '/about', '/blog', '/features']
 
   const routeEntries = routes.map((path) => ({
     url: new URL(path, base).toString(),

@@ -75,8 +75,8 @@ export function VoiceAgent({ userId }: VoiceAgentProps) {
 
       // Create agent with veteran-focused instructions
       const agent = new RealtimeAgent({
-        name: 'AI Benefits Navigator',
-        instructions: `You are an AI Benefits Navigator, a helpful voice assistant built specifically for military veterans. Your role is to provide clear, accurate, and empathetic guidance about:
+        name: 'Command',
+        instructions: `You are Command, a helpful voice assistant built specifically for military veterans. Your role is to provide clear, accurate, and empathetic guidance about:
 
 1. VA Benefits and Eligibility
 2. Service-Connected Disability Claims
@@ -183,7 +183,7 @@ Remember: You're built by veterans, for veterans. Speak their language and under
               <div
                 className={`h-3 w-3 rounded-full ${
                   status === 'connected'
-                    ? 'bg-emerald-500 dark:bg-emerald-400 animate-pulse'
+                    ? 'bg-[#657832] dark:bg-[#78823c] animate-pulse'
                     : status === 'connecting'
                       ? 'bg-yellow-500 dark:bg-yellow-400 animate-pulse'
                       : status === 'error'

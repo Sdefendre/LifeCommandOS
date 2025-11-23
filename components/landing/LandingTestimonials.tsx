@@ -9,7 +9,7 @@ const testimonials = [
     name: 'Mike Thompson',
     role: 'Army Veteran, 82nd Airborne',
     content:
-      'After EAS, I was broke and confused about my benefits. The AI Benefits Navigator helped me understand my DD-214 and file my first claim. Went from 0% to 70% rating in 6 months. This platform changed my life.',
+      'After EAS, I was broke and confused about my benefits. Command helped me understand my DD-214 and file my first claim. Went from 0% to 70% rating in 6 months. This platform changed my life.',
     rating: 5,
     avatar: 'MT',
   },
@@ -62,7 +62,7 @@ export function LandingTestimonials() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="h-full glass hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
+              <Card className="h-full glass hover:shadow-xl hover:-translate-y-1 transition-all duration-150 relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -z-10" />
                 <CardContent className="pt-6">
                   <div className="flex items-center gap-1 mb-4">
@@ -75,7 +75,7 @@ export function LandingTestimonials() {
                     "{testimonial.content}"
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center text-white font-semibold text-sm">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-semibold text-sm">
                       {testimonial.avatar}
                     </div>
                     <div>

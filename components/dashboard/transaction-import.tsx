@@ -134,7 +134,7 @@ export function TransactionImport() {
                       <TableCell className="font-medium">{t.name}</TableCell>
                       <TableCell>{format(new Date(t.date), 'MMM d, yyyy')}</TableCell>
                       <TableCell className="text-right">
-                        <div className={t.amount > 0 ? 'text-emerald-500' : ''}>
+                        <div className={t.amount > 0 ? 'text-[#657832]' : ''}>
                           $
                           <EditableNumber
                             value={Math.abs(t.amount)}

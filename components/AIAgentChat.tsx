@@ -118,7 +118,7 @@ export function AIAgentChat({ userId }: AIAgentChatProps) {
         parts: [
           {
             type: 'text',
-            text: "Welcome! I'm your AI Benefits Navigator. I can help you understand VA benefits, disability claims, C&P exams, and your DD-214. What would you like to know?",
+            text: "Welcome! I'm Command. I can help you understand VA benefits, disability claims, C&P exams, and your DD-214. What would you like to know?",
           },
         ],
       },
@@ -152,7 +152,7 @@ export function AIAgentChat({ userId }: AIAgentChatProps) {
                   parts: [
                     {
                       type: 'text',
-                      text: "Welcome! I'm your AI Benefits Navigator. I can help you understand VA benefits, disability claims, C&P exams, and your DD-214. What would you like to know?",
+                      text: "Welcome! I'm Command. I can help you understand VA benefits, disability claims, C&P exams, and your DD-214. What would you like to know?",
                     },
                   ],
                 },

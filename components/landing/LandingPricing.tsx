@@ -12,7 +12,7 @@ const pricingTiers = [
     price: '$0',
     description: 'Start your journey with free AI-powered education',
     features: [
-      'AI Benefits Navigator (limited queries)',
+      'Command (limited queries)',
       'Basic educational content',
       'Transition resources library',
       'Community forum access (read-only)',
@@ -60,8 +60,8 @@ export function LandingPricing() {
             Choose Your Path
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Start free with our AI Benefits Navigator, or unlock the complete strategy to maximize
-            your service-connected benefits.
+            Start free with Command, or unlock the complete strategy to maximize your
+            service-connected benefits.
           </p>
         </motion.div>
 
@@ -78,7 +78,7 @@ export function LandingPricing() {
               {tier.highlight && (
                 <>
                   {/* Glow effect for highlighted tier */}
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-150" />
                   <div className="absolute top-0 right-0 left-0 flex justify-center -mt-2 sm:-mt-3 z-10">
                     <Badge className="bg-primary text-primary-foreground px-2 sm:px-3 py-1 text-xs sm:text-sm shadow-lg">
                       Recommended
@@ -92,18 +92,18 @@ export function LandingPricing() {
                   tier.highlight
                     ? 'border-primary/30 shadow-2xl bg-white/15 dark:bg-black/15 hover:bg-white/20 dark:hover:bg-black/20 ring-2 ring-primary/20'
                     : 'border-white/20 dark:border-white/10 shadow-lg hover:bg-white/15 dark:hover:bg-black/15'
-                } transition-all duration-300 hover:-translate-y-1 group`}
+                } transition-all duration-150 hover:-translate-y-1 group`}
               >
                 <CardHeader className="text-center pt-8 sm:pt-10 pb-6 sm:pb-8 border-b border-border/50 px-4 sm:px-6 relative overflow-hidden">
                   {tier.highlight && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-violet-500/10 opacity-50 group-hover:opacity-75 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-[#785a3c]/10 opacity-50 group-hover:opacity-75 transition-opacity duration-150" />
                   )}
                   <div className="relative z-10">
                     <CardTitle className="text-xl sm:text-2xl font-bold mb-2">
                       {tier.title}
                     </CardTitle>
                     <div className="flex items-baseline justify-center gap-1">
-                      <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent">
+                      <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#657832] to-[#78823c] bg-clip-text text-transparent">
                         {tier.price}
                       </span>
                       {tier.price !== '$0' && (

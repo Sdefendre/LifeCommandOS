@@ -162,100 +162,96 @@
 }
 
 :root {
-  /* Modern Zinc & Emerald Theme - Light */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.13 0.028 261.692); /* Zinc 950 */
-  --card: oklch(0.99 0.002 264.542); /* Slightly off-white for subtle depth */
-  --card-foreground: oklch(0.13 0.028 261.692);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.13 0.028 261.692);
+  /* Military Theme - Light */
+  --background: oklch(0.98 0.005 90); /* Slightly warm off-white */
+  --foreground: oklch(0.15 0.02 90); /* Dark olive-gray */
+  --card: oklch(0.96 0.008 85); /* Khaki-tinted card */
+  --card-foreground: oklch(0.15 0.02 90);
+  --popover: oklch(0.98 0.005 90);
+  --popover-foreground: oklch(0.15 0.02 90);
 
-  /* Primary: Purple 600 - Rich, Modern & Vibrant */
-  --primary: oklch(0.55 0.2 280);
-  --primary-foreground: oklch(0.985 0 0);
+  /* Primary: Olive Green - Military Standard */
+  --primary: oklch(0.45 0.12 95); /* Olive drab green */
+  --primary-foreground: oklch(0.98 0.005 90);
 
-  /* Secondary: Zinc 100 */
-  --secondary: oklch(0.967 0.003 264.542);
-  --secondary-foreground: oklch(0.21 0.034 264.665); /* Zinc 900 */
+  /* Secondary: Khaki/Tan */
+  --secondary: oklch(0.85 0.03 70); /* Light khaki */
+  --secondary-foreground: oklch(0.2 0.025 50); /* Dark brown */
 
-  /* Muted: Zinc 100 */
-  --muted: oklch(0.967 0.003 264.542);
-  --muted-foreground: oklch(
-    0.35 0.027 264.364
-  ); /* Zinc 800 - Even darker for better contrast and WCAG AAA compliance */
+  /* Muted: Warm Gray */
+  --muted: oklch(0.92 0.005 90); /* Light khaki-gray */
+  --muted-foreground: oklch(0.4 0.02 80); /* Medium olive-gray */
 
-  /* Accent: Zinc 100 */
-  --accent: oklch(0.967 0.003 264.542);
-  --accent-foreground: oklch(0.21 0.034 264.665);
+  /* Accent: Dark Brown */
+  --accent: oklch(0.5 0.08 50); /* Military brown */
+  --accent-foreground: oklch(0.98 0.005 90);
 
-  --destructive: oklch(0.577 0.245 27.325); /* Red 600 */
-  --destructive-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.55 0.2 25); /* Muted red-orange */
+  --destructive-foreground: oklch(0.98 0.005 90);
 
-  --border: oklch(0.92 0.006 264.542); /* Zinc 200 */
-  --input: oklch(0.92 0.006 264.542);
-  --ring: oklch(0.55 0.2 280); /* Purple 600 */
+  --border: oklch(0.88 0.008 85); /* Khaki border */
+  --input: oklch(0.88 0.008 85);
+  --ring: oklch(0.45 0.12 95); /* Olive green ring */
 
   --radius: 0.5rem;
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
 
   /* Lava lamp blob opacity - lighter in light mode */
-  --blob-opacity: 0.5;
+  --blob-opacity: 0.4;
 
-  /* Charts - Purple/Violet/Emerald/Teal Spectrum */
-  --chart-1: 280 65% 50%; /* Purple 600 */
-  --chart-2: 270 60% 50%; /* Violet 600 */
-  --chart-3: 160 60% 50%; /* Emerald 600 */
-  --chart-4: 170 65% 50%; /* Teal 600 */
-  --chart-5: 180 70% 45%; /* Cyan 600 */
+  /* Charts - Military Color Palette */
+  --chart-1: 95 50% 45%; /* Olive green */
+  --chart-2: 70 40% 50%; /* Khaki */
+  --chart-3: 50 35% 45%; /* Brown */
+  --chart-4: 240 30% 40%; /* Muted military blue */
+  --chart-5: 80 25% 50%; /* Tan */
 }
 
 .dark {
-  /* Modern Zinc & Emerald Theme - Dark */
-  --background: oklch(0.13 0.028 261.692); /* Zinc 950 */
-  --foreground: oklch(0.985 0.002 247.839); /* Zinc 50 */
+  /* Military Theme - Dark */
+  --background: oklch(0.12 0.015 90); /* Dark olive-gray */
+  --foreground: oklch(0.92 0.008 85); /* Light khaki */
 
-  --card: oklch(0.17 0.028 261.692); /* More contrast from background for better card visibility */
-  --card-foreground: oklch(0.985 0.002 247.839);
+  --card: oklch(0.16 0.018 90); /* Slightly lighter olive-gray */
+  --card-foreground: oklch(0.92 0.008 85);
 
-  --popover: oklch(0.13 0.028 261.692);
-  --popover-foreground: oklch(0.985 0.002 247.839);
+  --popover: oklch(0.12 0.015 90);
+  --popover-foreground: oklch(0.92 0.008 85);
 
-  /* Primary: Purple 500 - Lighter for dark mode */
-  --primary: oklch(0.65 0.22 280);
-  --primary-foreground: oklch(0.13 0.028 261.692);
+  /* Primary: Brighter Olive Green for dark mode */
+  --primary: oklch(0.55 0.14 95);
+  --primary-foreground: oklch(0.12 0.015 90);
 
-  /* Secondary: Zinc 800 */
-  --secondary: oklch(0.274 0.016 264.376);
-  --secondary-foreground: oklch(0.985 0.002 247.839);
+  /* Secondary: Dark Khaki */
+  --secondary: oklch(0.25 0.02 75);
+  --secondary-foreground: oklch(0.92 0.008 85);
 
-  /* Muted: Zinc 900 */
-  --muted: oklch(0.21 0.034 264.665);
-  --muted-foreground: oklch(
-    0.85 0.019 264.323
-  ); /* Zinc 100 - Even lighter for better contrast and WCAG AAA compliance */
+  /* Muted: Dark Olive */
+  --muted: oklch(0.2 0.018 90);
+  --muted-foreground: oklch(0.85 0.01 85); /* Light khaki for contrast */
 
-  /* Accent: Zinc 800 */
-  --accent: oklch(0.274 0.016 264.376);
-  --accent-foreground: oklch(0.985 0.002 247.839);
+  /* Accent: Military Brown */
+  --accent: oklch(0.4 0.1 50);
+  --accent-foreground: oklch(0.92 0.008 85);
 
-  --destructive: oklch(0.396 0.141 25.723); /* Red 900 */
-  --destructive-foreground: oklch(0.985 0.002 247.839);
+  --destructive: oklch(0.5 0.18 25); /* Muted red-orange */
+  --destructive-foreground: oklch(0.92 0.008 85);
 
-  --border: oklch(0.3 0.016 264.376); /* Zinc 750 - Lighter for better visibility */
-  --input: oklch(0.18 0.028 261.692); /* Slightly lighter than card for better contrast */
-  --ring: oklch(0.55 0.2 280); /* Purple 600 */
+  --border: oklch(0.22 0.018 90); /* Dark olive border */
+  --input: oklch(0.18 0.018 90); /* Slightly lighter than card */
+  --ring: oklch(0.55 0.14 95); /* Olive green ring */
 
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
 
   /* Lava lamp blob opacity - brighter in dark mode */
-  --blob-opacity: 0.7;
+  --blob-opacity: 0.6;
 
-  /* Charts - Lighter/Brighter for Dark Mode */
-  --chart-1: 280 70% 65%;
-  --chart-2: 270 65% 65%;
-  --chart-3: 160 65% 65%;
-  --chart-4: 170 70% 65%;
-  --chart-5: 180 75% 60%;
+  /* Charts - Military Palette for Dark Mode */
+  --chart-1: 95 55% 55%; /* Brighter olive */
+  --chart-2: 70 45% 60%; /* Brighter khaki */
+  --chart-3: 50 40% 55%; /* Brighter brown */
+  --chart-4: 240 35% 50%; /* Muted military blue */
+  --chart-5: 80 30% 60%; /* Brighter tan */
 }
 
 @layer base {
@@ -275,6 +271,9 @@
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
+    /* GPU acceleration for scroll */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 
   /* Optimize scroll performance for all scrollable elements */
@@ -307,6 +306,10 @@
     /* Safe area insets for notched devices */
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
+    /* GPU acceleration for scroll performance */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: scroll-position;
   }
 
   /* Ensure main content appears above backgrounds */
@@ -315,6 +318,10 @@
     z-index: 1;
     /* Ensure text is readable */
     color: var(--foreground);
+    /* Optimize scroll performance */
+    will-change: scroll-position;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 
   /* Ensure all text elements have proper color inheritance */
@@ -401,16 +408,15 @@
     position: relative;
     background: linear-gradient(
       135deg,
-      oklch(0.55 0.2 280) 0%,
-      oklch(0.57 0.19 270) 20%,
-      oklch(0.55 0.15 160) 60%,
-      oklch(0.58 0.16 170) 80%,
-      oklch(0.6 0.17 180) 100%
+      oklch(0.45 0.12 95) 0%,
+      oklch(0.5 0.1 80) 30%,
+      oklch(0.5 0.08 50) 60%,
+      oklch(0.48 0.1 70) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: oklch(0.55 0.2 280); /* Fallback color for browsers that don't support background-clip */
+    color: oklch(0.45 0.12 95); /* Fallback color for browsers that don't support background-clip */
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 1.5px;
@@ -421,32 +427,31 @@
   /* Fallback for browsers that don't support background-clip */
   @supports not (-webkit-background-clip: text) {
     a {
-      color: oklch(0.55 0.2 280);
+      color: oklch(0.45 0.12 95);
       background: none;
-      -webkit-text-fill-color: oklch(0.55 0.2 280);
+      -webkit-text-fill-color: oklch(0.45 0.12 95);
     }
   }
 
   .dark a {
     background: linear-gradient(
       135deg,
-      oklch(0.65 0.22 280) 0%,
-      oklch(0.67 0.21 270) 20%,
-      oklch(0.65 0.15 160) 60%,
-      oklch(0.68 0.16 170) 80%,
-      oklch(0.7 0.17 180) 100%
+      oklch(0.55 0.14 95) 0%,
+      oklch(0.6 0.12 80) 30%,
+      oklch(0.6 0.1 50) 60%,
+      oklch(0.58 0.12 70) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: oklch(0.65 0.22 280); /* Fallback color for dark mode */
+    color: oklch(0.55 0.14 95); /* Fallback color for dark mode */
   }
 
   @supports not (-webkit-background-clip: text) {
     .dark a {
-      color: oklch(0.65 0.22 280);
+      color: oklch(0.55 0.14 95);
       background: none;
-      -webkit-text-fill-color: oklch(0.65 0.22 280);
+      -webkit-text-fill-color: oklch(0.55 0.14 95);
     }
   }
 
@@ -750,7 +755,7 @@
   .glass-hover {
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
+    transition-duration: 150ms;
   }
 
   .glass-hover:hover {
@@ -801,37 +806,34 @@
     color: var(--muted-foreground);
   }
 
-  /* Primary Gradient - Purple to Violet to Emerald to Teal to Cyan */
+  /* Primary Gradient - Military: Olive to Khaki to Brown */
   .bg-primary-gradient {
     background: linear-gradient(
       135deg,
-      oklch(0.55 0.2 280) 0%,
-      oklch(0.57 0.19 270) 20%,
-      oklch(0.55 0.15 160) 60%,
-      oklch(0.58 0.16 170) 80%,
-      oklch(0.6 0.17 180) 100%
+      oklch(0.45 0.12 95) 0%,
+      oklch(0.5 0.1 80) 30%,
+      oklch(0.5 0.08 50) 60%,
+      oklch(0.48 0.1 70) 100%
     );
   }
 
   .dark .bg-primary-gradient {
     background: linear-gradient(
       135deg,
-      oklch(0.65 0.22 280) 0%,
-      oklch(0.67 0.21 270) 20%,
-      oklch(0.65 0.15 160) 60%,
-      oklch(0.68 0.16 170) 80%,
-      oklch(0.7 0.17 180) 100%
+      oklch(0.55 0.14 95) 0%,
+      oklch(0.6 0.12 80) 30%,
+      oklch(0.6 0.1 50) 60%,
+      oklch(0.58 0.12 70) 100%
     );
   }
 
   .bg-primary-gradient-hover {
     background: linear-gradient(
       135deg,
-      oklch(0.55 0.2 280) 0%,
-      oklch(0.57 0.19 270) 20%,
-      oklch(0.55 0.15 160) 60%,
-      oklch(0.58 0.16 170) 80%,
-      oklch(0.6 0.17 180) 100%
+      oklch(0.45 0.12 95) 0%,
+      oklch(0.5 0.1 80) 30%,
+      oklch(0.5 0.08 50) 60%,
+      oklch(0.48 0.1 70) 100%
     );
     transition: all 0.3s ease;
   }
@@ -839,33 +841,30 @@
   .bg-primary-gradient-hover:hover {
     background: linear-gradient(
       135deg,
-      oklch(0.5 0.2 280) 0%,
-      oklch(0.52 0.19 270) 20%,
-      oklch(0.5 0.15 160) 60%,
-      oklch(0.53 0.16 170) 80%,
-      oklch(0.55 0.17 180) 100%
+      oklch(0.4 0.12 95) 0%,
+      oklch(0.45 0.1 80) 30%,
+      oklch(0.45 0.08 50) 60%,
+      oklch(0.43 0.1 70) 100%
     );
   }
 
   .dark .bg-primary-gradient-hover {
     background: linear-gradient(
       135deg,
-      oklch(0.65 0.22 280) 0%,
-      oklch(0.67 0.21 270) 20%,
-      oklch(0.65 0.15 160) 60%,
-      oklch(0.68 0.16 170) 80%,
-      oklch(0.7 0.17 180) 100%
+      oklch(0.55 0.14 95) 0%,
+      oklch(0.6 0.12 80) 30%,
+      oklch(0.6 0.1 50) 60%,
+      oklch(0.58 0.12 70) 100%
     );
   }
 
   .dark .bg-primary-gradient-hover:hover {
     background: linear-gradient(
       135deg,
-      oklch(0.6 0.22 280) 0%,
-      oklch(0.62 0.21 270) 20%,
-      oklch(0.6 0.15 160) 60%,
-      oklch(0.63 0.16 170) 80%,
-      oklch(0.65 0.17 180) 100%
+      oklch(0.5 0.14 95) 0%,
+      oklch(0.55 0.12 80) 30%,
+      oklch(0.55 0.1 50) 60%,
+      oklch(0.53 0.12 70) 100%
     );
   }
 
@@ -874,45 +873,43 @@
     position: relative;
     background: linear-gradient(
       135deg,
-      oklch(0.55 0.2 280) 0%,
-      oklch(0.57 0.19 270) 20%,
-      oklch(0.55 0.15 160) 60%,
-      oklch(0.58 0.16 170) 80%,
-      oklch(0.6 0.17 180) 100%
+      oklch(0.45 0.12 95) 0%,
+      oklch(0.5 0.1 80) 30%,
+      oklch(0.5 0.08 50) 60%,
+      oklch(0.48 0.1 70) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: oklch(0.55 0.2 280); /* Fallback color */
+    color: oklch(0.45 0.12 95); /* Fallback color */
     display: inline-block;
   }
 
   .dark .text-primary-gradient {
     background: linear-gradient(
       135deg,
-      oklch(0.65 0.22 280) 0%,
-      oklch(0.67 0.21 270) 20%,
-      oklch(0.65 0.15 160) 60%,
-      oklch(0.68 0.16 170) 80%,
-      oklch(0.7 0.17 180) 100%
+      oklch(0.55 0.14 95) 0%,
+      oklch(0.6 0.12 80) 30%,
+      oklch(0.6 0.1 50) 60%,
+      oklch(0.58 0.12 70) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: oklch(0.65 0.22 280); /* Fallback color for dark mode */
+    color: oklch(0.55 0.14 95); /* Fallback color for dark mode */
   }
 
   /* Fallback for browsers that don't support background-clip */
   @supports not (-webkit-background-clip: text) {
     .text-primary-gradient {
-      color: oklch(0.55 0.2 280);
+      color: oklch(0.45 0.12 95);
       background: none;
-      -webkit-text-fill-color: oklch(0.55 0.2 280);
+      -webkit-text-fill-color: oklch(0.45 0.12 95);
     }
     .dark .text-primary-gradient {
-      color: oklch(0.65 0.22 280);
+      color: oklch(0.55 0.14 95);
       background: none;
-      -webkit-text-fill-color: oklch(0.65 0.22 280);
+      -webkit-text-fill-color: oklch(0.55 0.14 95);
     }
   }
 
@@ -923,11 +920,10 @@
       linear-gradient(var(--background), var(--background)) padding-box,
       linear-gradient(
           135deg,
-          oklch(0.55 0.2 280) 0%,
-          oklch(0.57 0.19 270) 20%,
-          oklch(0.55 0.15 160) 60%,
-          oklch(0.58 0.16 170) 80%,
-          oklch(0.6 0.17 180) 100%
+          oklch(0.45 0.12 95) 0%,
+          oklch(0.5 0.1 80) 30%,
+          oklch(0.5 0.08 50) 60%,
+          oklch(0.48 0.1 70) 100%
         )
         border-box;
   }
@@ -937,11 +933,10 @@
       linear-gradient(var(--background), var(--background)) padding-box,
       linear-gradient(
           135deg,
-          oklch(0.65 0.22 280) 0%,
-          oklch(0.67 0.21 270) 20%,
-          oklch(0.65 0.15 160) 60%,
-          oklch(0.68 0.16 170) 80%,
-          oklch(0.7 0.17 180) 100%
+          oklch(0.55 0.14 95) 0%,
+          oklch(0.6 0.12 80) 30%,
+          oklch(0.6 0.1 50) 60%,
+          oklch(0.58 0.12 70) 100%
         )
         border-box;
   }
@@ -955,7 +950,7 @@
   animation: gradient-move 15s ease infinite;
 }
 
-/* Colorful mouse hover effect for cards */
+/* Military-themed mouse hover effect for cards */
 .card-hover-effect {
   position: relative;
   transition: all 0.3s ease;
@@ -975,11 +970,11 @@
   border-radius: inherit;
   background: radial-gradient(
     circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(139, 92, 246, 0.25) 0%,
-    rgba(124, 58, 237, 0.18) 15%,
-    rgba(59, 130, 246, 0.12) 35%,
-    rgba(16, 185, 129, 0.08) 55%,
-    rgba(236, 72, 153, 0.06) 75%,
+    rgba(101, 120, 50, 0.2) 0%,
+    rgba(120, 100, 60, 0.15) 15%,
+    rgba(90, 80, 50, 0.1) 35%,
+    rgba(70, 90, 100, 0.08) 55%,
+    rgba(100, 90, 70, 0.06) 75%,
     transparent 100%
   );
 }
@@ -993,26 +988,26 @@
   z-index: 1;
 }
 
-/* Enhanced colorful glow effect on hover */
+/* Enhanced military-themed glow effect on hover */
 .card-hover-effect:hover {
-  border-color: rgba(139, 92, 246, 0.4);
+  border-color: rgba(101, 120, 50, 0.4);
   box-shadow:
-    0 0 25px rgba(139, 92, 246, 0.15),
-    0 0 45px rgba(124, 58, 237, 0.12),
-    0 0 65px rgba(59, 130, 246, 0.08),
-    0 0 80px rgba(16, 185, 129, 0.05);
+    0 0 25px rgba(101, 120, 50, 0.12),
+    0 0 45px rgba(120, 100, 60, 0.1),
+    0 0 65px rgba(90, 80, 50, 0.08),
+    0 0 80px rgba(70, 90, 100, 0.05);
 }
 
 .dark .card-hover-effect:hover {
-  border-color: rgba(139, 92, 246, 0.5);
+  border-color: rgba(120, 140, 60, 0.5);
   box-shadow:
-    0 0 35px rgba(139, 92, 246, 0.2),
-    0 0 55px rgba(124, 58, 237, 0.15),
-    0 0 75px rgba(59, 130, 246, 0.1),
-    0 0 90px rgba(16, 185, 129, 0.08);
+    0 0 35px rgba(120, 140, 60, 0.18),
+    0 0 55px rgba(140, 120, 70, 0.15),
+    0 0 75px rgba(110, 100, 60, 0.12),
+    0 0 90px rgba(90, 110, 120, 0.08);
 }
 
-/* Additional animated gradient overlay for extra color */
+/* Additional animated gradient overlay with military colors */
 .card-hover-effect::after {
   content: '';
   position: absolute;
@@ -1027,17 +1022,17 @@
   border-radius: inherit;
   background: linear-gradient(
     135deg,
-    rgba(139, 92, 246, 0.15) 0%,
-    rgba(124, 58, 237, 0.12) 20%,
-    rgba(59, 130, 246, 0.1) 40%,
-    rgba(16, 185, 129, 0.08) 60%,
-    rgba(236, 72, 153, 0.06) 80%,
-    rgba(139, 92, 246, 0.15) 100%
+    rgba(101, 120, 50, 0.12) 0%,
+    rgba(120, 100, 60, 0.1) 20%,
+    rgba(90, 80, 50, 0.08) 40%,
+    rgba(70, 90, 100, 0.06) 60%,
+    rgba(100, 90, 70, 0.05) 80%,
+    rgba(101, 120, 50, 0.12) 100%
   );
   background-size: 200% 200%;
   animation: gradient-move 8s ease infinite;
 }
 
 .card-hover-effect:hover::after {
-  opacity: 0.3;
+  opacity: 0.25;
 }

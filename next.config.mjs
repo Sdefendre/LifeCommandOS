@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    optimizePackageImports: ['framer-motion'],
+    optimizePackageImports: ['framer-motion', 'lucide-react', '@react-three/fiber', 'three'],
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'],
+    } : false,
   },
   eslint: {
     ignoreDuringBuilds: true,
@@ -28,6 +33,7 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  productionBrowserSourceMaps: false,
   async headers() {
     return [
       {
@@ -40,6 +46,12 @@ const nextConfig = {
       },
       {
         source: '/:static*{.png,.jpg,.jpeg,.gif,.svg,.webp,.avif,.css,.js,.woff,.woff2}',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
+        source: '/_next/static/:path*',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],

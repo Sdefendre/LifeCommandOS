@@ -81,7 +81,7 @@ export function LandingRoadmap() {
                 {items.map((item) => (
                   <Card
                     key={item.id}
-                    className="relative overflow-hidden border-l-4 glass hover:shadow-xl hover:bg-white/15 dark:hover:bg-black/15 transition-all duration-300 h-full flex flex-col"
+                    className="relative overflow-hidden border-l-4 glass hover:shadow-xl hover:bg-white/15 dark:hover:bg-black/15 transition-all duration-150 h-full flex flex-col"
                   >
                     {/* Status Indicator Stripe */}
                     <div

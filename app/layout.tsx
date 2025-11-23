@@ -4,27 +4,32 @@ import { ThemeColorMeta } from '@/components/theme-color-meta'
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import { ScrollToTop } from '@/components/ScrollToTop'
 import { SkipLink } from '@/components/SkipLink'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
-import { ChatFloatingButton } from '@/components/ChatFloatingButton'
+import { ClientOnlyComponents } from '@/components/ClientOnlyComponents'
 import './globals.css'
 
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+  preload: true,
+  adjustFontFallback: true,
 })
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-playfair',
+  preload: false, // Defer serif font as it's less critical
+  adjustFontFallback: true,
 })
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
+  preload: false, // Defer mono font as it's less critical
+  adjustFontFallback: true,
 })
 
 export const metadata: Metadata = {
@@ -122,8 +127,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ThemeColorMeta />
           <ErrorBoundary>
             {children}
-            <ChatFloatingButton />
-            <ScrollToTop />
+            <ClientOnlyComponents />
             <Analytics />
           </ErrorBoundary>
         </ThemeProvider>

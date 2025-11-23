@@ -2,29 +2,26 @@ import { SiteHeader } from '@/components/SiteHeader'
 import { LandingFooter } from '@/components/landing/LandingFooter'
 import { AIAgentChat } from '@/components/AIAgentChat'
 import { VoiceAgent } from '@/components/VoiceAgent'
-import { SubtleThreeBackground } from '@/components/SubtleThreeBackground'
+import { SubtleThreeBackgroundWrapper } from '@/components/SubtleThreeBackgroundWrapper'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Medal, MessageSquare, Shield } from 'lucide-react'
 
 export const metadata = {
-  title: 'AI Benefits Navigator - Life Command OS',
-  description:
-    'Chat with our AI agent about VA benefits, disability claims, and transition resources.',
+  title: 'Command - Life Command OS',
+  description: 'Chat with Command about VA benefits, disability claims, and transition resources.',
 }
 
 export default function AIAgentPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
-      <SubtleThreeBackground />
+      <SubtleThreeBackgroundWrapper />
       <SiteHeader />
 
       <main className="flex-1 container mx-auto px-3 sm:px-4 py-8 sm:py-12 max-w-6xl">
         <div className="max-w-3xl mx-auto mb-8">
           <div className="text-center mb-8">
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 sm:mb-4">
-              AI Benefits Navigator
-            </h1>
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 sm:mb-4">Command</h1>
             <p className="text-lg sm:text-xl text-muted-foreground">
               Get instant answers about VA benefits, disability claims, C&P exams, and your DD-214.
               Built by veterans, for veterans.

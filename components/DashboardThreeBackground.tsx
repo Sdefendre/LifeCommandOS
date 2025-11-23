@@ -178,8 +178,8 @@ function DashboardAnimatedLight() {
 function DashboardScene() {
   const shouldReduceMotion = useReducedMotion()
 
-  // Moderate number of particles for dashboard
-  const particles = Array.from({ length: shouldReduceMotion ? 20 : 60 }, () => {
+  // Reduced particles for better performance
+  const particles = Array.from({ length: shouldReduceMotion ? 15 : 40 }, () => {
     const colors = ['#4f46e5', '#6366f1', '#7c3aed', '#3b82f6']
     return {
       position: [
@@ -191,8 +191,8 @@ function DashboardScene() {
     }
   })
 
-  // Moderate number of shapes
-  const shapes = Array.from({ length: shouldReduceMotion ? 3 : 6 }, () => {
+  // Reduced shapes for better performance
+  const shapes = Array.from({ length: shouldReduceMotion ? 2 : 4 }, () => {
     const colors = ['#4f46e5', '#6366f1', '#7c3aed']
     const shapeTypes: ('box' | 'tetrahedron' | 'octahedron')[] = [
       'box',
@@ -239,6 +239,17 @@ function DashboardScene() {
 // Dashboard Three.js background
 export function DashboardThreeBackground() {
   const shouldReduceMotion = useReducedMotion()
+  const [isVisible, setIsVisible] = useState(true)
+
+  useEffect(() => {
+    // Pause animations when page is not visible
+    const handleVisibilityChange = () => {
+      setIsVisible(!document.hidden)
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
+  }, [])
 
   if (shouldReduceMotion) {
     return (
@@ -250,9 +261,17 @@ export function DashboardThreeBackground() {
     <div className="fixed inset-0 -z-10 opacity-25 pointer-events-none">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 75 }}
-        gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
+        gl={{
+          alpha: true,
+          antialias: false, // Disable antialiasing for better performance
+          powerPreference: 'high-performance',
+          stencil: false,
+          depth: false,
+        }}
         style={{ background: 'transparent' }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]} // Reduce DPR for better performance
+        frameloop={isVisible ? 'always' : 'never'} // Pause when not visible
+        performance={{ min: 0.5 }} // Allow frame drops for better scroll performance
       >
         <DashboardScene />
       </Canvas>

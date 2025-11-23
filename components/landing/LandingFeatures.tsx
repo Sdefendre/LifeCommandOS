@@ -6,46 +6,46 @@ import { MessageSquare, GraduationCap, Target, Map, Users, Lock } from 'lucide-r
 
 const features = [
   {
-    title: 'AI Benefits Navigator',
+    title: 'Command',
     description:
-      'Chat with our AI agent about VA benefits, disability claims, and transition resources. Get instant answers to questions about your DD-214, C&P exams, and service-connected ratings.',
+      'Chat with Command about VA benefits, disability claims, and transition resources. Get instant answers to questions about your DD-214, C&P exams, and service-connected ratings.',
     icon: MessageSquare,
-    gradient: 'from-indigo-500 to-blue-500',
+    gradient: 'from-[#506464] to-[#657832]',
   },
   {
     title: 'Educational Pathways',
     description:
       'Structured learning modules on financial literacy for veterans. Master your benefits, understand your rating, and build the financial foundation you deserve.',
     icon: GraduationCap,
-    gradient: 'from-violet-500 to-purple-500',
+    gradient: 'from-[#657832] to-[#78823c]',
   },
   {
     title: 'Claim Strategy Builder',
     description:
       'Tools to understand the service-connected disability process. Learn how to navigate the VA system and maximize your benefits (premium course reveals the complete strategy).',
     icon: Target,
-    gradient: 'from-blue-500 to-cyan-500',
+    gradient: 'from-[#506464] to-[#657832]',
   },
   {
     title: 'Transition Roadmap',
     description:
       'Step-by-step guidance from EAS to financial stability. Navigate the confusing transition period with clear, actionable steps tailored to your situation.',
     icon: Map,
-    gradient: 'from-indigo-500 to-violet-500',
+    gradient: 'from-[#785a3c] to-[#b4a078]',
   },
   {
     title: 'Community Access',
     description:
       'Connect with other veterans on the same journey. Share experiences, ask questions, and learn from those who&apos;ve successfully navigated the system.',
     icon: Users,
-    gradient: 'from-purple-500 to-pink-500',
+    gradient: 'from-[#657832] to-[#b4a078]',
   },
   {
     title: 'Secure & Private',
     description:
       'Bank-level encryption protects your data. Veteran-owned and operated. Your information stays private and secure, always under your control.',
     icon: Lock,
-    gradient: 'from-cyan-500 to-blue-500',
+    gradient: 'from-[#785a3c] to-[#506464]',
   },
 ]
 
@@ -82,18 +82,18 @@ export function LandingFeatures() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="h-full border-white/20 dark:border-white/10 glass hover:bg-white/20 dark:hover:bg-white/10 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default shadow-lg relative overflow-hidden">
+              <Card className="h-full border-white/20 dark:border-white/10 glass hover:bg-white/20 dark:hover:bg-white/10 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-150 group cursor-default shadow-lg relative overflow-hidden">
                 {/* Gradient background on hover */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 -z-10`}
+                  className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-150 -z-10`}
                 />
                 <CardHeader>
                   <div
-                    className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-4 text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}
+                    className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-4 text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-150 shadow-lg`}
                   >
                     <feature.icon className="h-7 w-7" />
                   </div>
-                  <CardTitle className="text-xl group-hover:text-primary-gradient transition-colors duration-300">
+                  <CardTitle className="text-xl group-hover:text-primary-gradient transition-colors duration-150">
                     {feature.title}
                   </CardTitle>
                 </CardHeader>

@@ -1,6 +1,6 @@
 # AI Agent Setup Guide
 
-This guide will help you set up the AI Benefits Navigator chat feature with full functionality.
+This guide will help you set up the AI Agent chat feature for Life Command OS with full functionality.
 
 ## Prerequisites
 

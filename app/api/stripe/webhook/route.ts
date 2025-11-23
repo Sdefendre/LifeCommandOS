@@ -2,9 +2,16 @@ import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { getSupabaseClient } from '@/lib/supabase'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2024-12-18.acacia',
-})
+// Lazy initialization to avoid build-time errors
+function getStripeClient(): Stripe {
+  const secretKey = process.env.STRIPE_SECRET_KEY
+  if (!secretKey) {
+    throw new Error('STRIPE_SECRET_KEY is not configured')
+  }
+  return new Stripe(secretKey, {
+    apiVersion: '2024-12-18.acacia',
+  })
+}
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || ''
 
@@ -19,6 +26,7 @@ export async function POST(request: NextRequest) {
   let event: Stripe.Event
 
   try {
+    const stripe = getStripeClient()
     event = stripe.webhooks.constructEvent(body, signature, webhookSecret)
   } catch (err) {
     console.error('Webhook signature verification failed:', err)

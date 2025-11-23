@@ -41,7 +41,7 @@ export function ChatDialog({ trigger }: ChatDialogProps) {
         {trigger || (
           <button
             className="flex items-center justify-center rounded-full bg-primary text-primary-foreground p-3 shadow-lg hover:shadow-xl transition-all"
-            aria-label="Chat with AI Benefits Navigator"
+            aria-label="Chat with Command"
           >
             <MessageCircle className="size-5" />
           </button>
@@ -55,7 +55,7 @@ export function ChatDialog({ trigger }: ChatDialogProps) {
         }}
       >
         <DialogHeader className="px-6 pt-6 pb-4 border-b shrink-0">
-          <DialogTitle>AI Benefits Navigator</DialogTitle>
+          <DialogTitle>Command</DialogTitle>
           <DialogDescription>
             Get instant answers about VA benefits, disability claims, C&P exams, and your DD-214.
             Built by veterans, for veterans.

@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 import { SiteHeader } from '@/components/SiteHeader'
 import { LandingFooter } from '@/components/landing/LandingFooter'
-import { SubtleThreeBackground } from '@/components/SubtleThreeBackground'
+import { SubtleThreeBackgroundWrapper } from '@/components/SubtleThreeBackgroundWrapper'
 import { CoursePlayer } from '@/components/CoursePlayer'
 import { courseModules } from '@/components/CourseContent'
 import { checkCourseAccess } from '@/lib/supabase'
@@ -37,7 +37,7 @@ export default async function CourseContentPage({ searchParams }: CourseContentP
   if (!hasAccess) {
     return (
       <div className="min-h-screen bg-background flex flex-col relative">
-        <SubtleThreeBackground />
+        <SubtleThreeBackgroundWrapper />
         <SiteHeader />
 
         <main className="flex-1 container mx-auto px-3 sm:px-4 py-8 sm:py-12 max-w-4xl">
@@ -64,7 +64,7 @@ export default async function CourseContentPage({ searchParams }: CourseContentP
 
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
-      <SubtleThreeBackground />
+      <SubtleThreeBackgroundWrapper />
       <SiteHeader />
 
       <main className="flex-1 container mx-auto px-3 sm:px-4 py-8 sm:py-12 max-w-7xl">

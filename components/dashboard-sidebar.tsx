@@ -16,7 +16,7 @@ import { cn } from '@/lib/utils'
 
 const sidebarItems = [
   {
-    title: 'Overview',
+    title: 'BattleStation',
     href: '/dashboard',
     icon: LayoutDashboard,
   },

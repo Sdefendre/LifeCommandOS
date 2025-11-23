@@ -1,7 +1,4 @@
-import { SiteHeader } from '@/components/SiteHeader'
-import { LandingFooter } from '@/components/landing/LandingFooter'
-import { Roadmap } from '@/components/Roadmap'
-import { SubtleThreeBackground } from '@/components/SubtleThreeBackground'
+import { redirect } from 'next/navigation'
 
 export const metadata = {
   title: 'Product Roadmap - Life Command OS',
@@ -9,27 +6,5 @@ export const metadata = {
 }
 
 export default function RoadmapPage() {
-  return (
-    <div className="min-h-screen bg-background flex flex-col relative">
-      <SubtleThreeBackground />
-      <SiteHeader />
-
-      <main className="flex-1 container mx-auto px-3 sm:px-4 py-8 sm:py-12 max-w-6xl">
-        <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-16">
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 sm:mb-4 bg-gradient-to-r from-red-600 via-orange-600 to-amber-500 bg-clip-text text-transparent">
-            Product Roadmap
-          </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground">
-            Building intelligent systems to help you break out of survival mode and take command of
-            your future. Every feature is designed to move you from reactive to proactive, from
-            surviving to thriving.
-          </p>
-        </div>
-
-        <Roadmap />
-      </main>
-
-      <LandingFooter />
-    </div>
-  )
+  redirect('/features#roadmap')
 }

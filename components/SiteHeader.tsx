@@ -2,11 +2,10 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Menu, X, MessageSquare } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import { ThemeToggle } from '@/components/theme-toggle'
-import { FeedbackDialog } from '@/components/FeedbackDialog'
 
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -14,9 +13,7 @@ export function SiteHeader() {
   return (
     <>
       <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4, ease: 'easeOut' }}
+        initial={false}
         className="sticky top-0 z-50 w-full border-b border-border/80 dark:border-border/60 bg-background/95 dark:bg-background/95 backdrop-blur-xl relative"
         style={{
           paddingTop: 'env(safe-area-inset-top, 0px)',
@@ -29,14 +26,14 @@ export function SiteHeader() {
             className="flex items-center gap-1.5 sm:gap-2 font-semibold text-base sm:text-lg tracking-tight group no-underline"
           >
             <div className="w-4 h-4 sm:w-5 sm:h-5 bg-gradient-to-br from-primary via-primary/90 to-primary/80 rounded-sm shadow-md group-hover:shadow-lg transition-shadow"></div>
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 dark:from-emerald-500 dark:via-teal-500 dark:to-emerald-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#657832] via-[#78823c] to-[#657832] dark:from-[#78823c] dark:via-[#8a9444] dark:to-[#78823c] bg-clip-text text-transparent">
               Life Command OS
             </span>
           </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-medium">
-            <Link href="/#features" className="hover:text-primary transition-colors no-underline">
+            <Link href="/features" className="hover:text-primary transition-colors no-underline">
               Features
             </Link>
             <Link href="/#pricing" className="hover:text-primary transition-colors no-underline">
@@ -47,16 +44,9 @@ export function SiteHeader() {
             </Link>
             <Link
               href="/ai-agent"
-              className="flex items-center gap-1.5 hover:text-primary transition-colors no-underline font-medium"
+              className="hover:text-primary transition-colors no-underline font-medium"
             >
-              <MessageSquare className="h-4 w-4" />
-              AI Agent
-            </Link>
-            <Link href="/roadmap" className="hover:text-primary transition-colors no-underline">
-              Roadmap
-            </Link>
-            <Link href="/changelog" className="hover:text-primary transition-colors no-underline">
-              Changelog
+              Command
             </Link>
             <Link
               href="/dashboard"
@@ -64,13 +54,11 @@ export function SiteHeader() {
             >
               Dashboard
             </Link>
-            <FeedbackDialog />
             <ThemeToggle />
           </nav>
 
           {/* Mobile Nav Toggle */}
           <div className="flex items-center gap-1.5 sm:gap-2 md:hidden">
-            <FeedbackDialog />
             <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -84,17 +72,18 @@ export function SiteHeader() {
       </motion.header>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
             className="md:hidden border-b border-border/80 dark:border-border/60 bg-background/95 dark:bg-background/95 backdrop-blur-xl overflow-hidden fixed top-14 sm:top-16 left-0 right-0 z-40"
           >
             <nav className="flex flex-col p-4 space-y-3 text-sm font-medium">
               <Link
-                href="/#features"
+                href="/features"
                 className="py-2.5 border-b border-border/50 active:bg-accent/50 rounded-sm px-2 -mx-2 no-underline"
                 onClick={() => setMobileMenuOpen(false)}
               >
@@ -116,25 +105,10 @@ export function SiteHeader() {
               </Link>
               <Link
                 href="/ai-agent"
-                className="py-2.5 border-b border-border/50 active:bg-accent/50 rounded-sm px-2 -mx-2 no-underline flex items-center gap-2 font-medium"
+                className="py-2.5 border-b border-border/50 active:bg-accent/50 rounded-sm px-2 -mx-2 no-underline font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <MessageSquare className="h-4 w-4" />
-                AI Agent
-              </Link>
-              <Link
-                href="/roadmap"
-                className="py-2.5 border-b border-border/50 active:bg-accent/50 rounded-sm px-2 -mx-2 no-underline"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Roadmap
-              </Link>
-              <Link
-                href="/changelog"
-                className="py-2.5 border-b border-border/50 active:bg-accent/50 rounded-sm px-2 -mx-2 no-underline"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Changelog
+                Command
               </Link>
               <Link
                 href="/dashboard"

@@ -78,7 +78,7 @@ export function RecentTransactions() {
                       className={cn(
                         'rounded-lg bg-transparent',
                         transaction.type === 'income'
-                          ? 'text-emerald-500'
+                          ? 'text-[#657832]'
                           : 'text-muted-foreground group-hover:text-primary transition-colors'
                       )}
                     >
@@ -92,7 +92,7 @@ export function RecentTransactions() {
                   <div
                     className={cn(
                       'font-semibold text-sm tabular-nums',
-                      transaction.type === 'income' ? 'text-emerald-500' : ''
+                      transaction.type === 'income' ? 'text-[#657832]' : ''
                     )}
                   >
                     {transaction.type === 'income' ? '+' : ''}$

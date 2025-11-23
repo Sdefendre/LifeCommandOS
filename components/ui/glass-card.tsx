@@ -12,7 +12,7 @@ const GlassCard = React.forwardRef<HTMLDivElement, GlassCardProps>(
       <div
         ref={ref}
         className={cn(
-          'glass rounded-2xl transition-all duration-300',
+          'glass rounded-2xl transition-all duration-150',
           variant === 'hover' && 'glass-hover hover:scale-[1.02] cursor-pointer',
           variant === 'heavy' && 'bg-white/20 dark:bg-black/20 backdrop-blur-2xl border-white/30',
           className

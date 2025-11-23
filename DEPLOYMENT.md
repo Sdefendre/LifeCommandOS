@@ -4,13 +4,17 @@
 
 ### 1. Content Review
 
-- [ ] Update company information in `SITE` constant (name, email, tagline, mission)
-- [ ] Review and update service categories and pricing in `SERVICES`
-- [ ] Add real project URLs, descriptions, and metrics to `PROJECTS`
+- [ ] Update site information in `constants/site.ts` (name, email, tagline, mission)
+- [ ] Review and update service categories and pricing in `constants/services.ts`
+- [ ] Add real project URLs, descriptions, and metrics to `constants/projects.ts`
 - [ ] Replace placeholder images with actual assets
 - [ ] Update testimonials with real client quotes
 - [ ] Verify contact information and email links are correct
 - [ ] Review blog posts and ensure content is current
+- [ ] Verify AI agent configuration and knowledge base content
+- [ ] Check course content and Stripe integration
+- [ ] Test dashboard functionality and Google Calendar integration
+- [ ] Verify features page displays correctly with roadmap and changelog
 
 ### 2. SEO & Performance
 
@@ -23,7 +27,7 @@
 
 ### 3. Technical Setup
 
-- [ ] Test all pages load correctly (homepage, services, work, blog, about)
+- [ ] Test all pages load correctly (homepage, dashboard, ai-agent, course, blog, about, work, features)
 - [ ] Verify responsive design on mobile/tablet/desktop
 - [ ] Test service category tabs work with keyboard navigation (arrow keys, Home/End)
 - [ ] Test all external links open in new tabs
@@ -31,6 +35,10 @@
 - [ ] Validate accessibility with keyboard navigation and screen readers
 - [ ] Check ARIA attributes and semantic HTML structure
 - [ ] Validate HTML and check for console errors
+- [ ] Test AI agent chat functionality
+- [ ] Verify dashboard routes and components
+- [ ] Test course enrollment and Stripe integration
+- [ ] Verify Google Calendar integration (if configured)
 
 ### 4. Analytics Setup
 
@@ -78,13 +86,17 @@
 
 ### 1. Verification
 
-- [ ] Visit live site and test all pages (homepage, services, work, blog, about)
+- [ ] Visit live site and test all pages (homepage, dashboard, ai-agent, course, blog, about, work, features)
 - [ ] Check mobile responsiveness across all pages
 - [ ] Test service category tabs and keyboard navigation
 - [ ] Verify email links and contact information work
 - [ ] Test social media links and external project links
 - [ ] Confirm favicon displays correctly
 - [ ] Validate accessibility features and keyboard navigation
+- [ ] Test AI agent chat with different models
+- [ ] Verify dashboard functionality and data visualization
+- [ ] Test course enrollment flow
+- [ ] Verify Google Calendar integration (if configured)
 
 ### 2. SEO Setup
 
@@ -104,10 +116,22 @@
 
 ## Environment Variables
 
-No environment variables required for basic deployment. Optional additions:
+### Required for Full Functionality
 
-- `GOOGLE_ANALYTICS_ID`: For analytics tracking
-- `NEXT_PUBLIC_CONTACT_FORM_URL`: If adding contact form backend
+- `OPENAI_API_KEY`: Required for AI agent chat functionality
+- `NEXT_PUBLIC_SUPABASE_URL`: Required for database features (rate limiting, knowledge base, conversations)
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Required for Supabase client
+- `SUPABASE_SERVICE_ROLE_KEY`: Required for server-side operations
+
+### Optional
+
+- `XAI_API_KEY`: For Grok model support in AI agent
+- `GOOGLE_CALENDAR_API_KEY`: For calendar integration in dashboard
+- `GOOGLE_CALENDAR_ID`: Calendar ID (defaults to "primary")
+- `STRIPE_SECRET_KEY`: For course payment processing
+- `STRIPE_WEBHOOK_SECRET`: For Stripe webhook verification
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`: For newsletter email functionality
+- `NEXT_PUBLIC_SITE_URL`: For absolute URLs in sitemap/robots (defaults to production URL)
 
 ## Troubleshooting
 

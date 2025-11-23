@@ -33,7 +33,7 @@ import {
 
 const sidebarItems = [
   {
-    title: 'Overview',
+    title: 'BattleStation',
     href: '/dashboard',
     icon: LayoutDashboard,
   },

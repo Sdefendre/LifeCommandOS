@@ -25,10 +25,13 @@ This document provides context and guidelines for AI agents working on the Life 
 
 - `app/`: Routes and pages.
   - `dashboard/`: Financial dashboard routes and layout.
-  - `api/`: API routes (calendar, newsletter, RSS).
+  - `features/`: Features page with roadmap and changelog.
+  - `api/`: API routes (calendar, newsletter, RSS, ai-agent, stripe).
 - `components/`: Reusable UI components.
   - `ui/`: Shadcn UI component library (Avatar, Badge, Button, Card, Chart, Dialog, etc.).
   - `dashboard-*.tsx`: Dashboard-specific components (sidebar, header, skeletons).
+  - `ClientOnlyComponents.tsx`: Lazy-loaded client-only components wrapper.
+  - `*Background*.tsx`: Three.js background components with wrappers.
 - `constants/`: Static content (text, pricing, blog posts) - **Edit these to change site copy.**
 - `blog_posts/`: Long-form content for the blog.
 - `public/`: Static assets.
@@ -50,6 +53,10 @@ This document provides context and guidelines for AI agents working on the Life 
 
 - Favor **React Server Components (RSC)**.
 - Wrap client components in `<Suspense>` if they fetch data.
+- Use **Dynamic Imports** with `dynamic()` from Next.js for code splitting.
+- Use **Client-Only Components** wrapper (`ClientOnlyComponents.tsx`) for components requiring browser APIs.
+- Lazy load non-critical components with `ssr: false` to improve initial page load.
+- Use `dynamic()` imports with loading states for better UX during code splitting.
 
 ## 5. Common Commands
 

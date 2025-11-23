@@ -160,9 +160,9 @@ function AnimatedLight() {
 
   return (
     <>
-      <pointLight ref={lightRef} intensity={1} color="#4f46e5" />
-      <pointLight ref={lightRef2} intensity={0.5} color="#7c3aed" />
-      <pointLight ref={lightRef3} intensity={0.5} color="#6366f1" />
+      <pointLight ref={lightRef} intensity={1} color="#657832" />
+      <pointLight ref={lightRef2} intensity={0.5} color="#b4a078" />
+      <pointLight ref={lightRef3} intensity={0.5} color="#785a3c" />
       <ambientLight intensity={0.3} />
     </>
   )
@@ -172,9 +172,9 @@ function AnimatedLight() {
 function Scene() {
   const shouldReduceMotion = useReducedMotion()
 
-  // Create particles
-  const particles = Array.from({ length: shouldReduceMotion ? 20 : 80 }, (_, i) => {
-    const colors = ['#4f46e5', '#7c3aed', '#6366f1', '#3b82f6'] // Indigo, violet, indigo, blue
+  // Create particles - reduced count for better performance
+  const particles = Array.from({ length: shouldReduceMotion ? 15 : 50 }, (_, i) => {
+    const colors = ['#657832', '#b4a078', '#785a3c', '#506464'] // Olive green, khaki, brown, military blue
     return {
       position: [
         (Math.random() - 0.5) * 10,
@@ -185,9 +185,9 @@ function Scene() {
     }
   })
 
-  // Create geometric shapes
-  const shapes = Array.from({ length: shouldReduceMotion ? 3 : 8 }, (_, i) => {
-    const colors = ['#4f46e5', '#7c3aed', '#6366f1'] // Indigo, violet, blue
+  // Create geometric shapes - reduced count for better performance
+  const shapes = Array.from({ length: shouldReduceMotion ? 2 : 5 }, (_, i) => {
+    const colors = ['#657832', '#b4a078', '#785a3c'] // Olive green, khaki, brown
     const shapeTypes: ('box' | 'tetrahedron' | 'octahedron')[] = [
       'box',
       'tetrahedron',
@@ -233,6 +233,17 @@ function Scene() {
 // Main component
 export function ThreeBackground() {
   const shouldReduceMotion = useReducedMotion()
+  const [isVisible, setIsVisible] = useState(true)
+
+  useEffect(() => {
+    // Pause animations when page is not visible
+    const handleVisibilityChange = () => {
+      setIsVisible(!document.hidden)
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
+  }, [])
 
   if (shouldReduceMotion) {
     // Fallback to static gradient for users with reduced motion preference
@@ -245,9 +256,17 @@ export function ThreeBackground() {
     <div className="fixed inset-0 -z-10 opacity-40 pointer-events-none">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 75 }}
-        gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
+        gl={{
+          alpha: true,
+          antialias: false, // Disable antialiasing for better performance
+          powerPreference: 'high-performance',
+          stencil: false,
+          depth: false,
+        }}
         style={{ background: 'transparent' }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]} // Reduce DPR for better performance
+        frameloop={isVisible ? 'always' : 'never'} // Pause when not visible
+        performance={{ min: 0.5 }} // Allow frame drops for better scroll performance
       >
         <Scene />
       </Canvas>

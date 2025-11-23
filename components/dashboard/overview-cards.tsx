@@ -55,7 +55,7 @@ export function OverviewCards() {
     <>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {/* Total Balance */}
-        <Card className="glass hover:shadow-xl hover:-translate-y-1 hover:bg-white/15 dark:hover:bg-black/15 transition-all duration-300">
+        <Card className="glass hover:shadow-xl hover:-translate-y-1 hover:bg-white/15 dark:hover:bg-black/15 transition-all duration-150">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Total Assets
@@ -81,8 +81,8 @@ export function OverviewCards() {
               />
             </div>
             <div className="flex items-center text-xs text-muted-foreground mt-1">
-              <TrendingUp className="mr-1 h-3 w-3 text-emerald-500" />
-              <span className="text-emerald-500 font-medium mr-1">+2.5%</span>
+              <TrendingUp className="mr-1 h-3 w-3 text-[#657832]" />
+              <span className="text-[#657832] font-medium mr-1">+2.5%</span>
               from last month
             </div>
             <Button
@@ -97,7 +97,7 @@ export function OverviewCards() {
         </Card>
 
         {/* Monthly Spending */}
-        <Card className="glass hover:shadow-xl hover:-translate-y-1 hover:bg-white/15 dark:hover:bg-black/15 transition-all duration-300">
+        <Card className="glass hover:shadow-xl hover:-translate-y-1 hover:bg-white/15 dark:hover:bg-black/15 transition-all duration-150">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Monthly Expenditure
@@ -114,15 +114,15 @@ export function OverviewCards() {
               />
             </div>
             <div className="flex items-center text-xs text-muted-foreground mt-1">
-              <TrendingDown className="mr-1 h-3 w-3 text-emerald-500" />
-              <span className="text-emerald-500 font-medium mr-1">-4.1%</span>
+              <TrendingDown className="mr-1 h-3 w-3 text-[#657832]" />
+              <span className="text-[#657832] font-medium mr-1">-4.1%</span>
               from last month
             </div>
           </CardContent>
         </Card>
 
         {/* Budget Remaining */}
-        <Card className="glass hover:shadow-xl hover:-translate-y-1 hover:bg-white/15 dark:hover:bg-black/15 transition-all duration-300">
+        <Card className="glass hover:shadow-xl hover:-translate-y-1 hover:bg-white/15 dark:hover:bg-black/15 transition-all duration-150">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Available Budget
@@ -149,7 +149,7 @@ export function OverviewCards() {
         </Card>
 
         {/* Savings Goal */}
-        <Card className="glass hover:shadow-xl hover:-translate-y-1 hover:bg-white/15 dark:hover:bg-black/15 transition-all duration-300">
+        <Card className="glass hover:shadow-xl hover:-translate-y-1 hover:bg-white/15 dark:hover:bg-black/15 transition-all duration-150">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium text-muted-foreground">
               Savings Progress

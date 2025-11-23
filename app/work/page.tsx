@@ -7,7 +7,16 @@ import { SiteHeader } from '@/components/SiteHeader'
 import { PROJECTS } from '@/constants/projects'
 import { createFadeInUp, viewportOnce } from '@/lib/motion'
 import { SearchBar } from '@/components/SearchBar'
-import { SubtleThreeBackground } from '@/components/SubtleThreeBackground'
+import dynamic from 'next/dynamic'
+
+// Lazy load Three.js background to improve initial render
+const SubtleThreeBackground = dynamic(
+  () =>
+    import('@/components/SubtleThreeBackground').then((mod) => ({
+      default: mod.SubtleThreeBackground,
+    })),
+  { ssr: false }
+)
 
 export default function WorkPage() {
   return (

@@ -131,7 +131,7 @@ export default function BalancePage() {
       case 'savings':
         return 'text-teal-500'
       case 'credit':
-        return 'text-purple-500'
+        return 'text-blue-500'
       case 'investment':
         return 'text-orange-500'
       default:
@@ -146,7 +146,7 @@ export default function BalancePage() {
       case 'savings':
         return 'bg-teal-500/10'
       case 'credit':
-        return 'bg-purple-500/10'
+        return 'bg-blue-500/10'
       case 'investment':
         return 'bg-orange-500/10'
       default:

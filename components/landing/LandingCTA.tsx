@@ -57,7 +57,7 @@ export function LandingCTA() {
             <Link href="/dashboard">
               <Button
                 size="lg"
-                className="text-lg px-8 py-6 h-auto rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:scale-105 active:scale-95 transition-all duration-300 group relative overflow-hidden"
+                className="text-lg px-8 py-6 h-auto rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:scale-105 active:scale-95 transition-all duration-150 group relative overflow-hidden text-primary-foreground font-semibold"
               >
                 <span className="relative z-10 flex items-center">
                   Deploy System
@@ -67,7 +67,7 @@ export function LandingCTA() {
                   className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"
                   initial={{ x: '-100%' }}
                   whileHover={{ x: '100%' }}
-                  transition={{ duration: 0.6 }}
+                  transition={{ duration: 0.3 }}
                 />
               </Button>
             </Link>
@@ -76,7 +76,7 @@ export function LandingCTA() {
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-6 h-auto rounded-full glass hover:bg-white/20 dark:hover:bg-black/20 hover:scale-105 active:scale-95 transition-all duration-300 border-2 group"
+                className="text-lg px-8 py-6 h-auto rounded-full glass hover:bg-white/20 dark:hover:bg-black/20 hover:scale-105 active:scale-95 transition-all duration-150 border-2 border-primary/50 hover:border-primary group text-foreground font-semibold bg-background/80 dark:bg-background/60"
               >
                 <BookOpen className="mr-2 w-5 h-5 group-hover:rotate-6 transition-transform" />
                 Access Documentation
