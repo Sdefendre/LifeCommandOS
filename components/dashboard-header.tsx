@@ -2,19 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import {
-  LayoutDashboard,
-  CreditCard,
-  PieChart,
-  BarChart3,
-  PiggyBank,
-  Wallet,
-  Menu,
-  Bell,
-  Search,
-  Home,
-  Settings,
-} from 'lucide-react'
+import { LayoutDashboard, Menu, Bell, Search, Home, Settings } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
@@ -30,39 +18,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-
-const sidebarItems = [
-  {
-    title: 'BattleStation',
-    href: '/dashboard',
-    icon: LayoutDashboard,
-  },
-  {
-    title: 'Transactions',
-    href: '/dashboard/transactions',
-    icon: CreditCard,
-  },
-  {
-    title: 'Budgets',
-    href: '/dashboard/budgets',
-    icon: PieChart,
-  },
-  {
-    title: 'Reports',
-    href: '/dashboard/reports',
-    icon: BarChart3,
-  },
-  {
-    title: 'Savings',
-    href: '/dashboard/savings',
-    icon: PiggyBank,
-  },
-  {
-    title: 'Balance',
-    href: '/dashboard/balance',
-    icon: Wallet,
-  },
-]
+import { DASHBOARD_NAV_ITEMS } from '@/constants/navigation'
 
 export function DashboardHeader() {
   const pathname = usePathname()
@@ -108,7 +64,7 @@ export function DashboardHeader() {
               <div className="px-2 mb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                 Financial Operations
               </div>
-              {sidebarItems.map((item) => (
+              {DASHBOARD_NAV_ITEMS.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}

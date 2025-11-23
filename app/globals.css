@@ -259,7 +259,8 @@
     @apply border-border outline-ring/50;
   }
   html {
-    scroll-behavior: smooth;
+    /* Remove global smooth scroll to fix "slow" feeling and interference with native scroll */
+    /* scroll-behavior: smooth; */
     /* Improve base font size for better legibility */
     font-size: 17px;
     /* Ensure html has proper background */
@@ -271,15 +272,12 @@
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
-    /* GPU acceleration for scroll */
-    /* transform: translateZ(0); removed to fix position: fixed elements */
-    /* -webkit-transform: translateZ(0); removed to fix position: fixed elements */
   }
 
-  /* Optimize scroll performance for all scrollable elements */
-  * {
+  /* Remove generic scroll behavior inheritance */
+  /* * {
     scroll-behavior: inherit;
-  }
+  } */
 
   body {
     @apply bg-background text-foreground antialiased;
@@ -318,10 +316,10 @@
     z-index: 1;
     /* Ensure text is readable */
     color: var(--foreground);
-    /* Optimize scroll performance */
-    will-change: scroll-position;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+    /* Remove heavy compositing layers that can cause scroll chopiness */
+    /* will-change: scroll-position; */
+    /* transform: translateZ(0); */
+    /* -webkit-transform: translateZ(0); */
   }
 
   /* Ensure all text elements have proper color inheritance */

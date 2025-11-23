@@ -77,6 +77,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Support for nested bullet points and markdown formatting (bold, code, links)
   - Added to site navigation (header and mobile menu)
   - Included in sitemap for SEO
+- **Command Interface**: Dedicated AI assistance page for veterans (`/command`)
+  - Text chat and voice mode tabs for comprehensive VA support
+  - Integration with existing AI agent chat system
+  - Focus on VA benefits, claims, disability ratings, and transition support
+  - Responsive design with glassmorphism UI and background effects
+  - Secure, private interface for sensitive veteran information
+- **Changelog Component**: Reusable component for rendering changelog entries (`Changelog.tsx`)
+  - Markdown parsing and formatting for changelog items (bold, code, links)
+  - Support for nested bullet points and structured sections
+  - Icon integration for different changelog sections
+  - Responsive card-based layout with version badges and dates
+- **MarkdownRenderer Component**: Universal markdown rendering component (`MarkdownRenderer.tsx`)
+  - React-markdown integration with GitHub Flavored Markdown support
+  - Custom styling for all markdown elements (headings, lists, code blocks, tables)
+  - Tailwind CSS integration for consistent theming
+  - Responsive table rendering with horizontal scroll
+  - Accessible link handling with proper security attributes
+- **AI Constants**: Centralized AI model configuration (`constants/ai.ts`)
+  - Support for multiple AI models (GPT-5.1, GPT-4o, GPT-4o-mini, Grok variants)
+  - Model options with labels and descriptions for user selection
+  - Type-safe model selection with TypeScript interfaces
+- **Navigation Constants**: Centralized navigation configuration (`constants/navigation.ts`)
+  - Main site navigation links (Features, Pricing, Blog)
+  - Dashboard navigation items with icons for sidebar menu
+  - Type-safe navigation structure with Lucide React icons
 
 - **Dashboard System**: Comprehensive financial dashboard with sidebar navigation
   - Financial metrics cards (Balance, Spending, Budget, Savings)
