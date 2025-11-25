@@ -2,34 +2,49 @@ import type React from 'react'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ThemeColorMeta } from '@/components/theme-color-meta'
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display, JetBrains_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/next'
 import { SkipLink } from '@/components/SkipLink'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { ClientOnlyComponents } from '@/components/ClientOnlyComponents'
 import './globals.css'
 
-const inter = Inter({
-  subsets: ['latin'],
+const inter = localFont({
+  src: [
+    {
+      path: '../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2',
+      weight: '100 900',
+      style: 'normal',
+    },
+  ],
   display: 'swap',
   variable: '--font-inter',
   preload: true,
-  adjustFontFallback: true,
 })
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
+const playfair = localFont({
+  src: [
+    {
+      path: '../node_modules/@fontsource-variable/playfair-display/files/playfair-display-latin-wght-normal.woff2',
+      weight: '400 900',
+      style: 'normal',
+    },
+  ],
   display: 'swap',
   variable: '--font-playfair',
   preload: false, // Defer serif font as it's less critical
-  adjustFontFallback: true,
 })
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
+const jetbrainsMono = localFont({
+  src: [
+    {
+      path: '../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2',
+      weight: '100 800',
+      style: 'normal',
+    },
+  ],
   variable: '--font-mono',
   preload: false, // Defer mono font as it's less critical
-  adjustFontFallback: true,
 })
 
 export const metadata: Metadata = {
