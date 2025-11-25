@@ -26,13 +26,20 @@ This document provides context and guidelines for AI agents working on the Life 
 - `app/`: Routes and pages.
   - `dashboard/`: Financial dashboard routes and layout.
   - `features/`: Features page with roadmap and changelog.
-  - `api/`: API routes (calendar, newsletter, RSS, ai-agent, stripe).
+  - `command/`: Command AI chat interface page.
+  - `api/`: API routes (calendar, newsletter, RSS, ai-agent, stripe, voice-agent).
 - `components/`: Reusable UI components.
   - `ui/`: Shadcn UI component library (Avatar, Badge, Button, Card, Chart, Dialog, etc.).
+  - `landing/`: Landing page sections (Hero, Features, Testimonials, Roadmap, Pricing, CTA, Footer).
+  - `command/`: Command interface components (CommandChat, CommandMessage).
   - `dashboard-*.tsx`: Dashboard-specific components (sidebar, header, skeletons).
   - `ClientOnlyComponents.tsx`: Lazy-loaded client-only components wrapper.
+  - `SaaSLanding.tsx`: Main landing page component with dynamic imports.
+  - `SaaSLandingWrapper.tsx`: Client wrapper for landing page (SSR disabled).
   - `*Background*.tsx`: Three.js background components with wrappers.
-- `constants/`: Static content (text, pricing, blog posts) - **Edit these to change site copy.**
+- `constants/`: Static content (text, pricing, blog posts, landing page content) - **Edit these to change site copy.**
+  - `landing.ts`: Landing page content (hero, features, pricing, etc.).
+  - `ai.ts`: AI model configurations and options.
 - `blog_posts/`: Long-form content for the blog.
 - `public/`: Static assets.
 
@@ -57,14 +64,21 @@ This document provides context and guidelines for AI agents working on the Life 
 - Use **Client-Only Components** wrapper (`ClientOnlyComponents.tsx`) for components requiring browser APIs.
 - Lazy load non-critical components with `ssr: false` to improve initial page load.
 - Use `dynamic()` imports with loading states for better UX during code splitting.
+- **Landing Page**: All below-the-fold sections use dynamic imports with loading placeholders to prevent layout shift.
+- **Three.js Backgrounds**: Loaded client-side only to avoid SSR issues.
 
 ## 5. Common Commands
 
-- `npm run dev`: Start development server.
-- `npm run build`: Build for production.
-- `npm run lint`: Check for linting errors.
-- `npm run format`: Format code with Prettier.
-- `npm run send-newsletter`: Send newsletter to subscribers.
+- `pnpm dev`: Start development server (or `npm run dev`).
+- `pnpm build`: Build for production (or `npm run build`).
+- `pnpm lint`: Check for linting errors (or `npm run lint`).
+- `pnpm format`: Format code with Prettier (or `npm run format`).
+- `pnpm send-newsletter`: Send newsletter to subscribers.
+- `pnpm scrape-reddit`: Scrape Reddit data for knowledge base.
+- `pnpm verify-reddit-dataset`: Verify Reddit dataset integrity.
+- `pnpm gh:status`: Check GitHub repository status.
+- `pnpm gh:issues`: List GitHub issues.
+- `pnpm gh:prs`: List GitHub pull requests.
 
 ## 6. Dashboard Development
 
@@ -89,13 +103,71 @@ This document provides context and guidelines for AI agents working on the Life 
 - Requires `GOOGLE_CALENDAR_API_KEY` environment variable.
 - See `GOOGLE_CALENDAR_SETUP.md` for setup instructions.
 
-## 7. Deployment
+## 7. Landing Page Development
+
+### Landing Page Structure
+
+The homepage (`app/page.tsx`) uses a Suspense boundary and wraps `SaaSLandingWrapper`:
+
+- **SaaSLandingWrapper**: Client component that dynamically imports `SaaSLanding` with SSR disabled
+- **SaaSLanding**: Main landing page component that imports all sections dynamically
+- **Sections**: Hero, Features, Testimonials, Roadmap, Pricing, CTA, Footer
+- **Performance**: Each section is dynamically imported with loading placeholders (min-height divs)
+
+### Landing Page Components
+
+Located in `components/landing/`:
+
+- `LandingHero.tsx` - Hero section with CTA buttons
+- `LandingFeatures.tsx` - Feature showcase grid
+- `LandingTestimonials.tsx` - Customer testimonials carousel
+- `LandingRoadmap.tsx` - Product roadmap preview
+- `LandingPricing.tsx` - Pricing tiers and plans
+- `LandingCTA.tsx` - Final call-to-action section
+- `LandingFooter.tsx` - Footer with links and information
+- `HeroThreeBackground.tsx` - Three.js background for hero section
+
+### Content Management
+
+- **Landing Page Content**: Edit `constants/landing.ts` to update all landing page copy
+- **Pricing**: Pricing tiers are defined in `constants/landing.ts` under `LANDING_PRICING`
+- **Features**: Feature list is in `constants/landing.ts` under `LANDING_FEATURES`
+- **Testimonials**: Testimonial data is in `constants/testimonials.ts`
+
+## 8. Command Interface Development
+
+### Command Interface Structure
+
+The `/command` page (`app/command/page.tsx`) provides an AI chat interface:
+
+- **CommandChat**: Main chat component with sidebar navigation
+- **CommandMessage**: Individual message rendering with markdown support
+- **CommandThreeBackground**: Three.js background effects
+- **VoiceAgent**: Voice input component with microphone support
+
+### Key Features
+
+- **Model Selection**: Dropdown to switch between AI models (GPT-4o, GPT-4o Mini, Grok, etc.)
+- **Conversation Management**: Session-based conversation IDs stored in sessionStorage
+- **Rate Limiting**: Daily query limits tracked via Supabase
+- **Responsive Design**: Mobile-friendly with sheet menu for navigation
+- **Voice Mode**: Toggle between text and voice input modes
+
+### Command Interface Components
+
+- `components/command/CommandChat.tsx` - Main chat interface
+- `components/command/CommandMessage.tsx` - Message rendering
+- `components/CommandThreeBackground.tsx` - Background effects
+- `components/VoiceAgent.tsx` - Voice input handling
+
+## 9. Deployment
 
 - Deploys to Vercel.
 - Environment variables must be configured in Vercel dashboard.
 - Google Calendar API key should be added as environment variable.
+- Supabase environment variables required for full functionality.
 
-## 8. Linear Project Management
+## 10. Linear Project Management
 
 This project is connected to Linear for issue tracking and project management.
 

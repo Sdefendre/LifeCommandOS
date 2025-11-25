@@ -14,12 +14,14 @@ interface CommandMessageProps {
 export function CommandMessage({ message }: CommandMessageProps) {
   const isUser = message.role === 'user'
 
-  // Extract text content from message parts
+  // Extract text content from message parts or fallback to content string
   const content =
     message.parts
       ?.filter((part) => part.type === 'text')
       .map((part) => ('text' in part ? part.text : ''))
-      .join('') || ''
+      .join('') ||
+    message.content ||
+    ''
 
   return (
     <motion.div
@@ -38,10 +40,10 @@ export function CommandMessage({ message }: CommandMessageProps) {
 
       <div className={`flex flex-col max-w-[85%] ${isUser ? 'items-end' : 'items-start'}`}>
         <div
-          className={`px-3 md:px-4 py-2 md:py-3 rounded-2xl ${
+          className={`px-3 md:px-4 py-2 md:py-3 rounded-2xl backdrop-blur-sm ${
             isUser
-              ? 'bg-[#2a2a2a] text-white rounded-br-none border border-white/5'
-              : 'bg-transparent text-foreground/90 p-0'
+              ? 'bg-white/10 text-white rounded-br-none border border-white/10 shadow-sm'
+              : 'bg-black/30 text-foreground/90 rounded-bl-none border border-white/5 shadow-sm'
           }`}
         >
           <div className="prose prose-invert max-w-none text-sm leading-relaxed">

@@ -16,7 +16,7 @@ export const viewport: Viewport = {
 
 export default function CommandPage() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-transparent supports-[height:100dvh]:min-h-dvh">
+    <div className="relative min-h-screen w-full overflow-hidden bg-transparent supports-[height:100dvh]:min-h-dvh dark text-foreground">
       <CommandThreeBackground />
       <CommandChat />
     </div>

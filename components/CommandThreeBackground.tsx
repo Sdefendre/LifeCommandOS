@@ -15,9 +15,9 @@ function ShootingStar() {
     // Check if currently "active" (visible in the scene range)
     // We use z position as a flag: if z > -50, it's active in the scene
     if (ref.current.position.z > -50) {
-      // Move the star (fast speed)
-      ref.current.position.x -= 2
-      ref.current.position.y -= 0.5
+      // Move the star (slower speed)
+      ref.current.position.x -= 1
+      ref.current.position.y -= 0.25
 
       // Reset if it goes off screen
       if (ref.current.position.x < -50 || ref.current.position.y < -50) {
@@ -32,8 +32,8 @@ function ShootingStar() {
         const startZ = -10 - Math.random() * 20
         ref.current.position.set(startX, startY, startZ)
 
-        // Align rotation with movement vector [-2, -0.5]
-        ref.current.rotation.z = Math.atan2(-0.5, -2)
+        // Align rotation with movement vector [-1, -0.25]
+        ref.current.rotation.z = Math.atan2(-0.25, -1)
       }
     }
   })
@@ -55,15 +55,15 @@ function GalaxyScene() {
     if (!starsRef.current || shouldReduceMotion) return
 
     // Slow rotation for the galaxy effect
-    starsRef.current.rotation.y = state.clock.elapsedTime * 0.005
-    starsRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.05) * 0.02
+    starsRef.current.rotation.y = state.clock.elapsedTime * 0.002
+    starsRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.02) * 0.02
   })
 
   return (
     <>
       <group ref={starsRef}>
         {/* Distant starfield */}
-        <Stars radius={150} depth={100} count={3000} factor={4} saturation={0} fade speed={0.3} />
+        <Stars radius={150} depth={100} count={3000} factor={4} saturation={0} fade speed={0.02} />
       </group>
       <ShootingStar />
     </>
@@ -88,7 +88,7 @@ export function CommandThreeBackground() {
   }
 
   return (
-    <div className="fixed inset-0 -z-10 bg-black">
+    <div className="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-[#0a0a0a] to-black">
       <Canvas
         camera={{ position: [0, 0, 1], fov: 45 }}
         gl={{

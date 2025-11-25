@@ -262,16 +262,49 @@ The `/work` page showcases a curated collection of projects and technical experi
 - **Responsive Design**: Optimized for all device sizes
 - **Interactive Cards**: Hover effects and smooth animations with Framer Motion
 
+## 🏠 Landing Page
+
+The homepage (`/`) features a modern SaaS-style landing page built with performance optimizations:
+
+- **Component Structure**: Uses `SaaSLanding` component with dynamic imports for code splitting
+- **Sections**: Hero, Features, Testimonials, Roadmap, Pricing, CTA, and Footer
+- **Performance**: All below-the-fold components are dynamically loaded with loading states
+- **Client-Side Rendering**: Wrapped in `SaaSLandingWrapper` with SSR disabled for optimal performance
+- **Three.js Background**: Interactive 3D background effects via `HeroThreeBackground`
+- **Content Management**: Landing page content is managed in `constants/landing.ts` for easy updates
+
+### Landing Page Components
+
+Located in `components/landing/`:
+
+- `LandingHero.tsx` - Hero section with main CTA
+- `LandingFeatures.tsx` - Feature showcase
+- `LandingTestimonials.tsx` - Customer testimonials
+- `LandingRoadmap.tsx` - Product roadmap preview
+- `LandingPricing.tsx` - Pricing tiers
+- `LandingCTA.tsx` - Call-to-action section
+- `LandingFooter.tsx` - Footer with links and info
+
 ## 🤖 Command Interface
 
 The `/command` page provides an advanced AI-powered chat interface for VA benefits assistance:
 
 - **Multiple AI Models**: Support for GPT-4o, GPT-4o Mini, Grok models, and more
-- **Voice Integration**: Voice-to-text input with microphone support
-- **Conversation History**: Persistent chat sessions stored in Supabase
+- **Voice Integration**: Voice-to-text input with microphone support via `VoiceAgent` component
+- **Conversation History**: Persistent chat sessions stored in Supabase with conversation IDs
 - **Rate Limiting**: Daily query limits with real-time tracking
 - **Knowledge Base**: Integrated search for VA benefits information
-- **Responsive Sidebar**: Collapsible interface with model selection
+- **Responsive Design**: Mobile-friendly with collapsible sidebar and sheet menu
+- **Model Selection**: Dropdown selector for switching between AI models
+- **Three.js Background**: Immersive `CommandThreeBackground` component
+- **Session Management**: Conversation IDs stored in sessionStorage for persistence
+
+### Command Interface Components
+
+- `CommandChat.tsx` - Main chat interface with sidebar navigation
+- `CommandMessage.tsx` - Individual message rendering
+- `CommandThreeBackground.tsx` - Three.js background effects
+- `VoiceAgent.tsx` - Voice input component with microphone support
 
 Access the Command interface via the floating chat button or directly at `/command`.
 
@@ -284,8 +317,16 @@ The project uses lazy loading for non-critical client-side components to improve
 - **ClientOnlyComponents**: Wraps components that require browser APIs (ScrollToTop, ChatFloatingButton)
 - **Dynamic Imports**: Uses Next.js dynamic imports with `ssr: false` for browser-only components
 - **Suspense Boundaries**: Homepage uses Suspense for progressive loading
+- **Landing Page**: All below-the-fold sections are dynamically imported with loading placeholders
 
-Components like `ScrollToTop` and `ChatFloatingButton` are loaded only on the client side to avoid hydration issues and improve performance.
+### Code Splitting Strategy
+
+- **Homepage**: `SaaSLanding` component wrapped with SSR disabled for optimal performance
+- **Landing Sections**: Features, Roadmap, Pricing, Testimonials, CTA, and Footer are dynamically loaded
+- **Loading States**: Placeholder divs with minimum heights prevent layout shift during loading
+- **Command Interface**: Three.js backgrounds and voice components are client-only
+
+Components like `ScrollToTop`, `ChatFloatingButton`, and landing page sections are loaded only when needed to avoid hydration issues and improve performance.
 
 ## 📄 License
 

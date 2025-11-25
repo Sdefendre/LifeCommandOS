@@ -198,19 +198,8 @@ export async function POST(request: NextRequest) {
     })
 
     // Return the streaming response with conversation ID in headers
-    // Cast to any to handle potential type definition mismatches in the AI SDK
-    let response: Response
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const streamResult = result as any
-    if (typeof streamResult.toDataStreamResponse === 'function') {
-      response = streamResult.toDataStreamResponse()
-    } else if (typeof streamResult.toAIStreamResponse === 'function') {
-      response = streamResult.toAIStreamResponse()
-    } else if (typeof streamResult.toTextStreamResponse === 'function') {
-      response = streamResult.toTextStreamResponse()
-    } else {
-      throw new Error('No compatible streaming response method found.')
-    }
+    // Use toTextStreamResponse() as suggested by the compiler
+    const response = result.toTextStreamResponse()
 
     response.headers.set('X-Conversation-ID', currentConversationId)
     response.headers.set('X-Rate-Limit-Remaining', String(rateLimit.remaining))

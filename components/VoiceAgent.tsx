@@ -20,6 +20,33 @@ export function VoiceAgent({ userId }: VoiceAgentProps) {
   const [error, setError] = useState<string | null>(null)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sessionRef = useRef<any>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const wakeLockRef = useRef<any>(null)
+
+  const requestWakeLock = async () => {
+    try {
+      if ('wakeLock' in navigator) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const lock = await (navigator as any).wakeLock.request('screen')
+        wakeLockRef.current = lock
+        console.log('Wake Lock active')
+      }
+    } catch (err) {
+      console.error('Wake Lock error:', err)
+    }
+  }
+
+  const releaseWakeLock = async () => {
+    if (wakeLockRef.current) {
+      try {
+        await wakeLockRef.current.release()
+        wakeLockRef.current = null
+        console.log('Wake Lock released')
+      } catch (err) {
+        console.error('Release Wake Lock error:', err)
+      }
+    }
+  }
 
   const disconnect = async () => {
     try {
@@ -27,6 +54,7 @@ export function VoiceAgent({ userId }: VoiceAgentProps) {
         await sessionRef.current.disconnect()
         sessionRef.current = null
       }
+      await releaseWakeLock()
       setStatus('disconnected')
       setIsListening(false)
       setIsMuted(false)
@@ -36,15 +64,46 @@ export function VoiceAgent({ userId }: VoiceAgentProps) {
     }
   }
 
+  // Handle visibility change to re-acquire wake lock
+  useEffect(() => {
+    const handleVisibilityChange = async () => {
+      if (status === 'connected' && document.visibilityState === 'visible') {
+        await requestWakeLock()
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [status])
+
   // Cleanup on unmount
   useEffect(() => {
     return () => {
       if (sessionRef.current) {
         disconnect()
       }
+      releaseWakeLock()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  // Handle network status changes
+  useEffect(() => {
+    const handleOffline = () => {
+      if (status === 'connected') {
+        setError('Internet connection lost. Please reconnect.')
+        disconnect()
+      }
+    }
+
+    window.addEventListener('offline', handleOffline)
+    return () => {
+      window.removeEventListener('offline', handleOffline)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [status])
 
   const connect = async () => {
     try {
@@ -106,6 +165,7 @@ Remember: You're built by veterans, for veterans. Speak their language and under
       })
 
       sessionRef.current = session
+      await requestWakeLock()
 
       // Handle session events
       // The SDK automatically handles audio playback through WebRTC
@@ -185,7 +245,7 @@ Remember: You're built by veterans, for veterans. Speak their language and under
         </CardHeader>
         <CardContent className="space-y-4">
           {/* Connection Status */}
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-2">
               <div
                 className={`h-3 w-3 rounded-full ${
@@ -203,12 +263,16 @@ Remember: You're built by veterans, for veterans. Speak their language and under
 
             {/* Connection Button */}
             {status === 'connected' ? (
-              <Button onClick={disconnect} variant="destructive">
+              <Button onClick={disconnect} variant="destructive" className="w-full sm:w-auto">
                 <MicOff className="h-4 w-4 mr-2" />
                 End Conversation
               </Button>
             ) : (
-              <Button onClick={connect} disabled={status === 'connecting'}>
+              <Button
+                onClick={connect}
+                disabled={status === 'connecting'}
+                className="w-full sm:w-auto"
+              >
                 {status === 'connecting' ? (
                   <>
                     <Loader2 className="h-4 w-4 mr-2 animate-spin" />
@@ -224,16 +288,32 @@ Remember: You're built by veterans, for veterans. Speak their language and under
             )}
           </div>
 
-          {/* Listening Indicator */}
-          {isListening && status === 'connected' && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex items-center gap-2 text-sm text-muted-foreground"
-            >
-              <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse" />
-              <span>Listening...</span>
-            </motion.div>
+          {/* Active Conversation Visualizer */}
+          {status === 'connected' && (
+            <div className="flex flex-col items-center justify-center py-6 gap-4 border rounded-lg bg-muted/20">
+              <div className="relative">
+                {isListening && (
+                  <motion.div
+                    initial={{ scale: 1, opacity: 0.5 }}
+                    animate={{ scale: 1.6, opacity: 0 }}
+                    transition={{ repeat: Infinity, duration: 2, ease: 'easeOut' }}
+                    className="absolute inset-0 rounded-full bg-primary/40"
+                  />
+                )}
+                <div
+                  className={`relative z-10 h-20 w-20 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    isListening
+                      ? 'bg-primary/20 text-primary scale-105'
+                      : 'bg-muted text-muted-foreground'
+                  }`}
+                >
+                  <Mic className="h-8 w-8" />
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground font-medium animate-pulse">
+                {isListening ? 'Listening...' : 'Agent is active'}
+              </p>
+            </div>
           )}
 
           {/* Mute Toggle */}

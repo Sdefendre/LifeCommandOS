@@ -25,7 +25,10 @@ function DesktopNav() {
         className="hover:text-primary transition-colors no-underline font-medium"
         suppressHydrationWarning
       >
-        Command<span className="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">AI</span>
+        Command
+        <span className="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+          AI
+        </span>
       </Link>
       <Link
         href="/dashboard"
@@ -65,7 +68,10 @@ function MobileMenu({ open, setOpen }: { open: boolean; setOpen: (open: boolean)
           onClick={() => setOpen(false)}
           suppressHydrationWarning
         >
-          Command<span className="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">AI</span>
+          Command
+          <span className="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            AI
+          </span>
         </Link>
         <Link
           href="/dashboard"
@@ -100,7 +106,7 @@ export function MainHeader() {
             <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 -mr-1 sm:-mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="p-2 min-h-[44px] min-w-[44px] flex items-center justify-center -mr-1 sm:mr-0"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
