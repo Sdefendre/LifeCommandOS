@@ -13,7 +13,7 @@
 - [ ] Review blog posts and ensure content is current
 - [ ] Verify AI agent configuration and knowledge base content
 - [ ] Check course content and Stripe integration
-- [ ] Test dashboard functionality and Google Calendar integration
+- [ ] Test BattleStation functionality and Google Calendar integration
 - [ ] Verify features page displays correctly with roadmap and changelog
 
 ### 2. SEO & Performance
@@ -27,7 +27,7 @@
 
 ### 3. Technical Setup
 
-- [ ] Test all pages load correctly (homepage, dashboard, ai-agent, course, blog, about, work, features)
+- [ ] Test all pages load correctly (homepage, battlestation, ai-agent, course, blog, about, work, features)
 - [ ] Verify responsive design on mobile/tablet/desktop
 - [ ] Test service category tabs work with keyboard navigation (arrow keys, Home/End)
 - [ ] Test all external links open in new tabs
@@ -36,7 +36,7 @@
 - [ ] Check ARIA attributes and semantic HTML structure
 - [ ] Validate HTML and check for console errors
 - [ ] Test AI agent chat functionality
-- [ ] Verify dashboard routes and components
+- [ ] Verify BattleStation routes and components
 - [ ] Test course enrollment and Stripe integration
 - [ ] Verify Google Calendar integration (if configured)
 
@@ -86,7 +86,7 @@
 
 ### 1. Verification
 
-- [ ] Visit live site and test all pages (homepage, dashboard, ai-agent, course, blog, about, work, features)
+- [ ] Visit live site and test all pages (homepage, battlestation, ai-agent, course, blog, about, work, features)
 - [ ] Check mobile responsiveness across all pages
 - [ ] Test service category tabs and keyboard navigation
 - [ ] Verify email links and contact information work
@@ -94,7 +94,7 @@
 - [ ] Confirm favicon displays correctly
 - [ ] Validate accessibility features and keyboard navigation
 - [ ] Test AI agent chat with different models
-- [ ] Verify dashboard functionality and data visualization
+- [ ] Verify BattleStation functionality and data visualization
 - [ ] Test course enrollment flow
 - [ ] Verify Google Calendar integration (if configured)
 
@@ -126,7 +126,7 @@
 ### Optional
 
 - `XAI_API_KEY`: For Grok model support in AI agent
-- `GOOGLE_CALENDAR_API_KEY`: For calendar integration in dashboard
+- `GOOGLE_CALENDAR_API_KEY`: For calendar integration in BattleStation
 - `GOOGLE_CALENDAR_ID`: Calendar ID (defaults to "primary")
 - `STRIPE_SECRET_KEY`: For course payment processing
 - `STRIPE_WEBHOOK_SECRET`: For Stripe webhook verification

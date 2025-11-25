@@ -24,7 +24,7 @@ This document provides context and guidelines for AI agents working on the Life 
 ## 3. File Structure
 
 - `app/`: Routes and pages.
-  - `dashboard/`: Financial dashboard routes and layout.
+  - `battlestation/`: Financial BattleStation routes and layout.
   - `features/`: Features page with roadmap and changelog.
   - `command/`: Command AI chat interface page.
   - `api/`: API routes (calendar, newsletter, RSS, ai-agent, stripe, voice-agent).
@@ -32,7 +32,7 @@ This document provides context and guidelines for AI agents working on the Life 
   - `ui/`: Shadcn UI component library (Avatar, Badge, Button, Card, Chart, Dialog, etc.).
   - `landing/`: Landing page sections (Hero, Features, Testimonials, Roadmap, Pricing, CTA, Footer).
   - `command/`: Command interface components (CommandChat, CommandMessage).
-  - `dashboard-*.tsx`: Dashboard-specific components (sidebar, header, skeletons).
+  - `dashboard-*.tsx`: BattleStation-specific components (sidebar, header, skeletons).
   - `ClientOnlyComponents.tsx`: Lazy-loaded client-only components wrapper.
   - `SaaSLanding.tsx`: Main landing page component with dynamic imports.
   - `SaaSLandingWrapper.tsx`: Client wrapper for landing page (SSR disabled).
@@ -80,18 +80,18 @@ This document provides context and guidelines for AI agents working on the Life 
 - `pnpm gh:issues`: List GitHub issues.
 - `pnpm gh:prs`: List GitHub pull requests.
 
-## 6. Dashboard Development
+## 6. BattleStation Development
 
-### Dashboard Structure
+### BattleStation Structure
 
-- Dashboard uses a layout component (`app/dashboard/layout.tsx`) with sidebar and header.
-- Main dashboard page is at `app/dashboard/page.tsx`.
+- BattleStation uses a layout component (`app/battlestation/layout.tsx`) with sidebar and header.
+- Main BattleStation page is at `app/battlestation/page.tsx`.
 - Uses Shadcn UI components from `components/ui/`.
 - Charts use Recharts library with ChartContainer wrapper.
 
 ### Key Patterns
 
-- **Client Components**: Dashboard pages use `"use client"` for interactivity.
+- **Client Components**: BattleStation pages use `"use client"` for interactivity.
 - **State Management**: Uses React hooks (useState, useEffect) for local state.
 - **Data Visualization**: Recharts with ChartConfig for consistent theming.
 - **Loading States**: Skeleton components for better UX during data loading.

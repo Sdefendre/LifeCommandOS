@@ -2,7 +2,7 @@ const http = require('http')
 
 const BASE_URL = process.argv[2] || 'http://localhost:3000'
 
-const routes = ['/', '/dashboard', '/blog', '/ai-agent']
+const routes = ['/', '/battlestation', '/blog', '/ai-agent']
 
 async function checkRoute(route) {
   return new Promise((resolve) => {

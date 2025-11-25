@@ -217,9 +217,9 @@ This project uses GitHub CLI for various operations. You can use GitHub CLI comm
 - **List pull requests**: `pnpm gh:prs`
 - **View repository**: `pnpm gh:view`
 
-## 📊 Dashboard Features
+## 📊 BattleStation Features
 
-Life Command OS includes a comprehensive financial dashboard (`/dashboard`) with:
+Life Command OS includes a comprehensive financial BattleStation (`/battlestation`) with:
 
 - **Financial Overview**: Track balance, spending, budget, and savings goals
 - **Transaction Management**: View and manage recent transactions
@@ -227,20 +227,20 @@ Life Command OS includes a comprehensive financial dashboard (`/dashboard`) with
 - **Data Visualization**: Interactive charts showing spending trends and category breakdowns
 - **CSV Import**: Upload bank statements (CSV) to automatically import transactions
 - **Calendar Integration**: View upcoming events from Google Calendar
-- **Responsive Design**: Fully responsive dashboard with sidebar navigation
+- **Responsive Design**: Fully responsive BattleStation with sidebar navigation
 
-### Dashboard Routes
+### BattleStation Routes
 
-- `/dashboard` - Main dashboard overview
-- `/dashboard/transactions` - Transaction history
-- `/dashboard/budgets` - Budget management
-- `/dashboard/reports` - Financial reports
-- `/dashboard/savings` - Savings goals tracking
-- `/dashboard/balance` - Balance details
+- `/battlestation` - Main BattleStation overview
+- `/battlestation/transactions` - Transaction history
+- `/battlestation/budgets` - Budget management
+- `/battlestation/reports` - Financial reports
+- `/battlestation/savings` - Savings goals tracking
+- `/battlestation/balance` - Balance details
 
 ## 📅 Google Calendar Integration
 
-The dashboard includes Google Calendar integration for viewing upcoming events. See [GOOGLE_CALENDAR_SETUP.md](./GOOGLE_CALENDAR_SETUP.md) for setup instructions.
+The BattleStation includes Google Calendar integration for viewing upcoming events. See [GOOGLE_CALENDAR_SETUP.md](./GOOGLE_CALENDAR_SETUP.md) for setup instructions.
 
 ## 🎯 Features Page
 

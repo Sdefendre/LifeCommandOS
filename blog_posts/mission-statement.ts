@@ -92,7 +92,7 @@ export const missionStatementPost = {
       <li><strong>Reliable:</strong> They work consistently, not just when you remember to use them</li>
     </ul>
 
-    <p>Life Command OS is built on intelligent systems. The dashboard tracks your finances automatically. The budgeting tools help you plan proactively. The reporting gives you clarity on what's actually happening. It's all connected, all working together to give you command of your financial life.</p>
+    <p>Life Command OS is built on intelligent systems. The BattleStation tracks your finances automatically. The budgeting tools help you plan proactively. The reporting gives you clarity on what's actually happening. It's all connected, all working together to give you command of your financial life.</p>
 
     <h4>"And Disciplined Execution"</h4>
     <p>The best systems in the world don't matter if you don't use them. Disciplined execution is what turns plans into reality.</p>
@@ -123,7 +123,7 @@ export const missionStatementPost = {
     <h4>It's Actionable</h4>
     <p>Every part of the mission statement translates to something concrete:</p>
     <ul>
-      <li>"Break out of survival mode" → Financial dashboard, budgeting tools, planning systems</li>
+      <li>"Break out of survival mode" → Financial BattleStation, budgeting tools, planning systems</li>
       <li>"Take command" → Decision frameworks, progress tracking, goal setting</li>
       <li>"Intelligent systems" → Automated tracking, integrated tools, smart reporting</li>
       <li>"Disciplined execution" → Habit tracking, accountability features, progress visualization</li>
@@ -145,7 +145,7 @@ export const missionStatementPost = {
 
     <h4>Features That Serve the Mission</h4>
     <ul>
-      <li><strong>Financial Dashboard:</strong> Gives you clarity on where you are financially</li>
+      <li><strong>Financial BattleStation:</strong> Gives you clarity on where you are financially</li>
       <li><strong>Budget Tracking:</strong> Helps you plan proactively instead of reacting</li>
       <li><strong>Transaction Import:</strong> Automates the tracking so you don't have to remember</li>
       <li><strong>Reports & Analytics:</strong> Shows you what's actually happening, not what you think is happening</li>
@@ -181,7 +181,7 @@ export const missionStatementPost = {
     <h4>If You're in Survival Mode</h4>
     <p>You're not alone. And you're not stuck. Breaking out of survival mode is possible, and it starts with the right systems. Life Command OS is built specifically for people who are ready to make that shift.</p>
 
-    <p>Start with the dashboard. Get clarity on where you are. Then use the budgeting tools to plan where you want to go. Build systems. Execute with discipline. Take command.</p>
+    <p>Start with the BattleStation. Get clarity on where you are. Then use the budgeting tools to plan where you want to go. Build systems. Execute with discipline. Take command.</p>
 
     <h4>If You're Already in Command Mode</h4>
     <p>You know what works. You've built systems. You execute with discipline. Life Command OS can help you optimize what you're already doing, automate what you're tracking manually, and give you even more clarity on your progress.</p>
@@ -203,7 +203,7 @@ export const missionStatementPost = {
 
     <p>Every feature we build, every tool we create, every piece of content we write – it all serves this mission. Because we believe that survival mode isn't sustainable. And we believe that command mode is possible.</p>
 
-    <p>If you're ready to break out of survival mode and take command of your future, <a href="/dashboard" class="text-blue-400 hover:text-blue-300">start with the dashboard</a>. If you want to understand more about the principles behind Life Command OS, <a href="/blog" class="text-blue-400 hover:text-blue-300">explore the blog</a>.</p>
+    <p>If you're ready to break out of survival mode and take command of your future, <a href="/battlestation" class="text-blue-400 hover:text-blue-300">start with the BattleStation</a>. If you want to understand more about the principles behind Life Command OS, <a href="/blog" class="text-blue-400 hover:text-blue-300">explore the blog</a>.</p>
 
     <p>The mission is clear. The tools are ready. The question is: are you ready to take command?</p>
   `,

@@ -60,7 +60,7 @@ export function RecentTransactions() {
           <CardDescription>Latest financial operations and movements.</CardDescription>
         </div>
         <Button asChild size="sm" variant="outline" className="gap-1">
-          <Link href="/dashboard/transactions">
+          <Link href="/battlestation/transactions">
             View All
             <ArrowRight className="h-4 w-4" />
           </Link>

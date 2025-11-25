@@ -88,7 +88,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Feedback stored and analyzed for improvements
 - **Background Components**: Enhanced visual backgrounds
   - `HeroThreeBackground` - 3D Three.js background for hero sections
-  - `DashboardThreeBackground` - Custom background for dashboard pages
+  - `DashboardThreeBackground` - Custom background for BattleStation pages
   - `MovingGradientBackground` - Animated gradient background
   - `SubtleThreeBackground` - Subtle Three.js particles background
   - Performance-optimized 3D rendering
@@ -138,27 +138,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Type-safe model selection with TypeScript interfaces
 - **Navigation Constants**: Centralized navigation configuration (`constants/navigation.ts`)
   - Main site navigation links (Features, Pricing, Blog)
-  - Dashboard navigation items with icons for sidebar menu
+  - BattleStation navigation items with icons for sidebar menu
   - Type-safe navigation structure with Lucide React icons
 
-- **Dashboard System**: Comprehensive financial dashboard with sidebar navigation
+- **BattleStation System**: Comprehensive financial BattleStation with sidebar navigation
   - Financial metrics cards (Balance, Spending, Budget, Savings)
   - Interactive charts using Recharts (spending trends, category breakdowns)
   - Transaction management with CSV import functionality
   - Budget tracking across multiple categories
   - Editable metric values via dialog interface
   - Loading states with skeleton components
-- **Dashboard Routes**: Multiple dashboard pages
-  - `/dashboard` - Main overview page
-  - `/dashboard/transactions` - Transaction history
-  - `/dashboard/budgets` - Budget management
-  - `/dashboard/reports` - Financial reports
-  - `/dashboard/savings` - Savings goals
-  - `/dashboard/balance` - Balance details
-- **Dashboard Components**:
+- **BattleStation Routes**: Multiple BattleStation pages
+  - `/battlestation` - Main overview page
+  - `/battlestation/transactions` - Transaction history
+  - `/battlestation/budgets` - Budget management
+  - `/battlestation/reports` - Financial reports
+  - `/battlestation/savings` - Savings goals
+  - `/battlestation/balance` - Balance details
+- **BattleStation Components**:
   - `DashboardSidebar` - Navigation sidebar with active route highlighting
-  - `DashboardHeader` - Header component for dashboard pages
-  - `DashboardCardSkeleton` - Loading skeleton for dashboard cards
+  - `DashboardHeader` - Header component for BattleStation pages
+  - `DashboardCardSkeleton` - Loading skeleton for BattleStation cards
 - **Google Calendar Integration**:
   - API route (`/api/calendar`) for fetching Google Calendar events
   - Support for API key authentication
@@ -214,9 +214,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `three` - 3D graphics library for backgrounds
   - `@react-three/fiber` - React renderer for Three.js
   - `@react-three/drei` - Useful helpers for React Three Fiber
-  - Additional Radix UI components for dashboard UI
+  - Additional Radix UI components for BattleStation UI
 - **Project Structure**: Added new directory structures
-  - `app/dashboard/` - Dashboard routes and layout
+  - `app/battlestation/` - BattleStation routes and layout
   - `app/ai-agent/` - AI Benefits Navigator page
   - `app/course/` - Course pages and content
   - `app/api/ai-agent/` - AI chat API route
@@ -224,7 +224,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `app/api/feedback/` - Feedback submission API
   - `app/api/stripe/` - Stripe payment API routes
   - `components/ui/` - Shadcn UI component library
-  - `components/dashboard-*.tsx` - Dashboard-specific components
+  - `components/dashboard-*.tsx` - BattleStation-specific components
   - `lib/ai-agent.ts` - AI agent configuration and utilities
   - `lib/knowledge-base.ts` - Knowledge base search functions
   - `lib/supabase.ts` - Supabase client and helper functions

@@ -10,17 +10,11 @@ import { createFadeInUp, viewportOnce } from '@/lib/motion'
 import { NewsletterSubscription } from '@/components/NewsletterSubscription'
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import dynamic from 'next/dynamic'
 import type { BlogPost } from '@/lib/types/blog'
 
 // Lazy load Three.js background to improve initial render
-const SubtleThreeBackground = dynamic(
-  () =>
-    import('@/components/SubtleThreeBackground').then((mod) => ({
-      default: mod.SubtleThreeBackground,
-    })),
-  { ssr: false }
-)
+// Using wrapper component to avoid webpack chunk issues during build
+import { SubtleThreeBackgroundWrapper } from '@/components/SubtleThreeBackgroundWrapper'
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -45,7 +39,7 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/20 relative">
-      <SubtleThreeBackground />
+      <SubtleThreeBackgroundWrapper />
       <MainHeader />
 
       <main className="container mx-auto px-4 sm:px-6 max-w-4xl py-12 sm:py-16 md:py-20">

@@ -168,7 +168,7 @@ export function CommandChat({ userId }: CommandChatProps) {
     }
   }, [conversationId])
 
-  const { messages, append, status, error } = useChat({
+  const { messages, sendMessage, status, error } = useChat({
     transport: new DefaultChatTransport({
       api: '/api/ai-agent',
       body: {
@@ -233,9 +233,9 @@ export function CommandChat({ userId }: CommandChatProps) {
     setInput('')
 
     try {
-      await append({
+      await sendMessage({
         role: 'user',
-        content: userMessage,
+        parts: [{ type: 'text', text: userMessage }],
       })
     } catch (e) {
       console.error('Failed to send message:', e)

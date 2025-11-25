@@ -2,6 +2,7 @@ import { MainHeader } from '@/components/MainHeader'
 import { LandingFooter } from '@/components/landing/LandingFooter'
 import { AIAgentChat } from '@/components/AIAgentChat'
 import { VoiceAgent } from '@/components/VoiceAgent'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { SubtleThreeBackgroundWrapper } from '@/components/SubtleThreeBackgroundWrapper'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'

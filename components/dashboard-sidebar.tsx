@@ -13,7 +13,7 @@ export function DashboardSidebar() {
   return (
     <aside className="hidden border-r bg-card/50 backdrop-blur-xl md:flex md:flex-col h-full">
       <div className="flex h-14 items-center border-b px-6 lg:h-[60px]">
-        <Link className="no-underline" href="/dashboard">
+        <Link className="no-underline" href="/battlestation">
           <Logo size="md" />
         </Link>
       </div>
@@ -56,7 +56,7 @@ export function DashboardSidebar() {
       <div className="mt-auto p-4 border-t">
         <nav className="grid gap-1">
           <Link
-            href="/dashboard/settings"
+            href="/battlestation/settings"
             className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-all hover:bg-accent hover:text-accent-foreground"
           >
             <Settings className="h-4 w-4" />

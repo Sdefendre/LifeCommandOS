@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import './globals.css' // Import global styles as this replaces the root layout
 
 /**
  * Global Error Component
@@ -21,20 +22,22 @@ export default function GlobalError({
   }, [error])
 
   return (
-    <html>
-      <body>
-        <div className="flex min-h-screen flex-col items-center justify-center p-4 text-center">
-          <h1 className="text-4xl font-bold mb-4">Something went wrong!</h1>
-          <p className="mb-8 text-muted-foreground max-w-md">
-            A critical error occurred. We apologize for the inconvenience.
-          </p>
-          <button
-            onClick={() => reset()}
-            className="rounded-full bg-primary px-6 py-3 text-primary-foreground hover:bg-primary/90 transition-colors"
-          >
-            Try again
-          </button>
-        </div>
+    <html lang="en">
+      <body className="bg-background text-foreground antialiased font-sans">
+        <main className="min-h-screen flex items-center justify-center p-6">
+          <div className="glass-card rounded-2xl p-8 max-w-lg text-center">
+            <h1 className="text-3xl font-serif mb-3">System Error</h1>
+            <p className="text-muted-foreground mb-6">
+              A critical system error occurred. We apologize for the inconvenience.
+            </p>
+            <button
+              onClick={() => reset()}
+              className="glass-button-primary px-6 py-2 rounded-full transition-all hover:scale-105"
+            >
+              Try again
+            </button>
+          </div>
+        </main>
       </body>
     </html>
   )

@@ -31,7 +31,7 @@ function DesktopNav() {
         </span>
       </Link>
       <Link
-        href="/dashboard"
+        href="/battlestation"
         className="font-semibold text-primary-gradient hover:opacity-80 transition-opacity no-underline"
       >
         BattleStation
@@ -74,7 +74,7 @@ function MobileMenu({ open, setOpen }: { open: boolean; setOpen: (open: boolean)
           </span>
         </Link>
         <Link
-          href="/dashboard"
+          href="/battlestation"
           className="py-2.5 border-b border-border/50 text-primary font-medium active:bg-accent/50 rounded-sm px-2 -mx-2 no-underline"
           onClick={() => setOpen(false)}
         >

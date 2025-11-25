@@ -40,7 +40,7 @@ export function DashboardHeader() {
         </SheetTrigger>
         <SheetContent side="left" className="flex flex-col w-[300px] sm:w-[300px] p-0">
           <div className="flex h-14 items-center border-b px-6">
-            <Link className="no-underline" href="/dashboard">
+            <Link className="no-underline" href="/battlestation">
               <Logo size="md" />
             </Link>
           </div>
@@ -79,7 +79,7 @@ export function DashboardHeader() {
           </div>
           <div className="p-4 border-t">
             <Link
-              href="/dashboard/settings"
+              href="/battlestation/settings"
               className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
             >
               <Settings className="h-4 w-4" />

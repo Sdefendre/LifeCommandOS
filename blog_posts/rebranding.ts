@@ -35,7 +35,7 @@ export const rebrandingPost = {
     <p>An operating system is the foundation that everything else runs on. It's the infrastructure that makes everything else possible. Life Command OS is designed to be that foundation for your life:</p>
 
     <ul>
-      <li><strong>Dashboard:</strong> Your financial command center, tracking what matters</li>
+      <li><strong>BattleStation:</strong> Your financial command center, tracking what matters</li>
       <li><strong>Systems:</strong> Frameworks for decision-making and execution</li>
       <li><strong>Tools:</strong> Practical resources for building the life you want</li>
       <li><strong>Community:</strong> A place to connect with others on the same journey</li>
@@ -93,7 +93,7 @@ export const rebrandingPost = {
     <h4>For Existing Users</h4>
     <ul>
       <li>All your data and settings remain unchanged</li>
-      <li>The dashboard and features work exactly the same</li>
+      <li>The BattleStation and features work exactly the same</li>
       <li>You'll see the new branding gradually roll out</li>
       <li>Your experience improves, not changes</li>
     </ul>
@@ -101,7 +101,7 @@ export const rebrandingPost = {
     <h4>For New Visitors</h4>
     <p>Welcome to Life Command OS. You're joining a community of people who refuse to just survive. People who are building systems, making intentional decisions, and taking command of their future.</p>
 
-    <p>Start with the dashboard. Explore the tools. Read the blog. Most importantly, start thinking about what "taking command" means for your life.</p>
+    <p>Start with the BattleStation. Explore the tools. Read the blog. Most importantly, start thinking about what "taking command" means for your life.</p>
 
     <h3>The Road Ahead</h3>
     <p>This rebrand isn't the finish line – it's the starting line. With a clearer mission and a name that reflects our purpose, we're positioned to build something truly meaningful.</p>
@@ -109,7 +109,7 @@ export const rebrandingPost = {
     <p>In the coming months, you'll see:</p>
 
     <ul>
-      <li><strong>Enhanced Dashboard:</strong> More powerful tools for financial and life command</li>
+      <li><strong>Enhanced BattleStation:</strong> More powerful tools for financial and life command</li>
       <li><strong>New Frameworks:</strong> Systems and methodologies for taking control</li>
       <li><strong>Community Features:</strong> Ways to connect with others on the same journey</li>
       <li><strong>Educational Content:</strong> Deep dives into the principles of life command</li>
@@ -127,7 +127,7 @@ export const rebrandingPost = {
 
     <p>Welcome to Life Command OS. Let's build something that matters.</p>
 
-    <p>Ready to take command? <a href="/dashboard" class="text-blue-400 hover:text-blue-300">Start with the dashboard</a> or <a href="/blog" class="text-blue-400 hover:text-blue-300">explore the blog</a> to learn more about the principles behind Life Command OS.</p>
+    <p>Ready to take command? <a href="/battlestation" class="text-blue-400 hover:text-blue-300">Start with the BattleStation</a> or <a href="/blog" class="text-blue-400 hover:text-blue-300">explore the blog</a> to learn more about the principles behind Life Command OS.</p>
   `,
   author: 'Steve Defendre',
   date: '2025-12-01',

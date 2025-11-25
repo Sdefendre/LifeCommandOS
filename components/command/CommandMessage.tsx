@@ -14,14 +14,12 @@ interface CommandMessageProps {
 export function CommandMessage({ message }: CommandMessageProps) {
   const isUser = message.role === 'user'
 
-  // Extract text content from message parts or fallback to content string
+  // Extract text content from message parts
   const content =
     message.parts
       ?.filter((part) => part.type === 'text')
       .map((part) => ('text' in part ? part.text : ''))
-      .join('') ||
-    message.content ||
-    ''
+      .join('') || ''
 
   return (
     <motion.div

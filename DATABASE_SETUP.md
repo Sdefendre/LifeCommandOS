@@ -233,7 +233,7 @@ const response = await fetch('/api/feedback', {
     message: 'Found an issue with...',
     rating: 4,
     email: 'user@example.com',
-    path: '/dashboard',
+    path: '/battlestation',
   }),
 })
 

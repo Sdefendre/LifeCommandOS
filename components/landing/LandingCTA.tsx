@@ -54,7 +54,7 @@ export function LandingCTA() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <Link href="/dashboard">
+            <Link href="/battlestation">
               <Button
                 size="lg"
                 className="text-lg px-8 py-6 h-auto rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:scale-105 active:scale-95 transition-all duration-200 group relative overflow-hidden text-white font-bold bg-primary hover:bg-primary/90"

@@ -9,32 +9,32 @@ export const NAV_LINKS = [
 export const DASHBOARD_NAV_ITEMS = [
   {
     title: 'BattleStation',
-    href: '/dashboard',
+    href: '/battlestation',
     icon: LayoutDashboard,
   },
   {
     title: 'Transactions',
-    href: '/dashboard/transactions',
+    href: '/battlestation/transactions',
     icon: CreditCard,
   },
   {
     title: 'Budgets',
-    href: '/dashboard/budgets',
+    href: '/battlestation/budgets',
     icon: PieChart,
   },
   {
     title: 'Reports',
-    href: '/dashboard/reports',
+    href: '/battlestation/reports',
     icon: BarChart3,
   },
   {
     title: 'Savings',
-    href: '/dashboard/savings',
+    href: '/battlestation/savings',
     icon: PiggyBank,
   },
   {
     title: 'Balance',
-    href: '/dashboard/balance',
+    href: '/battlestation/balance',
     icon: Wallet,
   },
 ] as const

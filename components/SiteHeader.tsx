@@ -37,10 +37,10 @@ export function SiteHeader() {
               Blog
             </Link>
             <Link
-              href="/dashboard"
+              href="/battlestation"
               className="font-semibold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
             >
-              Dashboard
+              BattleStation
             </Link>
             <ThemeToggle />
           </nav>
@@ -91,11 +91,11 @@ export function SiteHeader() {
                 Blog
               </Link>
               <Link
-                href="/dashboard"
+                href="/battlestation"
                 className="py-2.5 border-b border-border/50 text-primary font-medium active:bg-accent/50 rounded-sm px-2 -mx-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Dashboard
+                BattleStation
               </Link>
             </nav>
           </motion.div>

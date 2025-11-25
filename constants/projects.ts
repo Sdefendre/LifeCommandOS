@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
     desc: 'A comprehensive personal finance BattleStation featuring transaction tracking, budget management, interactive reports, and savings goals. Built with React 19, Next.js 16, and Recharts.',
     metrics: 'BattleStation • Data Visualization • React 19',
     links: {
-      live: '/dashboard',
+      live: '/battlestation',
     },
   },
   {

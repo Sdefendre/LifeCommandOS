@@ -100,7 +100,7 @@ export function BudgetStatus() {
           )
         })}
         <Button variant="outline" className="w-full mt-2" asChild>
-          <Link href="/dashboard/budgets">Configure Allocations</Link>
+          <Link href="/battlestation/budgets">Configure Allocations</Link>
         </Button>
       </CardContent>
     </Card>
