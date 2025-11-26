@@ -267,10 +267,7 @@ export function HeroThreeBackground() {
   }
 
   return (
-    <div
-      className="fixed inset-0 z-[1] pointer-events-none"
-      style={{ opacity: 1, border: '2px solid red' }}
-    >
+    <div className="fixed inset-0 z-[1] pointer-events-none">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 60 }}
         gl={{
