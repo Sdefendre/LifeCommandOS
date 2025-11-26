@@ -30,7 +30,7 @@ export function LandingPricing() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
           {LANDING_PRICING.tiers.map((tier, index) => (
             <motion.div
               key={index}
@@ -46,7 +46,7 @@ export function LandingPricing() {
                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity duration-150" />
                   <div className="absolute top-0 right-0 left-0 flex justify-center -mt-2 sm:-mt-3 z-10">
                     <Badge className="bg-primary text-primary-foreground px-2 sm:px-3 py-1 text-xs sm:text-sm shadow-lg">
-                      Recommended
+                      Most Popular
                     </Badge>
                   </div>
                 </>
@@ -71,8 +71,10 @@ export function LandingPricing() {
                       <span className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#657832] to-[#78823c] bg-clip-text text-transparent">
                         {tier.price}
                       </span>
-                      {tier.price !== '$0' && (
-                        <span className="text-muted-foreground text-lg sm:text-xl"> payment</span>
+                      {tier.period && (
+                        <span className="text-muted-foreground text-base sm:text-lg">
+                          {tier.period}
+                        </span>
                       )}
                     </div>
                     <CardDescription className="mt-3 sm:mt-4 text-sm sm:text-base min-h-[50px]">
@@ -82,7 +84,7 @@ export function LandingPricing() {
                 </CardHeader>
 
                 <CardContent className="pt-6 sm:pt-8 pb-8 sm:pb-10 px-4 sm:px-6 flex-grow flex flex-col">
-                  <ul className="space-y-4 mb-8 flex-grow">
+                  <ul className="space-y-3 sm:space-y-4 mb-8 flex-grow">
                     {tier.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <div
@@ -109,11 +111,7 @@ export function LandingPricing() {
                     }`}
                     size="lg"
                     onClick={() => {
-                      if (tier.highlight) {
-                        window.location.href = '/course'
-                      } else {
-                        window.location.href = '/ai-agent'
-                      }
+                      window.location.href = tier.href
                     }}
                   >
                     {tier.buttonText}
@@ -121,7 +119,7 @@ export function LandingPricing() {
 
                   {tier.highlight && (
                     <p className="text-xs text-center text-muted-foreground mt-3 sm:mt-4">
-                      30-day money-back guarantee. Lifetime access.
+                      Cancel anytime. No questions asked.
                     </p>
                   )}
                 </CardContent>

@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Pricing Plans**: Updated "Choose Your Path" billing section with 3 tiers
+  - Free ($0): CommandAI with 10 queries/day, basic content, community read-only access
+  - Pro ($20/mo): Unlimited CommandAI, full library, community access, priority support
+  - Lifetime ($50 one-time): Everything in Pro forever, plus course access and 1-on-1 onboarding
+  - Updated LandingPricing component for 3-column responsive layout
+
 - **AI Model Configuration**: Updated model picker to use verified, working models
   - Removed `gpt-5.1` (requires special access/registration)
   - Removed `grok-4.1-fast` (invalid model name)
