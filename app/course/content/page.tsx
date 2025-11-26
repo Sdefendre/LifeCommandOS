@@ -22,7 +22,6 @@ interface CourseContentPageProps {
 }
 
 export default async function CourseContentPage({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   searchParams: _searchParams,
 }: CourseContentPageProps) {
   // TODO: Get actual user ID from session/auth

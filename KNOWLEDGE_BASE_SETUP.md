@@ -183,5 +183,3 @@ VALUES (
 - `lib/knowledge-base.ts` - Search and retrieval functions
 - `lib/ai-agent.ts` - AI prompt building with knowledge base
 - `app/api/ai-agent/route.ts` - API endpoint that uses knowledge base
-
-

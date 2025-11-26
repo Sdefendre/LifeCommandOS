@@ -86,7 +86,6 @@ ${redditContext}
 Please provide a helpful, accurate response that addresses the user's question while maintaining the supportive, veteran-focused tone. Use the knowledge base articles provided above as your primary source of information when available. Use the Reddit Q&A examples to understand common questions and provide context that shows real-world experiences from the veteran community.`
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function shouldRateLimit(_userId?: string): boolean {
   // TODO: Implement rate limiting logic
   // For free tier: limit to X queries per day

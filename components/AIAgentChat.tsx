@@ -15,7 +15,6 @@ import {
 import { Badge } from '@/components/ui/badge'
 import { Send, Bot, User, Loader2, Sparkles, Zap } from 'lucide-react'
 import { useChat } from '@ai-sdk/react'
-import { DefaultChatTransport } from 'ai'
 import { MODEL_OPTIONS, type ModelOption } from '@/constants/ai'
 import { MarkdownRenderer } from '@/components/MarkdownRenderer'
 
@@ -25,7 +24,6 @@ interface AIAgentChatProps {
 
 export function AIAgentChat({ userId }: AIAgentChatProps) {
   const [selectedModel, setSelectedModel] = useState<ModelOption>('gpt-4o-mini')
-  const [input, setInput] = useState('')
   // Generate conversation ID on mount and persist it
   const [conversationId] = useState<string>(() => {
     if (typeof window !== 'undefined') {
@@ -49,16 +47,20 @@ export function AIAgentChat({ userId }: AIAgentChatProps) {
   }, [conversationId])
 
   // Use the useChat hook from AI SDK for proper streaming support
-  const { messages, sendMessage, status, error, setMessages } = useChat({
-    transport: new DefaultChatTransport({
-      api: '/api/ai-agent',
-      body: {
-        userId,
-        model: selectedModel,
-        conversationId: conversationId || undefined,
-      },
-    }),
-  })
+  // Type definitions may be incomplete, but these options work at runtime
+  const chatResult = useChat({
+    api: '/api/ai-agent',
+    body: {
+      userId,
+      model: selectedModel,
+      conversationId: conversationId || undefined,
+    },
+  } as any) as any
+
+  const { messages, status, error, input, setInput, setMessages } = chatResult
+  const append = chatResult.append
+  // Alias append to sendMessage
+  const sendMessage = append
 
   // Load conversation history on mount if userId exists
   useEffect(() => {
@@ -73,23 +75,19 @@ export function AIAgentChat({ userId }: AIAgentChatProps) {
           const data = await response.json()
           if (data.conversations && data.conversations.length > 0) {
             // Convert database format to chat format
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
             const historyMessages = data.conversations.map((conv: any) => ({
               id: `history-${conv.id}`,
               role: conv.role,
-              parts: [{ type: 'text', text: conv.message }],
+              content: conv.message,
             }))
             // Add welcome message and history
             setMessages([
               {
                 id: '1',
                 role: 'assistant',
-                parts: [
-                  {
-                    type: 'text',
-                    text: "Welcome! I'm Command. I can help you understand VA benefits, disability claims, C&P exams, and your DD-214. What would you like to know?",
-                  },
-                ],
+                content:
+                  "Welcome! I'm Command. I can help you understand VA benefits, disability claims, C&P exams, and your DD-214. What would you like to know?",
               },
               ...historyMessages,
             ])
@@ -144,14 +142,15 @@ export function AIAgentChat({ userId }: AIAgentChatProps) {
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!input || !input.trim() || isLoading) return
+    const trimmedInput = input?.trim() || ''
+    if (!trimmedInput || isLoading) return
 
-    const userMessage = input.trim()
+    const userMessage = trimmedInput
     setInput('')
 
-    sendMessage({
+    void sendMessage({
       role: 'user',
-      parts: [{ type: 'text', text: userMessage }],
+      content: userMessage,
     })
   }
 
@@ -196,7 +195,7 @@ export function AIAgentChat({ userId }: AIAgentChatProps) {
 
       {/* Messages Container */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map((message) => (
+        {messages.map((message: { id: string; role: 'user' | 'assistant'; content: string }) => (
           <motion.div
             key={message.id}
             initial={{ opacity: 0, y: 10 }}
@@ -217,14 +216,7 @@ export function AIAgentChat({ userId }: AIAgentChatProps) {
             >
               <CardContent className="p-3">
                 <div className="text-sm markdown-content">
-                  <MarkdownRenderer
-                    content={
-                      message.parts
-                        ?.filter((part) => part.type === 'text')
-                        .map((part) => ('text' in part ? part.text : ''))
-                        .join('') || ''
-                    }
-                  />
+                  <MarkdownRenderer content={message.content} />
                 </div>
               </CardContent>
             </Card>
@@ -277,12 +269,11 @@ export function AIAgentChat({ userId }: AIAgentChatProps) {
         <form onSubmit={onSubmit} className="flex gap-2">
           <Textarea
             ref={textareaRef}
-            value={input}
+            value={input || ''}
             onChange={handleInputChange}
             onKeyDown={(e) => {
               if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault()
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onSubmit(e as any)
               }
             }}

@@ -18,15 +18,14 @@ export function VoiceAgent({ userId }: VoiceAgentProps) {
   const [isMuted, setIsMuted] = useState(false)
   const [isListening, setIsListening] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const sessionRef = useRef<any>(null)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const wakeLockRef = useRef<any>(null)
 
   const requestWakeLock = async () => {
     try {
       if ('wakeLock' in navigator) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const lock = await (navigator as any).wakeLock.request('screen')
         wakeLockRef.current = lock
         console.log('Wake Lock active')
@@ -174,7 +173,6 @@ Remember: You're built by veterans, for veterans. Speak their language and under
       // Handle listening state changes
       // Note: Event names may vary based on SDK version - adjust as needed
       if (typeof session.on === 'function') {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const sessionAny = session as any
         try {
           sessionAny.on('listening', () => {

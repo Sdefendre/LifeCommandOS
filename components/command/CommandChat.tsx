@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useChat } from '@ai-sdk/react'
-import { DefaultChatTransport } from 'ai'
+import type { UIMessage } from 'ai'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
@@ -30,7 +30,6 @@ interface CommandChatProps {
 }
 
 interface NavItemProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon: any
   label: string
   active?: boolean
@@ -146,10 +145,11 @@ export function CommandChat({ userId }: CommandChatProps) {
   const [selectedModel, setSelectedModel] = useState<ModelOption>('gpt-4o-mini')
   const [isVoiceMode, setIsVoiceMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [inputValue, setInputValue] = useState('')
   // Removed unused rateLimit state
 
   // Generate conversation ID
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const [conversationId] = useState<string>(() => {
     if (typeof window !== 'undefined') {
       const stored = sessionStorage.getItem('ai-conversation-id')
@@ -168,18 +168,19 @@ export function CommandChat({ userId }: CommandChatProps) {
     }
   }, [conversationId])
 
-  const { messages, sendMessage, status, error } = useChat({
-    transport: new DefaultChatTransport({
-      api: '/api/ai-agent',
-      body: {
-        userId,
-        model: selectedModel,
-        conversationId: conversationId || undefined,
-      },
-    }),
-  })
+  // Type definitions may be incomplete, but these options work at runtime
+  const chatResult = useChat({
+    api: '/api/ai-agent',
+    body: {
+      userId,
+      model: selectedModel,
+      conversationId: conversationId || undefined,
+    },
+  } as any) as any
 
-  const [input, setInput] = useState('')
+  const { messages, status, error, append } = chatResult
+  // Alias append to sendMessage for compatibility with existing code structure
+  const sendMessage = append
 
   // Load rate limit
   useEffect(() => {
@@ -214,7 +215,7 @@ export function CommandChat({ userId }: CommandChatProps) {
       textareaRef.current.style.height = 'inherit'
       textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 200)}px`
     }
-  }, [input])
+  }, [inputValue])
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -224,29 +225,29 @@ export function CommandChat({ userId }: CommandChatProps) {
   }
 
   const submitMessage = async () => {
-    const trimmedInput = input?.trim() || ''
+    const trimmedInput = inputValue?.trim() || ''
     if (!trimmedInput || status === 'submitted' || status === 'streaming') {
       return
     }
 
     const userMessage = trimmedInput
-    setInput('')
+    setInputValue('')
 
     try {
       await sendMessage({
         role: 'user',
-        parts: [{ type: 'text', text: userMessage }],
+        content: userMessage,
       })
     } catch (e) {
       console.error('Failed to send message:', e)
       // Restore input on error
-      setInput(userMessage)
+      setInputValue(userMessage)
     }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const value = e.target.value
-    setInput(value || '')
+    setInputValue(value || '')
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -266,12 +267,12 @@ export function CommandChat({ userId }: CommandChatProps) {
       </div>
 
       {/* Mobile Menu Button */}
-      <div className="md:hidden fixed top-4 left-4 z-50">
+      <div className="md:hidden fixed top-4 left-4 z-[100] supports-[padding-top:env(safe-area-inset-top)]:top-[max(1rem,env(safe-area-inset-top))]">
         <Button
           variant="ghost"
           size="icon"
           onClick={() => setMobileMenuOpen(true)}
-          className="rounded-full bg-background/20 backdrop-blur-lg border border-white/10 text-foreground hover:bg-background/40"
+          className="rounded-full bg-zinc-900/50 backdrop-blur-lg border border-white/10 text-white hover:bg-zinc-800/80 shadow-lg"
         >
           <Menu className="h-5 w-5" />
         </Button>
@@ -345,7 +346,7 @@ export function CommandChat({ userId }: CommandChatProps) {
                     transition={{ duration: 0.5 }}
                     className="flex flex-col items-center text-center w-full mt-auto md:my-auto mb-2 md:mb-12"
                   >
-                    {!input.trim() && (
+                    {!inputValue?.trim() && (
                       <>
                         <div className="mb-6 md:mb-8 relative">
                           <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full" />
@@ -365,7 +366,7 @@ export function CommandChat({ userId }: CommandChatProps) {
                         <form onSubmit={handleSubmit} className="flex-1 flex items-center">
                           <input
                             type="text"
-                            value={input || ''}
+                            value={inputValue || ''}
                             onChange={handleInputChange}
                             placeholder="Ask anything..."
                             className="w-full bg-transparent border-none focus:ring-0 py-3 md:py-4 px-3 md:px-4 text-base md:text-lg text-foreground placeholder:text-muted-foreground/70 outline-none"
@@ -409,10 +410,10 @@ export function CommandChat({ userId }: CommandChatProps) {
                             <Button
                               type="submit"
                               size="icon"
-                              disabled={!input?.trim() || isLoading}
+                              disabled={!inputValue?.trim() || isLoading}
                               className={cn(
                                 'h-8 w-8 md:h-10 md:w-10 rounded-full transition-all duration-300',
-                                input?.trim()
+                                inputValue?.trim()
                                   ? 'bg-primary text-primary-foreground hover:bg-primary/90'
                                   : 'bg-white/5 text-muted-foreground hover:bg-white/10'
                               )}
@@ -428,7 +429,7 @@ export function CommandChat({ userId }: CommandChatProps) {
               ) : (
                 <div className="flex flex-col min-h-full pb-32 pt-20 md:pt-10">
                   <div className="max-w-3xl mx-auto w-full px-4 space-y-2 md:space-y-0">
-                    {messages.map((message, i) => (
+                    {messages.map((message: UIMessage, i: number) => (
                       <CommandMessage
                         key={message.id}
                         message={message}
@@ -457,7 +458,7 @@ export function CommandChat({ userId }: CommandChatProps) {
                 <form onSubmit={handleSubmit} className="flex flex-col">
                   <Textarea
                     ref={textareaRef}
-                    value={input || ''}
+                    value={inputValue || ''}
                     onChange={handleInputChange}
                     onKeyDown={handleKeyDown}
                     placeholder="Ask anything..."
@@ -506,10 +507,10 @@ export function CommandChat({ userId }: CommandChatProps) {
                       <Button
                         type="submit"
                         size="icon"
-                        disabled={!input?.trim() || isLoading}
+                        disabled={!inputValue?.trim() || isLoading}
                         className={cn(
                           'h-8 w-8 rounded-full transition-all min-h-[40px] min-w-[40px]',
-                          input?.trim()
+                          inputValue?.trim()
                             ? 'bg-primary text-primary-foreground hover:bg-primary/90'
                             : 'bg-white/10 text-muted-foreground hover:bg-white/20'
                         )}

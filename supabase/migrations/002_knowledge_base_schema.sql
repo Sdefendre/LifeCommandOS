@@ -41,3 +41,4 @@ CREATE TRIGGER update_knowledge_base_updated_at BEFORE UPDATE ON knowledge_base
 
 
 
+

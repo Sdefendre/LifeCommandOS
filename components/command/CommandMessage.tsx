@@ -16,10 +16,12 @@ export function CommandMessage({ message }: CommandMessageProps) {
 
   // Extract text content from message parts
   const content =
-    message.parts
-      ?.filter((part) => part.type === 'text')
-      .map((part) => ('text' in part ? part.text : ''))
-      .join('') || ''
+    (message as any).content ||
+    (message as any).parts
+      ?.filter((part: any) => part.type === 'text')
+      .map((part: any) => ('text' in part ? part.text : ''))
+      .join('') ||
+    ''
 
   return (
     <motion.div

@@ -28,7 +28,7 @@ export function TransactionImport() {
   const { addTransaction } = useDashboard()
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [isReviewDialogOpen, setIsReviewDialogOpen] = useState(false)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const [reviewTransactions, setReviewTransactions] = useState<any[]>([])
 
   const handleUploadClick = () => {
@@ -43,10 +43,8 @@ export function TransactionImport() {
       header: true,
       skipEmptyLines: true,
       complete: (results) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const parsedTransactions: any[] = []
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         results.data.forEach((row: any) => {
           const amount = parseFloat(row.amount || row.Amount || row.Debit || row.Credit || '0')
           const description =

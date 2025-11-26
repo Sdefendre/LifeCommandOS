@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://defendre-solutions.vercel.app/sitemap.xml
