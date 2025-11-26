@@ -5,6 +5,7 @@ import { Sparkles, MessageSquare, FileText, HelpCircle } from 'lucide-react'
 
 interface ChatGreetingProps {
   onSuggestionClick: (suggestion: string) => void
+  disabled?: boolean
 }
 
 const suggestions = [
@@ -25,7 +26,7 @@ const suggestions = [
   },
 ]
 
-export function ChatGreeting({ onSuggestionClick }: ChatGreetingProps) {
+export function ChatGreeting({ onSuggestionClick, disabled = false }: ChatGreetingProps) {
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
       <motion.div
@@ -81,7 +82,12 @@ export function ChatGreeting({ onSuggestionClick }: ChatGreetingProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 + index * 0.1, duration: 0.3 }}
               onClick={() => onSuggestionClick(suggestion.prompt)}
-              className="group flex flex-col items-center gap-2 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-200"
+              disabled={disabled}
+              className={`group flex flex-col items-center gap-2 p-4 rounded-xl bg-white/5 border border-white/10 transition-all duration-200 ${
+                disabled
+                  ? 'opacity-50 cursor-not-allowed'
+                  : 'hover:bg-white/10 hover:border-white/20'
+              }`}
             >
               <suggestion.icon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
               <span className="text-sm font-medium text-foreground">{suggestion.title}</span>

@@ -12,9 +12,10 @@ interface MessagesProps {
   messages: UIMessage[]
   status: 'submitted' | 'streaming' | 'ready' | 'error'
   onSuggestionClick: (suggestion: string) => void
+  isChatReady?: boolean
 }
 
-function PureMessages({ messages, status, onSuggestionClick }: MessagesProps) {
+function PureMessages({ messages, status, onSuggestionClick, isChatReady = true }: MessagesProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const endRef = useRef<HTMLDivElement>(null)
   const [isAtBottom, setIsAtBottom] = useState(true)
@@ -75,7 +76,7 @@ function PureMessages({ messages, status, onSuggestionClick }: MessagesProps) {
     >
       <div className="mx-auto max-w-3xl px-4 py-4 md:py-8">
         {messages.length === 0 ? (
-          <ChatGreeting onSuggestionClick={onSuggestionClick} />
+          <ChatGreeting onSuggestionClick={onSuggestionClick} disabled={!isChatReady} />
         ) : (
           <div className="flex flex-col gap-4 md:gap-6">
             {messages.map((message, index) => (
@@ -114,5 +115,6 @@ export const Messages = memo(PureMessages, (prevProps, nextProps) => {
   if (prevProps.status !== nextProps.status) return false
   if (prevProps.messages.length !== nextProps.messages.length) return false
   if (prevProps.messages !== nextProps.messages) return false
+  if (prevProps.isChatReady !== nextProps.isChatReady) return false
   return true
 })

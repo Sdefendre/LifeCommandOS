@@ -60,7 +60,7 @@ export function Chat({ userId }: ChatProps) {
     if (!trimmedInput) return
 
     if (typeof append !== 'function') {
-      console.error('append is not ready yet')
+      // Silently ignore - chat hook not ready yet
       return
     }
 
@@ -80,7 +80,7 @@ export function Chat({ userId }: ChatProps) {
   const handleSuggestionClick = useCallback(
     async (suggestion: string) => {
       if (typeof append !== 'function') {
-        console.error('append is not ready yet')
+        // Silently ignore - chat hook not ready yet
         return
       }
       setInputValue('')
@@ -133,7 +133,12 @@ export function Chat({ userId }: ChatProps) {
         <ChatHeader onNewChat={handleNewChat} onToggleSidebar={() => setSidebarOpen(true)} />
 
         {/* Messages */}
-        <Messages messages={messages} status={status} onSuggestionClick={handleSuggestionClick} />
+        <Messages
+          messages={messages}
+          status={status}
+          onSuggestionClick={handleSuggestionClick}
+          isChatReady={typeof append === 'function'}
+        />
 
         {/* Input */}
         <ChatInput
