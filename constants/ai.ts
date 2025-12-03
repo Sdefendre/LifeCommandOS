@@ -1,5 +1,7 @@
 export type ModelOption = 'grok-4-1-fast-reasoning' | 'gpt-4o' | 'gpt-4o-mini'
 
+export const DEFAULT_MODEL: ModelOption = 'gpt-4o-mini'
+
 export const MODEL_OPTIONS: { value: ModelOption; label: string; description: string }[] = [
   {
     value: 'gpt-4o',
