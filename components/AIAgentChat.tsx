@@ -5,17 +5,10 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
 import { Send, Bot, User, Loader2, Sparkles, Zap } from 'lucide-react'
 import { useChat } from '@ai-sdk/react'
-import { MODEL_OPTIONS, type ModelOption } from '@/constants/ai'
+import { DEFAULT_MODEL, MODEL_OPTIONS, type ModelOption } from '@/constants/ai'
 import { MarkdownRenderer } from '@/components/MarkdownRenderer'
 
 interface AIAgentChatProps {
@@ -23,7 +16,7 @@ interface AIAgentChatProps {
 }
 
 export function AIAgentChat({ userId }: AIAgentChatProps) {
-  const [selectedModel, setSelectedModel] = useState<ModelOption>('gpt-4o-mini')
+  const selectedModel: ModelOption = DEFAULT_MODEL
   // Generate conversation ID on mount and persist it
   const [conversationId] = useState<string>(() => {
     if (typeof window !== 'undefined') {
@@ -162,24 +155,9 @@ export function AIAgentChat({ userId }: AIAgentChatProps) {
           <div className="flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-primary" />
             <span className="text-xs font-medium text-muted-foreground">Model:</span>
-            <Select
-              value={selectedModel}
-              onValueChange={(value) => setSelectedModel(value as ModelOption)}
-            >
-              <SelectTrigger className="h-8 w-[200px] text-xs">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {MODEL_OPTIONS.map((option) => (
-                  <SelectItem key={option.value} value={option.value}>
-                    <div className="flex flex-col">
-                      <span className="font-medium">{option.label}</span>
-                      <span className="text-xs text-muted-foreground">{option.description}</span>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <span className="inline-flex items-center rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-foreground">
+              {MODEL_OPTIONS.find((m) => m.value === selectedModel)?.label || 'Grok 4.1 Fast'}
+            </span>
           </div>
           {rateLimit && (
             <Badge

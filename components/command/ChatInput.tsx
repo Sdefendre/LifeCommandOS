@@ -1,15 +1,9 @@
 'use client'
 
 import { useRef, useEffect, useCallback, memo } from 'react'
-import { ArrowUp, Square, ChevronDown } from 'lucide-react'
+import { ArrowUp, Square } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
 import { MODEL_OPTIONS, type ModelOption } from '@/constants/ai'
 import { cn } from '@/lib/utils'
 
@@ -20,7 +14,6 @@ interface ChatInputProps {
   onStop: () => void
   isLoading: boolean
   selectedModel: ModelOption
-  onModelChange: (model: ModelOption) => void
 }
 
 function PureChatInput({
@@ -30,7 +23,6 @@ function PureChatInput({
   onStop,
   isLoading,
   selectedModel,
-  onModelChange,
 }: ChatInputProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
@@ -90,36 +82,12 @@ function PureChatInput({
 
           {/* Bottom bar with model selector and submit */}
           <div className="flex items-center justify-between px-3 pb-3">
-            {/* Model Selector */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="h-8 gap-1.5 text-xs text-muted-foreground hover:text-foreground hover:bg-white/5"
-                >
-                  <span className="truncate max-w-[100px] md:max-w-[150px]">
-                    {selectedModelData?.label || 'Select model'}
-                  </span>
-                  <ChevronDown className="h-3 w-3 opacity-50" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-[240px] bg-zinc-950 border-white/10">
-                {MODEL_OPTIONS.map((model) => (
-                  <DropdownMenuItem
-                    key={model.value}
-                    onClick={() => onModelChange(model.value)}
-                    className={cn(
-                      'flex flex-col items-start gap-0.5 py-2.5 cursor-pointer',
-                      selectedModel === model.value && 'bg-white/10'
-                    )}
-                  >
-                    <span className="font-medium text-sm">{model.label}</span>
-                    <span className="text-xs text-muted-foreground">{model.description}</span>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {/* Model Display (fixed) */}
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <span className="inline-flex items-center rounded-full bg-white/5 px-3 py-1 font-medium text-foreground">
+                {selectedModelData?.label || 'Grok 4.1 Fast'}
+              </span>
+            </div>
 
             {/* Submit / Stop Button */}
             {isLoading ? (

@@ -6,7 +6,7 @@ import { ChatHeader } from './ChatHeader'
 import { ChatSidebar } from './ChatSidebar'
 import { Messages } from './Messages'
 import { ChatInput } from './ChatInput'
-import { type ModelOption } from '@/constants/ai'
+import { DEFAULT_MODEL, type ModelOption } from '@/constants/ai'
 
 interface ChatProps {
   userId?: string
@@ -14,8 +14,9 @@ interface ChatProps {
 
 export function Chat({ userId }: ChatProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [selectedModel, setSelectedModel] = useState<ModelOption>('gpt-4o-mini')
+  const selectedModel: ModelOption = DEFAULT_MODEL
   const [inputValue, setInputValue] = useState('')
+  const [submitError, setSubmitError] = useState<string | null>(null)
   const [conversationId, setConversationId] = useState<string>('')
   const [isClient, setIsClient] = useState(false)
 
@@ -52,6 +53,7 @@ export function Chat({ userId }: ChatProps) {
   const setMessages = chatResult?.setMessages
   const stop = chatResult?.stop
   const append = chatResult?.append
+  const error = chatResult?.error as Error | undefined
 
   const isLoading = status === 'submitted' || status === 'streaming'
 
@@ -65,6 +67,7 @@ export function Chat({ userId }: ChatProps) {
     }
 
     setInputValue('')
+    setSubmitError(null)
 
     try {
       await append({
@@ -74,6 +77,9 @@ export function Chat({ userId }: ChatProps) {
     } catch (e) {
       console.error('Failed to send message:', e)
       setInputValue(trimmedInput)
+      setSubmitError(
+        e instanceof Error ? e.message : 'Failed to send message. Please try again in a moment.'
+      )
     }
   }, [inputValue, append])
 
@@ -81,6 +87,7 @@ export function Chat({ userId }: ChatProps) {
     async (suggestion: string) => {
       if (typeof append !== 'function') {
         // Silently ignore - chat hook not ready yet
+        setInputValue(suggestion)
         return
       }
       setInputValue('')
@@ -140,6 +147,15 @@ export function Chat({ userId }: ChatProps) {
           isChatReady={typeof append === 'function'}
         />
 
+        {/* Error banner */}
+        {(error || submitError) && (
+          <div className="mx-auto max-w-3xl w-full px-4 pb-2 text-center">
+            <div className="rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+              {submitError || error?.message || 'Something went wrong sending your message.'}
+            </div>
+          </div>
+        )}
+
         {/* Input */}
         <ChatInput
           input={inputValue}
@@ -148,7 +164,6 @@ export function Chat({ userId }: ChatProps) {
           onStop={handleStop}
           isLoading={isLoading}
           selectedModel={selectedModel}
-          onModelChange={setSelectedModel}
         />
       </div>
     </div>
