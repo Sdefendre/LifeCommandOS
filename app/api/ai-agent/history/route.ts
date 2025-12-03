@@ -18,6 +18,10 @@ export async function GET(request: NextRequest) {
 
     const supabase = getSupabaseClient()
 
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
+    }
+
     // Build query
     let query = supabase
       .from('ai_agent_conversations')

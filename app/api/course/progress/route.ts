@@ -15,6 +15,10 @@ export async function POST(request: NextRequest) {
 
     const supabase = getSupabaseClient()
 
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
+    }
+
     // Upsert course progress
     const { error } = await supabase.from('course_progress').upsert(
       {
@@ -54,6 +58,10 @@ export async function GET(request: NextRequest) {
     }
 
     const supabase = getSupabaseClient()
+
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
+    }
 
     const { data, error } = await supabase
       .from('course_progress')

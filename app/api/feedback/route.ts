@@ -33,6 +33,10 @@ export async function POST(request: NextRequest) {
     // Get Supabase client (will use service role on server-side)
     const supabase = getSupabaseClient()
 
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
+    }
+
     // Insert feedback into database
     const { data, error } = await supabase
       .from('site_feedback')
@@ -75,6 +79,9 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     const supabase = getSupabaseClient()
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
+    }
     const searchParams = request.nextUrl.searchParams
 
     // Query parameters for filtering

@@ -178,7 +178,7 @@ export async function POST(request: NextRequest) {
     })
 
     // Return the streaming response with conversation ID in headers
-    const response = result.toAIStreamResponse()
+    const response = result.toTextStreamResponse()
 
     response.headers.set('X-Conversation-ID', currentConversationId)
     response.headers.set('X-Rate-Limit-Remaining', String(rateLimit.remaining))

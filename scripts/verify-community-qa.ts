@@ -1,15 +1,15 @@
 /**
- * Verification script for Reddit dataset
+ * Verification script for Community Q&A dataset
  *
- * This script checks if the Reddit dataset is properly set up and working.
+ * This script checks if the Community Q&A dataset is properly set up and working.
  *
- * Usage: npm run verify-reddit-dataset
+ * Usage: npm run verify-community-qa
  */
 
 import { createClient } from '@supabase/supabase-js'
 import dotenv from 'dotenv'
 import { join } from 'path'
-import { searchRedditDataset, getDatasetStats } from '../lib/reddit-dataset'
+import { searchCommunityQA, getDatasetStats } from '../lib/community-qa'
 
 // Load environment variables
 dotenv.config({ path: join(process.cwd(), '.env.local') })
@@ -18,7 +18,7 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY
 
 async function verifySetup() {
-  console.log('🔍 Verifying Reddit Dataset Setup...\n')
+  console.log('🔍 Verifying Community Q&A Dataset Setup...\n')
 
   // Check environment variables
   console.log('1. Checking environment variables...')
@@ -37,14 +37,14 @@ async function verifySetup() {
   const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY)
 
   try {
-    const { data, error } = await supabase.from('reddit_qa_dataset').select('id').limit(1)
+    const { data, error } = await supabase.from('community_qa_dataset').select('id').limit(1)
 
     if (error) {
       console.error('❌ Database connection failed:', error.message)
-      if (error.message.includes('relation "reddit_qa_dataset" does not exist')) {
+      if (error.message.includes('relation "community_qa_dataset" does not exist')) {
         console.error('   → The migration has not been applied yet!')
         console.error('   → Run: supabase migration up')
-        console.error('   → Or apply supabase/migrations/002_reddit_qa_dataset.sql manually')
+        console.error('   → Or apply supabase/migrations/004_rename_to_community_qa.sql manually')
       }
       return false
     }
@@ -57,7 +57,7 @@ async function verifySetup() {
   // Check if search function exists
   console.log('3. Checking search function...')
   try {
-    const { data, error } = await supabase.rpc('search_reddit_qa', {
+    const { data, error } = await supabase.rpc('search_community_qa', {
       search_query: 'test',
       result_limit: 1,
     })
@@ -86,8 +86,8 @@ async function verifySetup() {
 
     if (stats.totalPosts === 0) {
       console.log('\n⚠️  Dataset is empty!')
-      console.log('   → Run: npm run scrape-reddit')
-      console.log('   → This will populate the dataset with Reddit Q&A\n')
+      console.log('   → Run: npm run scrape-community-qa')
+      console.log('   → This will populate the dataset with community Q&A\n')
     } else {
       console.log('✅ Dataset has data\n')
     }
@@ -102,7 +102,7 @@ async function verifySetup() {
     const testQueries = ['disability claim', 'C&P exam', 'DD-214']
 
     for (const query of testQueries) {
-      const results = await searchRedditDataset(query, 1)
+      const results = await searchCommunityQA(query, 1)
       if (results.length > 0) {
         console.log(`   ✅ "${query}" → Found ${results.length} result(s)`)
       } else {
