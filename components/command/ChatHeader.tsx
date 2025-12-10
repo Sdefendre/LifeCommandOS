@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Plus, PanelLeft, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { UserMenu } from '@/components/auth'
 
 interface ChatHeaderProps {
   onNewChat: () => void
@@ -39,16 +40,21 @@ export function ChatHeader({
         </Link>
       </div>
 
-      {/* New Chat Button */}
-      <Button
-        variant="ghost"
-        size="sm"
-        onClick={onNewChat}
-        className="h-9 gap-2 text-muted-foreground hover:text-foreground"
-      >
-        <Plus className="h-4 w-4" />
-        <span className="hidden sm:inline">New Chat</span>
-      </Button>
+      <div className="flex items-center gap-2">
+        {/* New Chat Button */}
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={onNewChat}
+          className="h-9 gap-2 text-muted-foreground hover:text-foreground"
+        >
+          <Plus className="h-4 w-4" />
+          <span className="hidden sm:inline">New Chat</span>
+        </Button>
+
+        {/* User Menu */}
+        <UserMenu />
+      </div>
     </header>
   )
 }

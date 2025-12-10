@@ -68,6 +68,9 @@ importers:
       '@react-three/fiber':
         specifier: ^9.4.0
         version: 9.4.0(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(three@0.181.2)
+      '@supabase/ssr':
+        specifier: ^0.8.0
+        version: 0.8.0(@supabase/supabase-js@2.84.0)
       '@supabase/supabase-js':
         specifier: ^2.84.0
         version: 2.84.0
@@ -1773,6 +1776,11 @@ packages:
     resolution: {integrity: sha512-ThqjxiCwWiZAroHnYPmnNl6tZk6jxGcG2a7Hp/3kcolPcMj89kWjUTA3cHmhdIWYsP84fHp8MAQjYWMLf7HEUg==}
     engines: {node: '>=20.0.0'}
 
+  '@supabase/ssr@0.8.0':
+    resolution: {integrity: sha512-/PKk8kNFSs8QvvJ2vOww1mF5/c5W8y42duYtXvkOSe+yZKRgTTZywYG2l41pjhNomqESZCpZtXuWmYjFRMV+dw==}
+    peerDependencies:
+      '@supabase/supabase-js': ^2.76.1
+
   '@supabase/storage-js@2.84.0':
     resolution: {integrity: sha512-vXvAJ1euCuhryOhC6j60dG8ky+lk0V06ubNo+CbhuoUv+sl39PyY0lc+k+qpQhTk/VcI6SiM0OECLN83+nyJ5A==}
     engines: {node: '>=20.0.0'}
@@ -2666,6 +2674,10 @@ packages:
   cookie@0.7.2:
     resolution: {integrity: sha512-yki5XnKuf750l50uGTllt6kKILY4nQ1eNIQatoXEByZ5dWgnKqbnqmTrBE5B4N7lrMJKQ2ytWMiTO2o0v6Ew/w==}
     engines: {node: '>= 0.6'}
+
+  cookie@1.1.1:
+    resolution: {integrity: sha512-ei8Aos7ja0weRpFzJnEA9UHJ/7XQmqglbRwnf2ATjcB9Wq874VKH9kfjjirM6UhU2/E5fFYadylyhFldcqSidQ==}
+    engines: {node: '>=18'}
 
   cors@2.8.5:
     resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
@@ -7329,6 +7341,11 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
+  '@supabase/ssr@0.8.0(@supabase/supabase-js@2.84.0)':
+    dependencies:
+      '@supabase/supabase-js': 2.84.0
+      cookie: 1.1.1
+
   '@supabase/storage-js@2.84.0':
     dependencies:
       tslib: 2.8.1
@@ -8358,6 +8375,8 @@ snapshots:
 
   cookie@0.7.2:
     optional: true
+
+  cookie@1.1.1: {}
 
   cors@2.8.5:
     dependencies:

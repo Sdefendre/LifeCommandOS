@@ -1,6 +1,7 @@
 import type React from 'react'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ThemeColorMeta } from '@/components/theme-color-meta'
+import { AuthProvider } from '@/lib/auth'
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
@@ -118,11 +119,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           disableTransitionOnChange
         >
           <ThemeColorMeta />
-          <ErrorBoundary>
-            {children}
-            <ClientOnlyComponents />
-            <Analytics />
-          </ErrorBoundary>
+          <AuthProvider>
+            <ErrorBoundary>
+              {children}
+              <ClientOnlyComponents />
+              <Analytics />
+            </ErrorBoundary>
+          </AuthProvider>
         </ThemeProvider>
         <script
           type="application/ld+json"

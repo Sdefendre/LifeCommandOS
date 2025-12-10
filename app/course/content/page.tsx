@@ -5,6 +5,7 @@ import { SubtleThreeBackgroundWrapper } from '@/components/SubtleThreeBackground
 import { CoursePlayer } from '@/components/CoursePlayer'
 import { courseModules } from '@/components/CourseContent'
 import { checkCourseAccess } from '@/lib/supabase'
+import { createClient } from '@/lib/supabase/server'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Lock } from 'lucide-react'
@@ -24,14 +25,18 @@ interface CourseContentPageProps {
 export default async function CourseContentPage({
   searchParams: _searchParams,
 }: CourseContentPageProps) {
-  // TODO: Get actual user ID from session/auth
-  // For now, this is a placeholder - you'll need to implement authentication
-  const userId = undefined // Replace with actual user ID from auth
+  // Get authenticated user from Supabase
+  const supabase = await createClient()
+  const {
+    data: { user },
+  } = supabase ? await supabase.auth.getUser() : { data: { user: null } }
 
   // If user is not authenticated, redirect to login
-  if (!userId) {
-    redirect('/ai-agent?redirect=/course/content')
+  if (!user) {
+    redirect('/login?redirect=/course/content')
   }
+
+  const userId = user.id
 
   // Check if user has course access
   const hasAccess = await checkCourseAccess(userId, '0-100-rating-course')

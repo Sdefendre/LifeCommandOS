@@ -2,17 +2,16 @@
 
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { useChat } from '@ai-sdk/react'
+import { useAuth } from '@/lib/auth'
 import { ChatHeader } from './ChatHeader'
 import { ChatSidebar } from './ChatSidebar'
 import { Messages } from './Messages'
 import { ChatInput } from './ChatInput'
 import { DEFAULT_MODEL, type ModelOption } from '@/constants/ai'
 
-interface ChatProps {
-  userId?: string
-}
-
-export function Chat({ userId }: ChatProps) {
+export function Chat() {
+  const { user } = useAuth()
+  const userId = user?.id
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const selectedModel: ModelOption = DEFAULT_MODEL
   const [inputValue, setInputValue] = useState('')

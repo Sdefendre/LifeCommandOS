@@ -4,9 +4,9 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Loader2 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import { useAuth } from '@/lib/auth'
 
 interface CheckoutButtonProps {
-  userId?: string
   courseId?: string
   className?: string
   size?: 'default' | 'sm' | 'lg' | 'icon'
@@ -14,7 +14,6 @@ interface CheckoutButtonProps {
 }
 
 export function CheckoutButton({
-  userId,
   courseId = '0-100-rating-course',
   className,
   size = 'lg',
@@ -22,11 +21,12 @@ export function CheckoutButton({
 }: CheckoutButtonProps) {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+  const { user } = useAuth()
 
   const handleCheckout = async () => {
-    if (!userId) {
-      // Redirect to login or show message
-      router.push('/ai-agent?redirect=/course')
+    if (!user) {
+      // Redirect to login
+      router.push('/login?redirect=/course')
       return
     }
 
@@ -39,7 +39,7 @@ export function CheckoutButton({
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId,
+          userId: user.id,
           courseId,
         }),
       })
