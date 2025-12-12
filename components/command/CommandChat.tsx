@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect, lazy, Suspense } from 'react'
+import { useState, useRef, useEffect, lazy, Suspense, useCallback } from 'react'
 import { useChat } from '@ai-sdk/react'
 import type { UIMessage } from 'ai'
 import { motion } from 'framer-motion'
@@ -16,12 +16,15 @@ import {
   Grid,
   ArrowUp,
   Menu,
+  Plus,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { CommandMessage, CommandMessageLoading } from './CommandMessage'
+import { ChatHistory } from './ChatHistory'
 import { DEFAULT_MODEL, MODEL_OPTIONS, type ModelOption } from '@/constants/ai'
 import { cn } from '@/lib/utils'
+import { useChatHistory } from '@/lib/use-chat-history'
 
 // Lazy load VoiceAgent since it's not needed on initial render
 const VoiceAgent = lazy(() =>
@@ -95,7 +98,21 @@ const NavItem = ({
   </button>
 )
 
-const SidebarContent = ({ showLabels = false }: { showLabels?: boolean }) => (
+interface SidebarContentProps {
+  showLabels?: boolean
+  showHistory?: boolean
+  onToggleHistory?: () => void
+  onNewChat?: () => void
+  historyContent?: React.ReactNode
+}
+
+const SidebarContent = ({
+  showLabels = false,
+  showHistory = false,
+  onToggleHistory,
+  onNewChat,
+  historyContent,
+}: SidebarContentProps) => (
   <div
     className={cn(
       'h-full min-h-screen flex flex-col z-30 flex-shrink-0',
@@ -113,11 +130,39 @@ const SidebarContent = ({ showLabels = false }: { showLabels?: boolean }) => (
       {showLabels && <span className="font-bold text-lg tracking-tight">Command</span>}
     </div>
 
-    <div className="flex-1 w-full space-y-2">
+    <div className="flex-1 w-full space-y-2 overflow-hidden flex flex-col">
+      {showLabels && (
+        <div className="px-4 pb-2">
+          <Button
+            variant="outline"
+            className="w-full justify-start gap-2 bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"
+            onClick={onNewChat}
+          >
+            <Plus className="h-4 w-4" />
+            New chat
+          </Button>
+        </div>
+      )}
       <NavItem icon={Search} label="Search" showLabel={showLabels} />
       <NavItem icon={MessageSquare} label="Chat" active onClick={() => {}} showLabel={showLabels} />
       <NavItem icon={Grid} label="Claims" showLabel={showLabels} />
-      <NavItem icon={History} label="History" showLabel={showLabels} />
+      <NavItem
+        icon={History}
+        label="History"
+        showLabel={showLabels}
+        active={showHistory && !showLabels}
+        onClick={onToggleHistory}
+      />
+
+      {/* History panel for mobile sidebar */}
+      {showLabels && historyContent && (
+        <div className="flex-1 overflow-hidden mt-4 border-t border-white/10 pt-4">
+          <p className="text-xs font-medium text-muted-foreground px-6 pb-2 uppercase tracking-wider">
+            Recent Chats
+          </p>
+          <div className="px-2 overflow-y-auto max-h-[calc(100vh-350px)]">{historyContent}</div>
+        </div>
+      )}
     </div>
 
     <div className={cn('mt-auto w-full flex flex-col gap-4', showLabels ? 'p-4' : 'items-center')}>
@@ -149,11 +194,20 @@ export function CommandChat({ userId }: CommandChatProps) {
   const [isVoiceMode, setIsVoiceMode] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [inputValue, setInputValue] = useState('')
-  // Removed unused rateLimit state
+  const [showHistory, setShowHistory] = useState(false)
 
   // Generate conversation ID
-
   const [conversationId, setConversationId] = useState<string>('')
+
+  // Chat history hook
+  const {
+    conversations,
+    isLoading: isHistoryLoading,
+    error: historyError,
+    refresh: refreshHistory,
+    loadConversation,
+    deleteConversation,
+  } = useChatHistory(userId)
 
   // Initialize conversation ID on client side only to match hydration
   useEffect(() => {
@@ -179,7 +233,7 @@ export function CommandChat({ userId }: CommandChatProps) {
     },
   } as any) as any
 
-  const { messages, status, error, append } = chatResult
+  const { messages, status, error, append, setMessages } = chatResult
   // Alias append to sendMessage for compatibility with existing code structure
   const sendMessage = append
   const selectedModelLabel =
@@ -261,12 +315,110 @@ export function CommandChat({ userId }: CommandChatProps) {
   }
 
   const toggleVoiceMode = () => setIsVoiceMode(!isVoiceMode)
+  const toggleHistory = () => setShowHistory(!showHistory)
+
+  // Handle selecting a conversation from history
+  const handleSelectConversation = useCallback(
+    async (selectedConversationId: string) => {
+      if (selectedConversationId === conversationId) {
+        setShowHistory(false)
+        return
+      }
+
+      // Load the conversation messages
+      const conversationMessages = await loadConversation(selectedConversationId)
+
+      if (conversationMessages.length > 0) {
+        // Convert to UIMessage format
+        const uiMessages = conversationMessages
+          .filter((msg) => msg.role !== 'system')
+          .map((msg, index) => ({
+            id: `${msg.conversation_id}-${index}`,
+            role: msg.role as 'user' | 'assistant',
+            content: msg.message,
+            createdAt: msg.created_at ? new Date(msg.created_at) : new Date(),
+            parts: [{ type: 'text' as const, text: msg.message }],
+          }))
+
+        // Update conversation ID and messages
+        setConversationId(selectedConversationId)
+        sessionStorage.setItem('ai-conversation-id', selectedConversationId)
+        setMessages(uiMessages)
+      }
+
+      setShowHistory(false)
+      setMobileMenuOpen(false)
+    },
+    [conversationId, loadConversation, setMessages]
+  )
+
+  // Handle starting a new conversation
+  const handleNewConversation = useCallback(() => {
+    const newId = `conv-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`
+    sessionStorage.setItem('ai-conversation-id', newId)
+    setConversationId(newId)
+    setMessages([])
+    setShowHistory(false)
+    setMobileMenuOpen(false)
+  }, [setMessages])
+
+  // Handle deleting a conversation
+  const handleDeleteConversation = useCallback(
+    async (deleteConversationId: string) => {
+      const success = await deleteConversation(deleteConversationId)
+
+      if (success && deleteConversationId === conversationId) {
+        // Start a new conversation if we deleted the current one
+        handleNewConversation()
+      }
+    },
+    [conversationId, deleteConversation, handleNewConversation]
+  )
+
+  // Refresh history when messages change (new message sent)
+  useEffect(() => {
+    if (messages.length > 0 && userId) {
+      // Debounce the refresh to avoid too many calls
+      const timeout = setTimeout(() => {
+        refreshHistory()
+      }, 1000)
+      return () => clearTimeout(timeout)
+    }
+  }, [messages.length, userId, refreshHistory])
+
+  // History content for sidebar
+  const historyContent = (
+    <ChatHistory
+      conversations={conversations}
+      currentConversationId={conversationId}
+      isLoading={isHistoryLoading}
+      error={historyError}
+      onSelectConversation={handleSelectConversation}
+      onDeleteConversation={handleDeleteConversation}
+      onNewConversation={handleNewConversation}
+      showNewChatButton={false}
+    />
+  )
 
   return (
     <div className="flex h-full min-h-[100dvh] w-full overflow-hidden bg-transparent text-foreground font-sans">
       {/* Sidebar - Hidden on mobile */}
       <div className="hidden md:flex h-screen sticky top-0">
-        <SidebarContent />
+        <SidebarContent
+          showHistory={showHistory}
+          onToggleHistory={toggleHistory}
+          onNewChat={handleNewConversation}
+        />
+
+        {/* Desktop History Panel */}
+        {showHistory && (
+          <div className="w-72 h-full bg-zinc-950/95 backdrop-blur-xl border-r border-white/10 overflow-hidden flex flex-col">
+            <div className="p-4 border-b border-white/10">
+              <h2 className="font-semibold text-sm">Chat History</h2>
+            </div>
+            <div className="flex-1 overflow-y-auto py-2">{historyContent}</div>
+          </div>
+        )}
       </div>
 
       {/* Mobile Menu Button */}
@@ -325,7 +477,11 @@ export function CommandChat({ userId }: CommandChatProps) {
             <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-transparent pointer-events-none z-0" />
             <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
             <div className="relative z-10 h-full">
-              <SidebarContent showLabels={true} />
+              <SidebarContent
+                showLabels={true}
+                onNewChat={handleNewConversation}
+                historyContent={historyContent}
+              />
             </div>
           </SheetContent>
         </Sheet>

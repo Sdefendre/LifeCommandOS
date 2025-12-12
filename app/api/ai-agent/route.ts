@@ -4,14 +4,27 @@ import { createXai } from '@ai-sdk/xai'
 import { DEFAULT_MODEL } from '@/constants/ai'
 import { buildPrompt, SYSTEM_PROMPT, type ConversationMessage } from '@/lib/ai-agent'
 import { checkRateLimit, isSupabaseConfigured, saveConversation } from '@/lib/supabase'
+import { createClient } from '@/lib/supabase/server'
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     // useChat with DefaultChatTransport sends: { messages, data, ...body }
     // The body object from transport config (userId, model) is merged into the request body
-    const { messages: chatMessages, userId, conversationId } = body
+    const { messages: chatMessages, userId: bodyUserId, conversationId } = body
     const resolvedModel = DEFAULT_MODEL
+
+    // Get authenticated user from server session (preferred) or fallback to body userId
+    let userId = bodyUserId
+    const supabase = await createClient()
+    if (supabase) {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser()
+      if (user) {
+        userId = user.id
+      }
+    }
 
     // Warn (but allow) if Supabase isn't configured; KB/Community Q&A will be skipped gracefully
     if (!isSupabaseConfigured) {

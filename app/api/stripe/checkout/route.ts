@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
-import { getSupabaseClient, checkCourseAccess } from '@/lib/supabase'
+import { checkCourseAccess } from '@/lib/supabase'
+import { createClient } from '@/lib/supabase/server'
 
 // Lazy initialization to avoid build-time errors
 function getStripeClient(): Stripe {
@@ -18,11 +19,24 @@ const COURSE_PRICE_ID = process.env.STRIPE_COURSE_PRICE_ID || ''
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { userId, courseId = '0-100-rating-course' } = body
+    const { courseId = '0-100-rating-course' } = body
 
-    if (!userId) {
-      return NextResponse.json({ error: 'User ID is required' }, { status: 400 })
+    // Get authenticated user from server session
+    const supabase = await createClient()
+    if (!supabase) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
     }
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+
+    if (!user) {
+      return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
+    }
+
+    const userId = user.id
+    const userEmail = user.email
 
     if (!COURSE_PRICE_ID) {
       return NextResponse.json({ error: 'Stripe price ID not configured' }, { status: 500 })
@@ -33,21 +47,6 @@ export async function POST(request: NextRequest) {
     if (hasAccess) {
       return NextResponse.json({ error: 'User already has access to this course' }, { status: 400 })
     }
-
-    // Get user email from Supabase
-    const supabase = getSupabaseClient()
-
-    if (!supabase) {
-      return NextResponse.json({ error: 'Supabase is not configured' }, { status: 500 })
-    }
-
-    const { data: userData, error: userError } = await supabase.auth.admin.getUserById(userId)
-
-    if (userError || !userData) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 })
-    }
-
-    const userEmail = userData.user.email
 
     // Create Stripe checkout session
     const stripe = getStripeClient()
