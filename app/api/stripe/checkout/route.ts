@@ -36,9 +36,11 @@ export async function POST(request: NextRequest) {
 
     // Get user email from Supabase
     const supabase = getSupabaseClient()
+
     if (!supabase) {
-      return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
+      return NextResponse.json({ error: 'Supabase is not configured' }, { status: 500 })
     }
+
     const { data: userData, error: userError } = await supabase.auth.admin.getUserById(userId)
 
     if (userError || !userData) {

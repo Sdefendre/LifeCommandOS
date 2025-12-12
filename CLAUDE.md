@@ -10,31 +10,31 @@ Command is an AI-powered education platform for veterans - a multi-page Next.js 
 
 ### Core Development
 
-- `pnpm dev` - Start dev server with Turbopack disabled (localhost:3000)
-- `pnpm build` - Production build with Next.js
-- `pnpm start` - Start production server
-- `pnpm lint` - Run ESLint on the codebase
-- `pnpm format` - Format code with Prettier
+- `bun dev` - Start dev server with Turbopack disabled (localhost:3000)
+- `bun build` - Production build with Next.js
+- `bun start` - Start production server
+- `bun lint` - Run ESLint on the codebase
+- `bun format` - Format code with Prettier
 
 ### Utility Scripts
 
-- `npm run check-ai-env` - Verify AI environment variables are configured
-- `npm run scrape-valor-features` - Scrape Valor features documentation
-- `npm run send-newsletter` - Send newsletter to subscribers
+- `bun run check-ai-env` - Verify AI environment variables are configured
+- `bun run scrape-valor-features` - Scrape Valor features documentation
+- `bun run send-newsletter` - Send newsletter to subscribers
 
 ### GitHub CLI Shortcuts
 
-- `pnpm gh:status` - Check repository status
-- `pnpm gh:issues` - List GitHub issues
-- `pnpm gh:prs` - List pull requests
-- `pnpm gh:view` - View repository in browser
+- `bun gh:status` - Check repository status
+- `bun gh:issues` - List GitHub issues
+- `bun gh:prs` - List pull requests
+- `bun gh:view` - View repository in browser
 
 ## Architecture
 
 ### Tech Stack
 
 - **Framework**: Next.js 15 (App Router) with React 19
-- **Package Manager**: pnpm (do NOT use npm or yarn)
+- **Package Manager**: Bun (do NOT use npm, yarn, or pnpm)
 - **Language**: TypeScript with strict mode
 - **Styling**: Tailwind CSS v4
 - **UI Components**: Shadcn UI in `components/ui/`
@@ -177,13 +177,13 @@ All sections dynamically imported for code splitting:
 - `GOOGLE_CALENDAR_ID` - Calendar ID (default: "primary")
 - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` - Newsletter functionality
 
-**Important**: Run `npm run check-ai-env` to verify AI environment configuration before development.
+**Important**: Run `bun run check-ai-env` to verify AI environment configuration before development.
 
 ## Development Notes
 
 ### Package Manager
 
-Always use `pnpm` for this project. Do NOT use `npm` or `yarn`. The project is configured with pnpm-specific features.
+Always use `bun` for this project. Do NOT use `npm`, `yarn`, or `pnpm`. Bun is significantly faster and can run TypeScript natively without transpilation.
 
 ### Dev Server Configuration
 

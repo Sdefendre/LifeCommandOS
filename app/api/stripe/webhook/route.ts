@@ -36,8 +36,7 @@ export async function POST(request: NextRequest) {
   const supabase = getSupabaseClient()
 
   if (!supabase) {
-    console.error('Supabase not configured')
-    return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
+    return NextResponse.json({ error: 'Supabase is not configured' }, { status: 500 })
   }
 
   // Handle the event
