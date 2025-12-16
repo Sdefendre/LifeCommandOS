@@ -461,7 +461,11 @@ export default function BudgetsPage() {
                                 <Cell key={`cell-${index}`} fill={entry.color} />
                               ))}
                             </Pie>
-                            <RechartsTooltip formatter={(value: number) => `$${value}`} />
+                            <RechartsTooltip
+                              formatter={(
+                                value: number | string | Array<number | string> | undefined
+                              ) => `$${value}`}
+                            />
                           </PieChart>
                         </ResponsiveContainer>
                       </div>

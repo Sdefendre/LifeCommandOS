@@ -304,7 +304,8 @@ The `/command` page provides an advanced AI-powered chat interface for VA benefi
 
 ### Command Interface Components
 
-- `CommandChat.tsx` - Main chat interface with sidebar navigation
+- `Chat.tsx` - Main chat interface with sidebar navigation and conversation history
+- `ChatSidebar.tsx` - Sidebar with conversation list, switching, and deletion
 - `CommandMessage.tsx` - Individual message rendering
 - `CommandThreeBackground.tsx` - Three.js background effects
 - `VoiceAgent.tsx` - Voice input component with microphone support

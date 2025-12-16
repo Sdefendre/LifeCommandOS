@@ -71,9 +71,7 @@ export default function TransactionsPage() {
 
   const [searchQuery, setSearchQuery] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('all')
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [statusFilter, _setStatusFilter] = useState('all')
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [sortOrder, _setSortOrder] = useState('desc')
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false)
 

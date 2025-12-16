@@ -40,6 +40,7 @@ export function BillDialog({ open, onOpenChange, editingBill }: BillDialogProps)
 
   useEffect(() => {
     if (editingBill) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFormData({
         name: editingBill.name,
         amount: editingBill.amount.toString(),

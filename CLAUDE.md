@@ -73,11 +73,11 @@ The core AI functionality is built around Grok models via xAI with comprehensive
 **Command Chat Interface** (`components/command/`):
 
 - `CommandPageClient.tsx` - Main page wrapper with client-only rendering
-- `CommandChat.tsx` - Chat UI with sidebar navigation, model selection, voice input
+- `Chat.tsx` - Main chat interface with sidebar navigation, model selection, voice input
 - `CommandMessage.tsx` - Individual message rendering with markdown support
 - `ChatInput.tsx` - Message input with textarea auto-resize
 - `Messages.tsx` - Message list with scroll management
-- `ChatSidebar.tsx` - Navigation sidebar with conversation history
+- `ChatSidebar.tsx` - Navigation sidebar with conversation history (fully implemented)
 - `ChatHeader.tsx` - Top header with model selector
 
 **Landing Page Components** (`components/landing/`):
@@ -217,7 +217,7 @@ Project linked to Linear workspace: https://linear.app/ceceriforma/project/life-
 1. Update `constants/ai.ts` with new model option
 2. Modify `app/api/ai-agent/route.ts` to handle new provider
 3. Test rate limiting and conversation storage
-4. Update model selector in `CommandChat.tsx`
+4. Update model selector in `Chat.tsx` (if needed)
 
 ### Adding Knowledge Base Content
 

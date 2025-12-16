@@ -38,7 +38,9 @@ export function CoursePlayer({
           const data = await response.json()
           // data.progress is array of { module_id: string, ... }
           if (data.progress && Array.isArray(data.progress)) {
-            const completedIds = new Set(data.progress.map((p: any) => p.module_id as string))
+            const completedIds = new Set<string>(
+              data.progress.map((p: any) => p.module_id as string)
+            )
             setCompletedModules(completedIds)
           }
         }

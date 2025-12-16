@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect, useState, memo } from 'react'
+import { useRef, useEffect, useState, memo, useCallback } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
 import type { UIMessage } from 'ai'
@@ -48,25 +48,27 @@ function PureMessages({ messages, status, onSuggestionClick, isChatReady = true 
     return () => container.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const scrollToBottom = useCallback((behavior: ScrollBehavior = 'smooth') => {
+    endRef.current?.scrollIntoView({ behavior })
+    setIsAtBottom(true)
+    setUserHasScrolled(false)
+  }, [])
+
   // Auto-scroll to bottom when new messages arrive (if user hasn't scrolled up)
   useEffect(() => {
     if (!userHasScrolled || isAtBottom) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       scrollToBottom('smooth')
     }
-  }, [messages, status])
+  }, [messages, status, userHasScrolled, isAtBottom, scrollToBottom])
 
   // Reset userHasScrolled when a new message is sent
   useEffect(() => {
     if (status === 'submitted') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setUserHasScrolled(false)
     }
   }, [status])
-
-  const scrollToBottom = (behavior: ScrollBehavior = 'smooth') => {
-    endRef.current?.scrollIntoView({ behavior })
-    setIsAtBottom(true)
-    setUserHasScrolled(false)
-  }
 
   return (
     <div

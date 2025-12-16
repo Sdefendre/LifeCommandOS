@@ -31,7 +31,7 @@ This document provides context and guidelines for AI agents working on the Comma
 - `components/`: Reusable UI components.
   - `ui/`: Shadcn UI component library (Avatar, Badge, Button, Card, Chart, Dialog, etc.).
   - `landing/`: Landing page sections (Hero, Features, Testimonials, Roadmap, Pricing, CTA, Footer).
-  - `command/`: Command interface components (CommandChat, CommandMessage).
+  - `command/`: Command interface components (Chat, ChatSidebar, CommandMessage).
   - `dashboard-*.tsx`: BattleStation-specific components (sidebar, header, skeletons).
   - `ClientOnlyComponents.tsx`: Lazy-loaded client-only components wrapper.
   - `SaaSLanding.tsx`: Main landing page component with dynamic imports.
@@ -140,7 +140,8 @@ Located in `components/landing/`:
 
 The `/command` page (`app/command/page.tsx`) provides an AI chat interface:
 
-- **CommandChat**: Main chat component with sidebar navigation
+- **Chat**: Main chat component with sidebar navigation and conversation history
+- **ChatSidebar**: Sidebar with conversation list, switching, and deletion (fully implemented)
 - **CommandMessage**: Individual message rendering with markdown support
 - **CommandThreeBackground**: Three.js background effects
 - **VoiceAgent**: Voice input component with microphone support
@@ -149,13 +150,15 @@ The `/command` page (`app/command/page.tsx`) provides an AI chat interface:
 
 - **Model Selection**: Dropdown to switch between AI models (GPT-4o, GPT-4o Mini, Grok, etc.)
 - **Conversation Management**: Session-based conversation IDs stored in sessionStorage
+- **Chat History**: Full conversation history UI with sidebar, switching, and deletion
 - **Rate Limiting**: Daily query limits tracked via Supabase
 - **Responsive Design**: Mobile-friendly with sheet menu for navigation
 - **Voice Mode**: Toggle between text and voice input modes
 
 ### Command Interface Components
 
-- `components/command/CommandChat.tsx` - Main chat interface
+- `components/command/Chat.tsx` - Main chat interface
+- `components/command/ChatSidebar.tsx` - Sidebar with conversation history
 - `components/command/CommandMessage.tsx` - Message rendering
 - `components/CommandThreeBackground.tsx` - Background effects
 - `components/VoiceAgent.tsx` - Voice input handling

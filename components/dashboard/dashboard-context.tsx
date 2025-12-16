@@ -55,9 +55,13 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
       return saved ? JSON.parse(saved) : initial
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTransactions(loadData('lifecmd_transactions', INITIAL_TRANSACTIONS))
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setBudgets(loadData('lifecmd_budgets', INITIAL_BUDGETS))
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSavingsGoals(loadData('lifecmd_savings', INITIAL_SAVINGS_GOALS))
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setAccounts(loadData('lifecmd_accounts', INITIAL_ACCOUNTS))
     setBills(loadData('lifecmd_bills', INITIAL_BILLS))
     setIsLoading(false)

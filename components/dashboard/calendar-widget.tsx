@@ -23,6 +23,7 @@ export function CalendarWidget() {
 
   useEffect(() => {
     const today = new Date()
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedCalendarDate(today)
     setDateData({
       month: format(today, 'MMMM yyyy'),

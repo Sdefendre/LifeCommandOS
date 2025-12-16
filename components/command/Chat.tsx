@@ -32,6 +32,7 @@ export function Chat() {
 
   // Mark as client-side after mount
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsClient(true)
   }, [])
 
@@ -40,6 +41,7 @@ export function Chat() {
     if (typeof window !== 'undefined') {
       const stored = sessionStorage.getItem('ai-conversation-id')
       if (stored) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setConversationId(stored)
       } else {
         const newId = `conv-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`
