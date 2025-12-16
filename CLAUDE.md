@@ -205,7 +205,7 @@ Project uses husky + lint-staged for pre-commit hooks:
 
 ### Linear Integration
 
-Project linked to Linear workspace: https://linear.app/ceceriforma/project/life-command-os-113a92ca8686
+Project linked to Linear workspace: https://linear.app/ceceriforma/project/command-113a92ca8686
 
 - Team: Ceceriforma
 - Project ID: `cea70c7e-066a-4e85-931c-2e5983067453`

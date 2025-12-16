@@ -1,6 +1,6 @@
 // Blog Post: Rebranding Announcement
 export const rebrandingPost = {
-  id: 'rebranding-life-command-os',
+  id: 'rebranding',
   title: 'Rebranding to Command: Why We Changed Everything',
   excerpt:
     "After months of reflection and growth, we're rebranding to Command. Here's why this change matters and what it means for the future.",

@@ -179,7 +179,7 @@ This project is connected to Linear for issue tracking and project management.
 - **Project Name**: Command
 - **Project ID**: `cea70c7e-066a-4e85-931c-2e5983067453`
 - **Team**: Ceceriforma
-- **Project URL**: [https://linear.app/ceceriforma/project/life-command-os-113a92ca8686](https://linear.app/ceceriforma/project/life-command-os-113a92ca8686)
+- **Project URL**: [https://linear.app/ceceriforma/project/command-113a92ca8686](https://linear.app/ceceriforma/project/command-113a92ca8686)
 
 ### Using Linear MCP
 

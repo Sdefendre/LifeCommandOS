@@ -180,7 +180,7 @@ The Linear MCP server allows AI assistants to interact with Linear issues, creat
 
 This repository is connected to the **Command** project in Linear:
 
-- **Linear Project URL**: [https://linear.app/ceceriforma/project/life-command-os-113a92ca8686](https://linear.app/ceceriforma/project/life-command-os-113a92ca8686)
+- **Linear Project URL**: [https://linear.app/ceceriforma/project/command-113a92ca8686](https://linear.app/ceceriforma/project/command-113a92ca8686)
 - **Team**: Ceceriforma
 - **Project ID**: `cea70c7e-066a-4e85-931c-2e5983067453`
 

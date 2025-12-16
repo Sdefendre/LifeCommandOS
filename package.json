@@ -1,5 +1,5 @@
 {
-  "name": "life-command-os",
+  "name": "command",
   "version": "0.1.0",
   "private": true,
   "lint-staged": {

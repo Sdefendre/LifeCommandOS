@@ -1,6 +1,6 @@
 // Blog Post: Mission Statement
 export const missionStatementPost = {
-  id: 'the-mission-statement-behind-life-command-os',
+  id: 'the-mission-statement-behind-command',
   title: 'The Mission Statement Behind Command: Breaking Out of Survival Mode',
   excerpt:
     "Our mission is simple but profound: to help people break out of survival mode and take command of their future. Here's what that means, why it matters, and how we're building toward it.",
