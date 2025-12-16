@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'
-import { CheckCircle2, Circle, ChevronRight, ChevronLeft } from 'lucide-react'
+import { CheckCircle2, Circle, ChevronRight, ChevronLeft, Loader2 } from 'lucide-react'
 import { CourseModule } from './CourseContent'
 
 interface CoursePlayerProps {
@@ -22,6 +22,35 @@ export function CoursePlayer({
   const [currentModuleIndex, setCurrentModuleIndex] = useState(0)
   const [completedModules, setCompletedModules] = useState<Set<string>>(new Set())
   const [progress, setProgress] = useState(0)
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Fetch progress on mount
+  useEffect(() => {
+    async function fetchProgress() {
+      if (!userId) {
+        setIsLoading(false)
+        return
+      }
+
+      try {
+        const response = await fetch(`/api/course/progress?userId=${userId}&courseId=${courseId}`)
+        if (response.ok) {
+          const data = await response.json()
+          // data.progress is array of { module_id: string, ... }
+          if (data.progress && Array.isArray(data.progress)) {
+            const completedIds = new Set(data.progress.map((p: any) => p.module_id as string))
+            setCompletedModules(completedIds)
+          }
+        }
+      } catch (error) {
+        console.error('Failed to load course progress:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchProgress()
+  }, [userId, courseId])
 
   useEffect(() => {
     // Calculate progress
@@ -50,7 +79,7 @@ export function CoursePlayer({
     const moduleId = currentModule.id
     setCompletedModules((prev) => new Set(prev).add(moduleId))
 
-    // TODO: Save progress to database
+    // Save progress to database
     if (userId) {
       try {
         await fetch('/api/course/progress', {
@@ -67,6 +96,14 @@ export function CoursePlayer({
         console.error('Error saving progress:', error)
       }
     }
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex h-[600px] w-full items-center justify-center">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      </div>
+    )
   }
 
   return (
