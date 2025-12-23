@@ -19,7 +19,6 @@
     "scrape-community-qa": "bun scripts/scrape-community-qa.ts",
     "verify-community-qa": "bun scripts/verify-community-qa.ts",
     "check-ai-env": "bun scripts/check-ai-env.ts",
-    "scrape-valor-features": "bun scripts/scrape-valor-features.ts",
     "gh:status": "gh repo status",
     "gh:issues": "gh issue list",
     "gh:prs": "gh pr list",

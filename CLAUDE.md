@@ -19,7 +19,6 @@ Command is an AI-powered education platform for veterans - a multi-page Next.js 
 ### Utility Scripts
 
 - `bun run check-ai-env` - Verify AI environment variables are configured
-- `bun run scrape-valor-features` - Scrape Valor features documentation
 - `bun run send-newsletter` - Send newsletter to subscribers
 
 ### GitHub CLI Shortcuts

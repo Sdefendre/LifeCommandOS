@@ -186,7 +186,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Reddit scraper script (`scripts/scrape-reddit.ts`)
   - Dataset collection from r/VeteransBenefits and related subreddits
   - Question-answer pairs for AI training
-  - Valor features scraper (`scripts/scrape-valor-features.ts`)
   - Dataset setup documentation (`REDDIT_DATASET_SETUP.md`)
 - **Changelog Page**: Public changelog page (`/changelog`) displaying all project updates
   - Automatic parsing of `CHANGELOG.md` following Keep a Changelog format

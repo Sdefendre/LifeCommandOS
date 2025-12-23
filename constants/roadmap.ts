@@ -251,7 +251,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     phase: 'Phase 4: Advanced Command Systems',
   },
 
-  // Phase 5: AI-Powered Features (Inspired by Valor AI)
+  // Phase 5: AI-Powered Features
   {
     id: 'your-va-claims',
     title: 'Your VA Claims',
@@ -260,7 +260,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'high',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'advanced-notification-system',
@@ -270,7 +270,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'voice-first-claims-assistant',
@@ -280,7 +280,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'ai-powered-knowledge-base',
@@ -290,7 +290,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'reddit-dataset-integration',
@@ -300,7 +300,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'medium',
     status: 'completed',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'veteran-mentorship-network',
@@ -310,7 +310,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'high',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'predictive-deadline-management',
@@ -320,7 +320,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'claims-analytics-dashboard',
@@ -330,7 +330,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'integrated-health-records',
@@ -340,7 +340,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'high',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'comprehensive-benefits-optimizer',
@@ -350,7 +350,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'smart-evidence-discovery',
@@ -360,7 +360,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'multi-language-veteran-support',
@@ -370,7 +370,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'medium',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'predictive-career-transition',
@@ -380,7 +380,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'education-benefits-maximizer',
@@ -390,7 +390,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'medium',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'home-loan-assistance-hub',
@@ -400,7 +400,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'medium',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'appeal-strategy-optimizer',
@@ -410,7 +410,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'medium',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'real-time-claims-radar',
@@ -420,7 +420,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'high',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'va-form-submission-hardening',
@@ -430,7 +430,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'medium',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'byok-reliability-usage-guardrails',
@@ -440,7 +440,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'low',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'claims-records-sync-service',
@@ -450,7 +450,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'high',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
   {
     id: 'pdf-workflow-observability',
@@ -460,6 +460,6 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     priority: 'medium',
     complexity: 'medium',
     status: 'planned',
-    phase: 'Phase 5: AI-Powered Features (Inspired by Valor AI)',
+    phase: 'Phase 5: AI-Powered Features',
   },
 ]
